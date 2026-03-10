@@ -494,6 +494,14 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
       </div>
       <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:14px;padding:13px" onclick="submitBusiness(event)" data-t="btnSubmitBiz">Register Business →</button>
       <div id="bizResult" class="submit-result"></div>
+      <!-- PayPal redirect button — shown only after banner registration -->
+      <a id="paypalBtn" href="#" target="_blank" rel="noopener"
+         style="display:none;width:100%;justify-content:center;margin-top:10px;padding:13px;
+                background:linear-gradient(135deg,#009cde,#003087);color:#fff;font-weight:700;
+                font-size:14px;border-radius:50px;text-decoration:none;
+                display:none;align-items:center;gap:8px;text-align:center">
+        <span style="font-size:18px">𝐏</span> Pay $29.99 on PayPal →
+      </a>
     </div>
   </div>
 </div>
@@ -613,11 +621,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 /* ════════════════════════════════════════════════════
    ① CONFIGURATION — edit these values
 ════════════════════════════════════════════════════ */
-const GAS_URL    = 'https://tinyurl.com/296vmrb9'; // ← paste your GAS /exec URL
+const GAS_URL    = 'https://tinyurl.com/249bm4p8'; // ← paste your GAS /exec URL
 const SITE_NAME  = 'Santafetijuana.com';
 const SITE_URL   = 'https://santafetijuana.com';
 // ② Paste your favicon URL (e.g. 'https://yourdomain.com/favicon.png') or leave '' for none
-const FAVICON_URL = 'https://static.wixstatic.com/media/49ea47_e8709539ce4a48caaa44d7629e3679c4~mv2.png';
+const FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
 // ③ Paste your logo image URL (e.g. 'https://yourdomain.com/logo.png') or leave '' for emoji
 const LOGO_URL    = 'https://static.wixstatic.com/media/49ea47_e8709539ce4a48caaa44d7629e3679c4~mv2.png';
 const PAGE_SIZE  = 12;
@@ -709,7 +717,7 @@ const STRINGS = {
     errRequired:'⚠️ Please fill in all required fields.',
     errNetwork:'Network error — check your connection and try again.',
     submitting:'Registering…', submitBizOk:'✅ Business registered! It will appear in the directory shortly.',
-    submitBizBannerOk:'✅ Business registered! Redirecting to PayPal for banner payment…',
+    submitBizBannerOk:'✅ Business registered! Click the button below to complete your banner payment on PayPal.',
     submitFail:'Registration failed. Please try again.',
     posting:'Posting…', submitReqOk:'✅ Request posted! It will be visible for 60 days.',
     submitOffOk:'✅ Offer posted! It will be visible for 60 days.', postFail:'Failed to post. Please try again.',
@@ -767,7 +775,7 @@ const STRINGS = {
     errRequired:'⚠️ Por favor completa todos los campos requeridos.',
     errNetwork:'Error de red — verifica tu conexión e intenta de nuevo.',
     submitting:'Registrando…', submitBizOk:'✅ ¡Negocio registrado! Aparecerá en el directorio en breve.',
-    submitBizBannerOk:'✅ ¡Negocio registrado! Redirigiendo a PayPal para el pago del banner…',
+    submitBizBannerOk:'✅ ¡Negocio registrado! Haz clic en el botón de abajo para completar tu pago en PayPal.',
     submitFail:'Error al registrar. Por favor intenta de nuevo.',
     posting:'Publicando…', submitReqOk:'✅ ¡Solicitud publicada! Será visible por 60 días.',
     submitOffOk:'✅ ¡Oferta publicada! Será visible por 60 días.', postFail:'Error al publicar. Intenta de nuevo.',
@@ -1174,7 +1182,12 @@ async function submitBusiness(event) {
   if(res.success){
     if(res.redirectToBanner&&res.paypalUrl){
       showResult('bizResult','success',T('submitBizBannerOk'));
-      setTimeout(()=>window.open(res.paypalUrl,'_blank'),2000);
+      // Show a direct-click PayPal button — window.open() is blocked by browsers
+      // when called from an async callback; a user-initiated click is required
+      const ppBtn = document.getElementById('paypalBtn');
+      ppBtn.href = res.paypalUrl;
+      ppBtn.style.display = 'flex';
+      ppBtn.scrollIntoView({behavior:'smooth', block:'nearest'});
     } else {
       showResult('bizResult','success',T('submitBizOk'));
       setTimeout(()=>{ closeModal('modalBusiness'); loadBiz(); },2500);
@@ -1257,7 +1270,17 @@ function renderPages(total,cur,prefix){
 function bizGoPage(p){ bizPage=p; renderBiz(); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+  // Reset PayPal button when business modal is closed
+  if(id==='modalBusiness'){
+    const ppBtn=document.getElementById('paypalBtn');
+    if(ppBtn){ ppBtn.style.display='none'; ppBtn.href='#'; }
+    const res=document.getElementById('bizResult');
+    if(res){ res.className='submit-result'; res.textContent=''; }
+  }
+}
 document.querySelectorAll('.modal-overlay').forEach(m=>{
   m.addEventListener('click',e=>{ if(e.target===m) closeModal(m.id); });
 });

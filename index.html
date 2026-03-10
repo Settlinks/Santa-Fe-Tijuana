@@ -617,9 +617,9 @@ const GAS_URL    = 'https://tinyurl.com/296vmrb9'; // ← paste your GAS /exec U
 const SITE_NAME  = 'Santafetijuana.com';
 const SITE_URL   = 'https://santafetijuana.com';
 // ② Paste your favicon URL (e.g. 'https://yourdomain.com/favicon.png') or leave '' for none
-const FAVICON_URL = '';
+const FAVICON_URL = 'https://static.wixstatic.com/media/49ea47_e8709539ce4a48caaa44d7629e3679c4~mv2.png';
 // ③ Paste your logo image URL (e.g. 'https://yourdomain.com/logo.png') or leave '' for emoji
-const LOGO_URL    = '';
+const LOGO_URL    = 'https://static.wixstatic.com/media/49ea47_e8709539ce4a48caaa44d7629e3679c4~mv2.png';
 const PAGE_SIZE  = 12;
 
 /* ════════════════════════════════════════════════════
@@ -962,7 +962,7 @@ function renderBanner(ads) {
     const imgHtml = imgSrc
       ? `<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy" onerror="this.parentElement.textContent='${catEmoji(biz.category||'')}'"></div>`
       : `<div class="banner-card-img">${catEmoji(biz.category||'')}</div>`;
-    const href = biz.website || '#';
+    const href = biz.website ? safeUrl(biz.website) : '#';
     return `<a class="banner-card" href="${esc(href)}" target="_blank" rel="noopener">
       ${imgHtml}
       <div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div>
@@ -1110,7 +1110,7 @@ function openDetail(type, item) {
     if(item.phone) metaItems.push([T('dtPhone'), `<a href="tel:${esc(item.phone)}">${esc(item.phone)}</a>`]);
     if(item.email) metaItems.push([T('dtEmail'), `<a href="mailto:${esc(item.email)}">${esc(item.email)}</a>`]);
     if(item.address) metaItems.push([T('dtAddress'), esc(item.address)]);
-    if(item.website) metaItems.push([T('dtWebsite'), `<a href="${esc(item.website)}" target="_blank" rel="noopener">${esc(item.website)}</a>`]);
+    if(item.website) metaItems.push([T('dtWebsite'), `<a href="${safeUrl(item.website)}" target="_blank" rel="noopener">${esc(item.website)}</a>`]);
     if(item.category) metaItems.push([T('dtCategory'), esc(item.category)]);
     if(item.registeredDate) metaItems.push([T('dtPosted'), new Date(item.registeredDate).toLocaleDateString()]);
   } else if(type==='req') {
@@ -1140,7 +1140,7 @@ function openDetail(type, item) {
   const phone = item.phone || item.contactPhone || '';
   if(phone) actions.push(`<a class="btn btn-sky" href="tel:${esc(phone)}">${T('btnCall')}</a>`);
   if(phone) actions.push(`<a class="btn btn-mint" href="https://wa.me/${phone.replace(/\D/g,'')}" target="_blank" rel="noopener">${T('btnWA')}</a>`);
-  if(type==='biz' && item.website) actions.push(`<a class="btn btn-primary" href="${esc(item.website)}" target="_blank" rel="noopener">${T('btnWeb')}</a>`);
+  if(type==='biz' && item.website) actions.push(`<a class="btn btn-primary" href="${safeUrl(item.website)}" target="_blank" rel="noopener">${T('btnWeb')}</a>`);
   actions.push(`<button class="btn btn-ghost" style="color:var(--ink);border:1.5px solid var(--border)" onclick="shareItem('${typeKey}','${esc(slug)}','${esc(nameStr)}')">${T('btnShareDet')}</button>`);
   document.getElementById('dtActions').innerHTML = actions.join('');
 
@@ -1356,6 +1356,13 @@ function gv(id){ return (document.getElementById(id)?.value||'').trim(); }
 function esc(s){
   if(!s) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+// Ensures a URL has a protocol prefix so it's never treated as a relative path
+function safeUrl(url){
+  if(!url) return '#';
+  const u = url.trim();
+  if(/^https?:\/\//i.test(u)) return u;
+  return 'https://' + u;
 }
 function emptyHtml(icon,title,msg){
   return `<div class="empty-state"><div class="empty-state-icon">${icon}</div><h3>${title}</h3><p>${msg}</p></div>`;

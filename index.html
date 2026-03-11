@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" id="htmlRoot">
+<html lang="es" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Santa Fe Tijuana – Community Business Portal / Portal Comunitario de Negocios">
+<meta name="description" content="Santa Fe Tijuana – Community Business Portal / Directorio Local de Negocios">
 <!-- ① Favicon: paste your favicon URL in FAVICON_URL constant below. This tag is updated by JS on load. -->
 <link rel="icon" id="faviconTag" href="data:,">
 <title>Santa Fe Tijuana – Community Business Portal</title>
@@ -349,8 +349,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
       </a>
       <div class="topbar-right">
         <div class="lang-pill">
-          <button class="lang-opt active" id="langEN" onclick="setLang('en')">EN</button>
-          <button class="lang-opt" id="langES" onclick="setLang('es')">ES</button>
+          <button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button>
+          <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
         </div>
         <button class="btn btn-ghost btn-ghost-hide btn-sm" onclick="openModal('modalArchive')" data-t="btnArchive">🗂 Archived</button>
         <button class="btn btn-gold btn-sm" onclick="openModal('modalBusiness')" data-t="btnRegister">+ Register Business</button>
@@ -622,7 +622,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 /* ════════════════════════════════════════════════════
    ① CONFIGURATION — edit these values
 ════════════════════════════════════════════════════ */
-const GAS_URL    = 'https://tinyurl.com/2djcvjj2'; // ← paste your GAS /exec URL
+const GAS_URL    = 'https://tinyurl.com/249bm4p8'; // ← paste your GAS /exec URL
 const SITE_NAME  = 'Santafetijuana.com';
 const SITE_URL   = 'https://santafetijuana.com';
 // ② Paste your favicon URL (e.g. 'https://yourdomain.com/favicon.png') or leave '' for none
@@ -673,7 +673,7 @@ async function api(action, payload) {
 /* ════════════════════════════════════════════════════
    BILINGUAL i18n
 ════════════════════════════════════════════════════ */
-let LANG = 'en';
+let LANG = 'es';
 
 const STRINGS = {
   en:{
@@ -725,7 +725,7 @@ const STRINGS = {
     justNow:'Just now', ago:'ago', archived:'Archived',
     footerLine1:'Community Business Portal · All rights reserved',
     footerLine2:'Listings expire after 60 days · Archived items kept 60 additional days',
-    footerLine3:'Diseñado por YATELASA',
+    footerLine3:'Powered by YATELASA',
     catOptSel:'Select category…',
     REQUEST:'REQUEST', OFFER:'OFFER', ARCHIVED_LABEL:'ARCHIVED',
     // detail overlay labels
@@ -736,9 +736,9 @@ const STRINGS = {
     dtYourBiz:'Your Business Here', dtYourBizCat:'$29.99/mo · Click to feature',
   },
   es:{
-    portalSub:'Portal Comunitario', btnArchive:'🗂 Archivados', btnRegister:'+ Registrar Negocio',
-    heroLine1:'Anúnciate', heroLine2:'Solicita Servicios', heroLine3:'Y Ofrece Tus Productos',
-    heroSub:'El directorio oficial de negocios y mercado de la comunidad Santa Fe Tijuana — encuentra servicios, publica ofertas y crezcamos juntos.',
+    portalSub:'Directorio Local', btnArchive:'🗂 Archivados', btnRegister:'+ Registrar Negocio',
+    heroLine1:'Anúnciate', heroLine2:'Solicita Servicios', heroLine3:'Y Ofrece tus Productos',
+    heroSub:'El directorio local de negocios y mercado de la comunidad Santa Fe Tijuana — encuentra servicios, publica ofertas y crezcamos juntos.',
     statBiz:'Negocios', statReq:'Solicitudes', statOff:'Ofertas Activas',
     ctaDir:'🏪 Ver Directorio', ctaReq:'📋 Publicar Solicitud', ctaOff:'💼 Publicar Oferta',
     catBeauty:'Belleza y Cuidado Personal', catHome:'Servicios del Hogar', catFood:'Alimentos y Bebidas',
@@ -782,7 +782,7 @@ const STRINGS = {
     posting:'Publicando…', submitReqOk:'✅ ¡Solicitud publicada! Será visible por 60 días.',
     submitOffOk:'✅ ¡Oferta publicada! Será visible por 60 días.', postFail:'Error al publicar. Intenta de nuevo.',
     justNow:'Ahora mismo', ago:'', archived:'Archivado',
-    footerLine1:'Portal Comunitario de Negocios · Todos los derechos reservados',
+    footerLine1:'Directorio Local de Negocios · Todos los derechos reservados',
     footerLine2:'Las publicaciones expiran en 60 días · Los archivados se conservan 60 días adicionales',
     footerLine3:'Diseñado por YATELASA',
     catOptSel:'Selecciona categoría…',
@@ -841,6 +841,7 @@ let bizPage=1;
 ════════════════════════════════════════════════════ */
 window.addEventListener('load', async () => {
   applyBranding();
+  setLang('es');
   await Promise.all([loadCats(), loadBiz(), loadBanners(), loadReq(), loadOff()]);
   // ④ Deep-link: parse URL params and open detail popup
   handleDeepLink();

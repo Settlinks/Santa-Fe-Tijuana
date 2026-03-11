@@ -340,7 +340,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   <div class="hero-inner">
     <div class="topbar">
       <a class="logo" href="#">
-        <!-- ② Logo: if LOGO_URL is set, shows image; otherwise shows emoji -->
         <div class="logo-icon" id="logoIconWrap">🏘️</div>
         <div>
           <div class="logo-text">Santa Fe <span>Tijuana</span></div>
@@ -349,8 +348,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
       </a>
       <div class="topbar-right">
         <div class="lang-pill">
-          <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
           <button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button>
+          <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
         </div>
         <button class="btn btn-ghost btn-ghost-hide btn-sm" onclick="openModal('modalArchive')" data-t="btnArchive">🗂 Archived</button>
         <button class="btn btn-gold btn-sm" onclick="openModal('modalBusiness')" data-t="btnRegister">+ Register Business</button>
@@ -673,7 +672,7 @@ async function api(action, payload) {
 /* ════════════════════════════════════════════════════
    BILINGUAL i18n
 ════════════════════════════════════════════════════ */
-let LANG = 'en';
+let LANG = 'es';
 
 const STRINGS = {
   en:{

@@ -340,6 +340,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   <div class="hero-inner">
     <div class="topbar">
       <a class="logo" href="#">
+        <!-- ② Logo: if LOGO_URL is set, shows image; otherwise shows emoji -->
         <div class="logo-icon" id="logoIconWrap">🏘️</div>
         <div>
           <div class="logo-text">Santa Fe <span>Tijuana</span></div>
@@ -838,6 +839,7 @@ let bizPage=1;
 ════════════════════════════════════════════════════ */
 window.addEventListener('load', async () => {
   applyBranding();
+  setLang('es'); // default language: Spanish
   await Promise.all([loadCats(), loadBiz(), loadBanners(), loadReq(), loadOff()]);
   // ④ Deep-link: parse URL params and open detail popup
   handleDeepLink();

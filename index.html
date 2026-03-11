@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" id="htmlRoot">
+<html lang="en" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -349,8 +349,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
       </a>
       <div class="topbar-right">
         <div class="lang-pill">
-          <button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button>
-          <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
+          <button class="lang-opt active" id="langEN" onclick="setLang('en')">EN</button>
+          <button class="lang-opt" id="langES" onclick="setLang('es')">ES</button>
         </div>
         <button class="btn btn-ghost btn-ghost-hide btn-sm" onclick="openModal('modalArchive')" data-t="btnArchive">🗂 Archived</button>
         <button class="btn btn-gold btn-sm" onclick="openModal('modalBusiness')" data-t="btnRegister">+ Register Business</button>
@@ -621,7 +621,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 /* ════════════════════════════════════════════════════
    ① CONFIGURATION — edit these values
 ════════════════════════════════════════════════════ */
-const GAS_URL    = 'https://tinyurl.com/249bm4p8'; // ← paste your GAS /exec URL
+const GAS_URL    = 'https://tinyurl.com/2djcvjj2'; // ← paste your GAS /exec URL
 const SITE_NAME  = 'Santafetijuana.com';
 const SITE_URL   = 'https://santafetijuana.com';
 // ② Paste your favicon URL (e.g. 'https://yourdomain.com/favicon.png') or leave '' for none
@@ -672,7 +672,7 @@ async function api(action, payload) {
 /* ════════════════════════════════════════════════════
    BILINGUAL i18n
 ════════════════════════════════════════════════════ */
-let LANG = 'es';
+let LANG = 'en';
 
 const STRINGS = {
   en:{
@@ -838,7 +838,6 @@ let bizPage=1;
 ════════════════════════════════════════════════════ */
 window.addEventListener('load', async () => {
   applyBranding();
-  setLang('es'); // default language: Spanish
   await Promise.all([loadCats(), loadBiz(), loadBanners(), loadReq(), loadOff()]);
   // ④ Deep-link: parse URL params and open detail popup
   handleDeepLink();

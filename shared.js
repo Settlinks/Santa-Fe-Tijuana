@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbwpETQUQjoKgYlO9mLnOSYWlFIw0W3SrAlY8-pmYfh2NmkmCbnPZkKNIjEvgAlqNs1stQ/exec';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbw6lGQFOTn72buN4736MB2HDuZsTFUknc9QwLeg-fBZ8DvMjtBi_sEKwSeRh_0bi55C9Q/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -256,7 +256,11 @@ const CAT_ICONS = {
 };
 function catIcon(cat) { return CAT_ICONS[cat] || 'ic-building'; }
 function svgIcon(id, size, cls) {
-  return `<svg width="${size}" height="${size}"${cls?' class="'+cls+'"':''}><use href="#${id}"/></svg>`;
+  /* cls can be a CSS class name OR a hex/rgba color string for direct styling */
+  const isColor = cls && (cls.startsWith('#') || cls.startsWith('rgba') || cls.startsWith('rgb') || cls.startsWith('var('));
+  const colorAttr = isColor ? ` style="color:${cls}"` : '';
+  const classAttr = (!isColor && cls) ? ` class="${cls}"` : '';
+  return `<svg width="${size}" height="${size}"${classAttr}${colorAttr}><use href="#${id}"/></svg>`;
 }
 
 /* ════ MODALS ════ */
@@ -311,7 +315,7 @@ function safeUrl(url) {
 }
 function emptyHtml(iconId, title, msg) {
   return `<div class="empty-state">
-    <div class="empty-state-icon">${svgIcon(iconId, 24, 'icon-contrast')}</div>
+    <div class="empty-state-icon"><svg width="24" height="24" style="color:rgba(30,30,30,0.38)"><use href="#${iconId}"/></svg></div>
     <h3>${title}</h3><p>${msg}</p>
   </div>`;
 }
@@ -507,14 +511,15 @@ function openDetail(type, item, allItems) {
   if (oldImg) oldImg.remove();
   const iconEl = document.getElementById('dtIcon');
   const imgUrl = item.imageUrl || '';
+  const iconId = type==='biz'?catIcon(item.category||''):type==='req'?'ic-clipboard':'ic-tag';
   if (imgUrl) {
     const img = document.createElement('img');
     img.className = 'detail-img'; img.src = imgUrl; img.alt = '';
-    img.onerror = () => { img.remove(); iconEl.innerHTML = svgIcon(type==='biz'?catIcon(item.category||''):type==='req'?'ic-clipboard':'ic-tag', 28, 'icon-on-dark'); };
+    img.onerror = () => { img.remove(); iconEl.innerHTML = svgIcon(iconId, 28, '#fff'); };
     hero.insertBefore(img, hero.querySelector('.detail-close-btn'));
     iconEl.innerHTML = '';
   } else {
-    iconEl.innerHTML = svgIcon(type==='biz'?catIcon(item.category||''):type==='req'?'ic-clipboard':'ic-tag', 28, 'icon-on-dark');
+    iconEl.innerHTML = svgIcon(iconId, 28, '#fff');
   }
   let badge = hero.querySelector('.detail-type-badge');
   if (!badge) { badge = document.createElement('div'); badge.className = 'detail-type-badge'; hero.insertBefore(badge, hero.querySelector('.detail-close-btn')); }
@@ -551,10 +556,10 @@ function openDetail(type, item, allItems) {
   const slug = item.slug||item.id||'', nameStr = item.businessName||item.title||'';
   const typeKey = type==='biz'?'business':type==='req'?'request':'offer';
   const phone = item.phone||item.contactPhone||'';
-  if (phone) actions.push(`<a class="btn btn-dark" href="tel:${esc(phone)}">${svgIcon('ic-phone',14)} ${T('btnCall')}</a>`);
-  if (phone) actions.push(`<a class="btn btn-crimson" href="https://wa.me/${phone.replace(/\D/g,'')}" target="_blank" rel="noopener">${svgIcon('ic-whatsapp',14)} ${T('btnWA')}</a>`);
-  if (type==='biz' && item.website) actions.push(`<a class="btn btn-dark" href="${safeUrl(item.website)}" target="_blank" rel="noopener">${svgIcon('ic-globe',14)} ${T('btnWeb')}</a>`);
-  actions.push(`<button class="btn btn-light" onclick="shareItem('${typeKey}','${esc(slug)}','${esc(nameStr)}')">${svgIcon('ic-share',14)} ${T('btnShareDet')}</button>`);
+  if (phone) actions.push(`<a class="btn btn-dark" href="tel:${esc(phone)}">${svgIcon('ic-phone',14,'#fff')} ${T('btnCall')}</a>`);
+  if (phone) actions.push(`<a class="btn btn-crimson" href="https://wa.me/${phone.replace(/\D/g,'')}" target="_blank" rel="noopener">${svgIcon('ic-whatsapp',14,'#fff')} ${T('btnWA')}</a>`);
+  if (type==='biz' && item.website) actions.push(`<a class="btn btn-dark" href="${safeUrl(item.website)}" target="_blank" rel="noopener">${svgIcon('ic-globe',14,'#fff')} ${T('btnWeb')}</a>`);
+  actions.push(`<button class="btn btn-light" onclick="shareItem('${typeKey}','${esc(slug)}','${esc(nameStr)}')">${svgIcon('ic-share',14,'var(--black)')} ${T('btnShareDet')}</button>`);
   document.getElementById('dtActions').innerHTML = actions.join('');
   ov.classList.add('open'); document.body.style.overflow = 'hidden';
 }

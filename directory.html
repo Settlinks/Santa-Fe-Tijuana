@@ -347,8 +347,11 @@ function showBizError(errMsg){
     <div class="error-state">
       <div class="error-state-icon"><svg width="22" height="22"><use href="#ic-alert"/></svg></div>
       <h3>${T('errLoadBiz')}</h3>
-      <p style="margin-bottom:12px;font-size:12px">${errMsg||''}</p>
-      <p style="margin-bottom:16px;font-size:11px;color:var(--gray)">Verifica que el GAS_URL en shared.js sea correcto y que el script esté desplegado como "Anyone can access".</p>
+      <p style="margin-bottom:8px;font-size:12px;color:var(--gray)">${errMsg||''}</p>
+      <p style="margin-bottom:16px;font-size:11px;color:var(--gray);line-height:1.6">
+        Si acabas de desplegar GAS, espera 1 minuto y reintenta.<br>
+        Asegúrate que el despliegue sea <strong>Ejecutar como: Yo</strong> y <strong>Quién tiene acceso: Cualquier persona</strong>.
+      </p>
       <button class="btn btn-dark btn-sm" onclick="loadBiz()"><svg width="13" height="13"><use href="#ic-refresh"/></svg> ${T('retryBtn')}</button>
     </div>`;
 }

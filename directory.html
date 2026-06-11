@@ -1,0 +1,456 @@
+cat > /mnt/user-data/outputs/santafe/directory.html << 'DIREOF'
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="Directorio de negocios Santa Fe Tijuana — Registra tu negocio, publica solicitudes y ofertas.">
+<link rel="icon" id="faviconTag" href="data:,">
+<title>Directorio — Santa Fe Tijuana</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+DIREOF
+
+cat /tmp/sprite.html >> /mnt/user-data/outputs/santafe/directory.html
+
+cat >> /mnt/user-data/outputs/santafe/directory.html << 'DIREOF2'
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon" id="logoIconWrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <div><div class="logo-wordmark">Santa Fe <span>Tijuana</span></div><div class="logo-sub" data-t="portalSub">Directorio Comunitario</div></div>
+    </a>
+    <nav class="header-nav">
+      <div class="nav-item">
+        <a class="nav-link nav-page-link active" href="directory.html">
+          <svg width="13" height="13"><use href="#ic-store"/></svg><span data-t="navDir">Directorio</span><svg class="nav-chevron"><use href="#ic-chevron-down"/></svg>
+        </a>
+        <div class="mega-menu" style="grid-template-columns:1fr 1fr;min-width:420px">
+          <div class="mega-col"><div class="mega-col-label">Negocios</div>
+            <button class="mega-link" onclick="showSection('directory')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-store"/></svg></div><div><div class="mega-link-title">Ver Directorio</div><div class="mega-link-sub">Todos los negocios</div></div></button>
+            <button class="mega-link" onclick="openModal('modalBusiness')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-plus"/></svg></div><div><div class="mega-link-title">Registrar Negocio</div><div class="mega-link-sub">Gratis — solo 2 minutos</div></div></button>
+          </div>
+          <div class="mega-col"><div class="mega-col-label">Más opciones</div>
+            <button class="mega-link" onclick="showSection('requests')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-clipboard"/></svg></div><div><div class="mega-link-title">Solicitudes</div><div class="mega-link-sub">Buscar servicios</div></div></button>
+            <button class="mega-link" onclick="showSection('offers')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-tag"/></svg></div><div><div class="mega-link-title">Ofertas y Productos</div><div class="mega-link-sub">Lo que ofrece la comunidad</div></div></button>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link nav-page-link" href="directory.html" onclick="event.preventDefault();showSection('requests')"><svg width="13" height="13"><use href="#ic-clipboard"/></svg><span data-t="navReq">Solicitudes</span></a>
+      <a class="nav-link nav-page-link" href="directory.html" onclick="event.preventDefault();showSection('offers')"><svg width="13" height="13"><use href="#ic-tag"/></svg><span data-t="navOff">Ofertas</span></a>
+      <a class="nav-link nav-page-link" href="about.html"><svg width="13" height="13"><use href="#ic-users"/></svg><span data-t="navAbout">Nosotros</span></a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-pill"><button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button><button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button></div>
+      <button class="btn btn-ghost-dark btn-sm" onclick="openModal('modalArchive')"><svg width="12" height="12"><use href="#ic-archive"/></svg><span data-t="navArchive" style="display:none"></span></button>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnRegister">Registrar Negocio</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- BANNER STRIP -->
+<div class="banner-section">
+  <div class="banner-header">
+    <svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg>
+    <span class="banner-header-label" data-t="featuredBiz">Negocios Destacados</span>
+    <div class="banner-sep"></div>
+    <button class="btn btn-ghost-dark btn-sm" onclick="openModal('modalBusiness')" style="font-size:10px;padding:4px 10px;flex-shrink:0">+ Banner</button>
+  </div>
+  <div class="banner-track-wrap"><div class="banner-track" id="bannerTrack"></div></div>
+</div>
+
+<!-- SECTION TABS -->
+<div class="section-nav">
+  <div class="section-nav-inner">
+    <button class="sec-tab active" onclick="showSection('directory')" id="sectab-directory"><svg width="14" height="14"><use href="#ic-store"/></svg><span data-t="tabDir">Directorio</span><span class="sec-tab-count" id="cnt-directory">—</span></button>
+    <button class="sec-tab" onclick="showSection('requests')" id="sectab-requests"><svg width="14" height="14"><use href="#ic-clipboard"/></svg><span data-t="tabReq">Solicitudes</span><span class="sec-tab-count" id="cnt-requests">—</span></button>
+    <button class="sec-tab" onclick="showSection('offers')" id="sectab-offers"><svg width="14" height="14"><use href="#ic-tag"/></svg><span data-t="tabOff">Ofertas y Productos</span><span class="sec-tab-count" id="cnt-offers">—</span></button>
+  </div>
+</div>
+
+<main class="main-content">
+  <!-- ONBOARDING -->
+  <div class="onboarding-banner" id="onboardingBanner">
+    <div class="onboarding-banner-icon"><svg width="24" height="24"><use href="#ic-store"/></svg></div>
+    <div class="onboarding-banner-text">
+      <div class="onboarding-banner-title" data-t="onboardTitle">¿Tienes un negocio en Santa Fe Tijuana?</div>
+      <div class="onboarding-banner-sub" data-t="onboardSub">Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.</div>
+    </div>
+    <button class="btn btn-light" onclick="openModal('modalBusiness')"><svg width="13" height="13"><use href="#ic-plus"/></svg><span data-t="onboardCta">Registrar gratis</span></button>
+    <button class="onboarding-close" onclick="dismissOnboarding()"><svg width="13" height="13"><use href="#ic-close"/></svg></button>
+  </div>
+
+  <!-- DIRECTORY SECTION -->
+  <section id="sec-directory">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="dirTitle">Directorio de Negocios</span><span class="dot">.</span></h2><p class="section-desc" data-t="dirDesc">Los más recientes primero · Actualizado hoy</p></div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnAddBiz">Agregar Negocio</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="bizSearch" placeholder="Buscar negocios…" oninput="filterBiz()"></div>
+      <div class="filter-chips" id="bizChips"><span class="chip active" data-cat="all" onclick="setCat(this,'biz')"><span data-t="all">Todos</span></span></div>
+    </div>
+    <div class="biz-grid" id="bizList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+    <div class="pagination" id="bizPages"></div>
+  </section>
+
+  <!-- REQUESTS SECTION -->
+  <section id="sec-requests" style="display:none">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="reqTitle">Solicitudes de Servicio</span><span class="dot">.</span></h2><p class="section-desc" data-t="reqDesc">Personas buscando servicios · Expira en 60 días</p></div>
+      <button class="btn btn-dark btn-sm" onclick="openModal('modalRequest')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnPostReq">Publicar Solicitud</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="reqSearch" placeholder="Buscar solicitudes…" oninput="filterReq()"></div>
+      <div class="filter-chips" id="reqChips"><span class="chip active" data-cat="all" onclick="setCat(this,'req')"><span data-t="all">Todos</span></span></div>
+    </div>
+    <div class="market-grid" id="reqList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+  </section>
+
+  <!-- OFFERS SECTION -->
+  <section id="sec-offers" style="display:none" id="offers">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="offTitle">Ofertas y Productos</span><span class="dot">.</span></h2><p class="section-desc" data-t="offDesc">Servicios y productos de la comunidad</p></div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalOffer')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnPostOff">Publicar Oferta</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="offSearch" placeholder="Buscar ofertas…" oninput="filterOff()"></div>
+      <div class="filter-chips" id="offChips"><span class="chip active" data-cat="all" onclick="setCat(this,'off')"><span data-t="all">Todos</span></span></div>
+    </div>
+    <div class="market-grid" id="offList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+  </section>
+</main>
+
+<!-- FAB -->
+<button class="fab" onclick="openModal('modalBusiness')"><svg width="18" height="18"><use href="#ic-store"/></svg><span class="fab-label" data-t="fabLabel">Registra tu Negocio</span></button>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(193,48,48,0.8)"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Santa Fe <span>Tijuana</span></div>
+      <p class="footer-tagline" data-t="footerTagline">El directorio oficial de negocios y mercado de la comunidad Santa Fe Tijuana.</p>
+    </div>
+    <div><div class="footer-col-title">Secciones</div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="#" onclick="event.preventDefault();showSection('directory')" data-t="tabDir">Directorio</a>
+        <a href="#" onclick="event.preventDefault();showSection('requests')" data-t="tabReq">Solicitudes</a>
+        <a href="#" onclick="event.preventDefault();showSection('offers')" data-t="tabOff">Ofertas</a>
+        <a href="about.html" data-t="navAbout">Nosotros</a>
+      </div>
+    </div>
+    <div><div class="footer-col-title">Publicar</div>
+      <div class="footer-links">
+        <a href="#" onclick="event.preventDefault();openModal('modalBusiness')" data-t="btnRegister">Registrar Negocio</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalRequest')" data-t="btnPostReq">Publicar Solicitud</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalOffer')" data-t="btnPostOff">Publicar Oferta</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalArchive')">Archivados</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 <a href="https://santafetijuana.com" style="color:rgba(255,255,255,0.35)">santafetijuana.com</a> · <span data-t="footerRights">Todos los derechos reservados.</span></span>
+    <span class="footer-by" data-t="footerBy">Diseñado por YATELASA</span>
+  </div>
+</footer>
+<div class="share-toast" id="shareToast"></div>
+
+<!-- MODALS: BUSINESS -->
+<div class="modal-overlay" id="modalBusiness">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-store"/></svg></div><span data-t="modalBizTitle">Registra Tu Negocio</span></div><button class="modal-close" onclick="closeModal('modalBusiness')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBizName">Nombre del Negocio <span class="req">*</span></label><input class="form-input" id="biz_name" type="text" placeholder="Ej. Mi Tienda Favorita"></div><div class="form-group"><label class="form-label" data-t="fOwner">Nombre del Dueño <span class="req">*</span></label><input class="form-input" id="biz_owner" type="text" placeholder="Nombre completo"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="biz_category"></select></div><div class="form-group"><label class="form-label" data-t="fServiceType">Tipo de Servicio <span class="req">*</span></label><input class="form-input" id="biz_service" type="text" placeholder="Ej. Cortes, Entrega"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="biz_desc" placeholder="Describe tu negocio y servicios…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="biz_phone" type="tel" placeholder="+52 664 000 0000"></div><div class="form-group"><label class="form-label" data-t="fEmail">Correo <span class="req">*</span></label><input class="form-input" id="biz_email" type="email" placeholder="negocio@correo.com"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fAddress">Dirección</label><input class="form-input" id="biz_address" type="text" placeholder="Calle, Colonia"></div><div class="form-group"><label class="form-label" data-t="fWebsite">Sitio Web / Redes</label><input class="form-input" id="biz_website" type="text" placeholder="https://..."></div></div>
+      <div class="form-group"><label class="form-label" data-t="fPhoto">Foto del Negocio / Logo</label>
+        <div class="upload-zone" id="biz_zone" onclick="document.getElementById('biz_img').click()"><button class="upload-del" id="biz_del" type="button" onclick="event.stopPropagation();clearImg('biz')"><svg width="11" height="11"><use href="#ic-close"/></svg></button><div class="upload-icon-wrap"><svg width="20" height="20"><use href="#ic-upload"/></svg></div><p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p><input type="file" id="biz_img" accept="image/*" style="display:none" onchange="previewImg(this,'biz_prev','biz_del')"><img id="biz_prev" class="img-preview" alt=""></div>
+        <div class="upload-progress" id="biz_progress"><div class="upload-progress-bar" id="biz_bar" style="width:0%"></div></div>
+      </div>
+      <div class="banner-upsell"><div class="banner-upsell-title"><svg width="13" height="13"><use href="#ic-star"/></svg><span data-t="bannerTitle">¡Destaca tu Negocio en el Banner!</span></div><p data-t="bannerDesc">Promociona tu negocio por <strong>30 días</strong> — $29.99 USD vía PayPal.</p><div class="check-row"><input type="checkbox" id="biz_banner" onchange="toggleBannerNote()"><label for="biz_banner" data-t="bannerCheck">Sí, destacar mi negocio — <strong>$29.99 USD</strong> / 30 días</label></div><div class="banner-note" id="bannerNote" data-t="bannerNote">Al registrarte serás redirigido a PayPal. Tu banner se activa en 24 horas.</div></div>
+      <button class="btn btn-crimson btn-lg" id="btnSubmitBiz" style="width:100%;justify-content:center;margin-top:18px" onclick="submitBusiness(this)"><svg width="16" height="16"><use href="#ic-store"/></svg><span data-t="btnSubmitBiz">Registrar Negocio</span></button>
+      <div id="bizResult" class="submit-result"></div>
+      <a id="paypalBtn" href="#" target="_blank" rel="noopener" class="paypal-btn"><svg width="18" height="18"><use href="#ic-globe"/></svg> Pagar $29.99 en PayPal</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: REQUEST -->
+<div class="modal-overlay" id="modalRequest">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-clipboard"/></svg></div><span data-t="modalReqTitle">Publicar Solicitud</span></div><button class="modal-close" onclick="closeModal('modalRequest')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="reqHint">Dile a la comunidad qué necesitas. La publicación expira en 60 días.</p>
+      <div class="form-group"><label class="form-label" data-t="fReqTitle">Título de la Solicitud <span class="req">*</span></label><input class="form-input" id="req_title" type="text" placeholder="Ej. Necesito plomero para fuga en baño"></div>
+      <div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="req_category"></select></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="req_desc" placeholder="Describe qué necesitas, ubicación, disponibilidad…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBudgetMin">Presupuesto Mín (MXN)</label><input class="form-input" id="req_min" type="number" placeholder="500" min="0"></div><div class="form-group"><label class="form-label" data-t="fBudgetMax">Presupuesto Máx (MXN)</label><input class="form-input" id="req_max" type="number" placeholder="1500" min="0"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fYourName">Tu Nombre <span class="req">*</span></label><input class="form-input" id="req_name" type="text" placeholder="Tu primer nombre"></div><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="req_phone" type="tel" placeholder="+52 664 000 0000"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="req_email" type="email" placeholder="tu@correo.com"></div>
+      <button class="btn btn-dark btn-lg" id="btnSubmitReq" style="width:100%;justify-content:center;margin-top:8px" onclick="submitRequest(this)"><svg width="16" height="16"><use href="#ic-clipboard"/></svg><span data-t="btnPostReqSubmit">Publicar Solicitud</span></button>
+      <div id="reqResult" class="submit-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: OFFER -->
+<div class="modal-overlay" id="modalOffer">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-tag"/></svg></div><span data-t="modalOffTitle">Publicar Oferta</span></div><button class="modal-close" onclick="closeModal('modalOffer')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="offHint">Ofrece tus servicios o productos a la comunidad. Expira en 60 días.</p>
+      <div class="form-group"><label class="form-label" data-t="fOffTitle">Título de la Oferta <span class="req">*</span></label><input class="form-input" id="off_title" type="text" placeholder="Ej. Tamales caseros, paquete de 12"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="off_category"></select></div><div class="form-group"><label class="form-label" data-t="fPrice">Precio (MXN)</label><input class="form-input" id="off_price" type="number" placeholder="250" min="0"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="off_desc" placeholder="Describe tu oferta, disponibilidad, condiciones…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBizYourName">Negocio / Tu Nombre <span class="req">*</span></label><input class="form-input" id="off_biz" type="text" placeholder="Nombre de negocio o personal"></div><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="off_phone" type="tel" placeholder="+52 664 000 0000"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="off_email" type="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label class="form-label" data-t="fPhotoOpt">Foto (opcional)</label>
+        <div class="upload-zone" id="off_zone" onclick="document.getElementById('off_img').click()"><button class="upload-del" id="off_del" type="button" onclick="event.stopPropagation();clearImg('off')"><svg width="11" height="11"><use href="#ic-close"/></svg></button><div class="upload-icon-wrap"><svg width="20" height="20"><use href="#ic-upload"/></svg></div><p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p><input type="file" id="off_img" accept="image/*" style="display:none" onchange="previewImg(this,'off_prev','off_del')"><img id="off_prev" class="img-preview" alt=""></div>
+        <div class="upload-progress" id="off_progress"><div class="upload-progress-bar" id="off_bar" style="width:0%"></div></div>
+      </div>
+      <button class="btn btn-crimson btn-lg" id="btnSubmitOff" style="width:100%;justify-content:center;margin-top:8px" onclick="submitOffer(this)"><svg width="16" height="16"><use href="#ic-tag"/></svg><span data-t="btnPostOffSubmit">Publicar Oferta</span></button>
+      <div id="offResult" class="submit-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ARCHIVE -->
+<div class="modal-overlay" id="modalArchive">
+  <div class="modal" style="max-width:620px">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-archive"/></svg></div><span data-t="modalArchTitle">Publicaciones Archivadas</span></div><button class="modal-close" onclick="closeModal('modalArchive')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="archHint">Busca publicaciones expiradas conservadas 60 días adicionales.</p>
+      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <input class="form-input" id="arch_query" type="text" placeholder="Buscar en archivados…" style="flex:1;min-width:140px">
+        <select class="form-select" id="arch_type" style="width:140px"><option value="all">Todo</option><option value="requests">Solicitudes</option><option value="offers">Ofertas</option></select>
+        <button class="btn btn-crimson btn-sm" onclick="searchArchive()"><svg width="12" height="12"><use href="#ic-search"/></svg><span data-t="btnSearch">Buscar</span></button>
+      </div>
+      <div id="archResults"><div class="empty-state"><div class="empty-state-icon"><svg width="22" height="22"><use href="#ic-search"/></svg></div><h3 data-t="archEmpty">Ingresa un término</h3><p data-t="archEmptySub">Busca entre publicaciones archivadas</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY -->
+<div id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-card"><div class="detail-hero" id="dtHero"><button class="detail-close-btn" onclick="closeDetail()"><svg width="13" height="13"><use href="#ic-close"/></svg></button><div class="detail-hero-icon" id="dtIcon"></div></div>
+  <div class="detail-body"><div class="detail-name" id="dtName"></div><div class="detail-sub" id="dtSub"></div><div class="detail-desc" id="dtDesc"></div><div class="detail-meta" id="dtMeta"></div><div class="detail-actions" id="dtActions"></div></div></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+'use strict';
+let allBiz=[], allReq=[], allOff=[], categories=[];
+let bizFilter={cat:'all',q:''}, reqFilter={cat:'all',q:''}, offFilter={cat:'all',q:''};
+let bizPage=1;
+
+function onLangChange(){
+  populateCategorySelects(categories);
+  buildChips('biz'); buildChips('req'); buildChips('off');
+  renderBiz(); renderReq(); renderOff();
+}
+
+window.addEventListener('load', async () => {
+  applyBranding(); setLang('es');
+  if (sessionStorage.getItem('onboardDismissed')) {
+    const ob = document.getElementById('onboardingBanner'); if(ob) ob.style.display='none';
+  }
+  /* Handle hash for offers tab */
+  if (window.location.hash === '#offers') showSection('offers');
+  await Promise.all([loadCats(), loadBiz(), loadBanners(), loadReq(), loadOff()]);
+  handleDeepLink();
+});
+
+function dismissOnboarding(){
+  sessionStorage.setItem('onboardDismissed','1');
+  const ob=document.getElementById('onboardingBanner');
+  if(ob){ob.style.opacity='0';ob.style.transition='opacity 0.3s';setTimeout(()=>ob.style.display='none',300);}
+}
+function handleDeepLink(){
+  const p=new URLSearchParams(window.location.search);
+  const biz=p.get('business'),req=p.get('request'),off=p.get('offer');
+  if(biz){const item=allBiz.find(b=>b.slug===biz||b.id===biz);if(item)openDetail('biz',item,allBiz);}
+  else if(req){const item=allReq.find(r=>r.slug===req||r.id===req);if(item){showSection('requests');openDetail('req',item,allReq);}}
+  else if(off){const item=allOff.find(o=>o.slug===off||o.id===off);if(item){showSection('offers');openDetail('off',item,allOff);}}
+}
+
+async function loadCats(){
+  const r=await api('getCategories');
+  if(r.success&&r.data&&r.data.length){
+    categories=r.data;
+    populateCategorySelects(categories);
+    buildChips('biz');buildChips('req');buildChips('off');
+  }
+}
+function buildChips(prefix){
+  const c=document.getElementById(prefix+'Chips');if(!c)return;
+  c.innerHTML='<span class="chip active" data-cat="all" onclick="setCat(this,\''+prefix+'\')"><span data-t="all">'+T('all')+'</span></span>';
+  categories.forEach(cat=>{
+    const chip=document.createElement('span');chip.className='chip';chip.dataset.cat=cat;chip.textContent=cat;
+    chip.onclick=()=>setCat(chip,prefix);c.appendChild(chip);
+  });
+}
+
+/* BUSINESSES */
+async function loadBiz(){
+  document.getElementById('bizList').innerHTML='<div class="loading"><div class="spinner"></div><span>'+T('loading')+'</span></div>';
+  const r=await api('getBusinesses',{});
+  if(!r.success||r.error){showBizError(r.error);return;}
+  allBiz=r.data||[];
+  const cnt=document.getElementById('cnt-directory');if(cnt)cnt.textContent=allBiz.length;
+  bizPage=1;renderBiz();
+}
+function showBizError(errMsg){
+  document.getElementById('bizList').innerHTML=`
+    <div class="error-state">
+      <div class="error-state-icon"><svg width="22" height="22"><use href="#ic-alert"/></svg></div>
+      <h3>${T('errLoadBiz')}</h3>
+      <p style="margin-bottom:12px;font-size:12px">${errMsg||''}</p>
+      <p style="margin-bottom:16px;font-size:11px;color:var(--gray)">Verifica que el GAS_URL en shared.js sea correcto y que el script esté desplegado como "Anyone can access".</p>
+      <button class="btn btn-dark btn-sm" onclick="loadBiz()"><svg width="13" height="13"><use href="#ic-refresh"/></svg> ${T('retryBtn')}</button>
+    </div>`;
+}
+function renderBiz(){
+  const cat=bizFilter.cat,q=bizFilter.q.trim().toLowerCase();
+  const filtered=allBiz.filter(b=>(cat==='all'||String(b.category||'').trim()===cat)&&(!q||(String(b.businessName||'')+' '+String(b.serviceType||'')+' '+String(b.category||'')).toLowerCase().includes(q)));
+  const total=filtered.length;
+  const pages=Math.max(1,Math.ceil(total/SFT.PAGE_SIZE));
+  if(bizPage>pages)bizPage=pages;if(bizPage<1)bizPage=1;
+  const slice=filtered.slice((bizPage-1)*SFT.PAGE_SIZE,bizPage*SFT.PAGE_SIZE);
+  const el=document.getElementById('bizList');
+  if(!slice.length){el.innerHTML=emptyHtml('ic-store',T('noBizFound'),T('noBizFoundSub'));document.getElementById('bizPages').innerHTML='';return;}
+  el.innerHTML=slice.map(b=>bizCardHtml(b)).join('');
+  renderPages(total,bizPage,'biz');
+}
+function bizCardHtml(b){
+  const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
+  const isFeat=b.isBannerSubscriber===true||String(b.isBannerSubscriber).toUpperCase()==='TRUE';
+  const idx=allBiz.indexOf(b);
+  const avatarInner=b.imageUrl?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">`:`<svg width="20" height="20"><use href="#${catIcon(b.category)}"/></svg>`;
+  return `<div class="biz-card${isFeat?' featured':''}" onclick="openDetail('biz',allBiz[${idx}],allBiz)">
+    <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;Destacado</div>
+    <div class="biz-avatar">${avatarInner}</div>
+    <div class="biz-info"><div class="biz-name">${esc(b.businessName)}</div><div class="biz-type">${esc(b.serviceType||b.category)}</div>
+      <div class="biz-tags"><span class="tag tag-cat">${esc(b.category)}</span>${isNew?`<span class="tag tag-new">NUEVO</span>`:''}</div></div>
+    <div class="biz-right">
+      ${b.phone?`<a class="biz-phone" href="tel:${esc(b.phone)}" onclick="event.stopPropagation()">${esc(b.phone)}</a>`:''}
+      <div class="biz-time">${timeAgo(b.registeredDate)}</div>
+      <div class="biz-actions">
+        <button class="icon-btn" onclick="event.stopPropagation();shareItem('business','${esc(b.slug||b.id)}','${esc(b.businessName)}')"><svg width="12" height="12"><use href="#ic-share"/></svg></button>
+        ${b.phone?`<a class="icon-btn" href="https://wa.me/${(b.phone||'').replace(/\D/g,'')}" target="_blank" onclick="event.stopPropagation()" style="text-decoration:none"><svg width="12" height="12"><use href="#ic-whatsapp"/></svg></a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* BANNER */
+async function loadBanners(){
+  const r=await api('getActiveBannerAds');
+  renderBanner((r.success&&r.data)?r.data:[]);
+}
+function renderBanner(ads){
+  const track=document.getElementById('bannerTrack');if(!track)return;
+  const ICONS=['ic-food','ic-scissors','ic-wrench','ic-car','ic-heart','ic-book','ic-monitor','ic-briefcase'];
+  const real=ads.map(ad=>{
+    const biz=ad.business||{};
+    const imgSrc=ad.imageUrl||biz.imageUrl||'';
+    const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
+    return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
+  });
+  const dc=ads.length===0?ICONS.length:2;
+  const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></div>`);
+  const all=[...real,...dummy];
+  track.innerHTML=all.join('')+all.join('');
+}
+
+/* REQUESTS */
+async function loadReq(){
+  const r=await api('getRequests',{});
+  allReq=r.success?(r.data||[]):[];
+  const cnt=document.getElementById('cnt-requests');if(cnt)cnt.textContent=allReq.length;
+  renderReq();
+}
+function renderReq(){
+  const cat=reqFilter.cat,q=reqFilter.q.trim().toLowerCase();
+  const filtered=allReq.filter(r=>(cat==='all'||String(r.category||'').trim()===cat)&&(!q||(String(r.title||'')+' '+String(r.description||'')).toLowerCase().includes(q)));
+  const el=document.getElementById('reqList');
+  if(!filtered.length){el.innerHTML=emptyHtml('ic-clipboard',T('noReq'),T('noReqSub'));return;}
+  el.innerHTML=filtered.map((r,i)=>reqCardHtml(r,i)).join('');
+}
+function reqCardHtml(r,idx){
+  const days=Math.ceil((new Date(r.expiryDate)-Date.now())/86400000);
+  const budget=(r.budgetMin||r.budgetMax)?`$${r.budgetMin||0}${r.budgetMax&&r.budgetMax!=r.budgetMin?' – $'+r.budgetMax:''} MXN`:T('negotiable');
+  return`<div class="market-card req-card" onclick="openDetail('req',allReq[${idx}],allReq)">
+    <div class="mc-header"><span class="mc-type req-type"><svg width="9" height="9"><use href="#ic-clipboard"/></svg> ${T('REQUEST')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
+    <div class="mc-title">${esc(r.title)}</div><div class="mc-desc">${esc(r.description)}</div>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(r.category)}</span>
+    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-user"/></svg> ${esc(r.contactName)} · <svg width="10" height="10"><use href="#ic-phone"/></svg> ${esc(r.contactPhone)}</div>
+    <div class="mc-footer"><div><div class="price-label">${T('budget')}</div><div class="price-badge req">${budget}</div></div>
+    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('request','${esc(r.slug||r.id)}','${esc(r.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
+  </div>`;
+}
+
+/* OFFERS */
+async function loadOff(){
+  const r=await api('getOffers',{});
+  allOff=r.success?(r.data||[]):[];
+  const cnt=document.getElementById('cnt-offers');if(cnt)cnt.textContent=allOff.length;
+  renderOff();
+}
+function renderOff(){
+  const cat=offFilter.cat,q=offFilter.q.trim().toLowerCase();
+  const filtered=allOff.filter(o=>(cat==='all'||String(o.category||'').trim()===cat)&&(!q||(String(o.title||'')+' '+String(o.description||'')).toLowerCase().includes(q)));
+  const el=document.getElementById('offList');
+  if(!filtered.length){el.innerHTML=emptyHtml('ic-tag',T('noOff'),T('noOffSub'));return;}
+  el.innerHTML=filtered.map((o,i)=>offCardHtml(o,i)).join('');
+}
+function offCardHtml(o,idx){
+  const days=Math.ceil((new Date(o.expiryDate)-Date.now())/86400000);
+  const price=o.price?`$${Number(o.price).toLocaleString()} MXN`:T('priceOnRequest');
+  return`<div class="market-card off-card" onclick="openDetail('off',allOff[${idx}],allOff)">
+    ${o.imageUrl?`<div class="offer-img"><img src="${esc(o.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`:''}
+    <div class="mc-header"><span class="mc-type off-type"><svg width="9" height="9"><use href="#ic-tag"/></svg> ${T('OFFER')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
+    <div class="mc-title">${esc(o.title)}</div><div class="mc-desc">${esc(o.description)}</div>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(o.category)}</span>
+    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-building"/></svg> ${esc(o.businessName||'—')} · <a href="tel:${esc(o.contactPhone)}" style="color:var(--crimson)" onclick="event.stopPropagation()">${esc(o.contactPhone)}</a></div>
+    <div class="mc-footer"><div><div class="price-label">${T('price')}</div><div class="price-badge off">${price}</div></div>
+    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('offer','${esc(o.slug||o.id)}','${esc(o.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
+  </div>`;
+}
+
+/* UI */
+function showSection(name){
+  ['directory','requests','offers'].forEach(s=>{
+    const sec=document.getElementById('sec-'+s);if(sec)sec.style.display=s===name?'block':'none';
+    const tab=document.getElementById('sectab-'+s);if(tab)tab.classList.toggle('active',s===name);
+  });
+}
+function filterBiz(){bizFilter.q=document.getElementById('bizSearch').value;bizPage=1;renderBiz();}
+function filterReq(){reqFilter.q=document.getElementById('reqSearch').value;renderReq();}
+function filterOff(){offFilter.q=document.getElementById('offSearch').value;renderOff();}
+function setCat(el,prefix){
+  const container=el.closest('.filter-chips');
+  if(container)container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  const cat=el.dataset.cat||'all';
+  if(prefix==='biz'){bizFilter.cat=cat;bizPage=1;renderBiz();}
+  if(prefix==='req'){reqFilter.cat=cat;renderReq();}
+  if(prefix==='off'){offFilter.cat=cat;renderOff();}
+}
+function renderPages(total,cur,prefix){
+  const pages=Math.ceil(total/SFT.PAGE_SIZE);
+  const el=document.getElementById(prefix+'Pages');
+  if(!el||pages<=1){if(el)el.innerHTML='';return;}
+  el.innerHTML=Array.from({length:pages},(_,i)=>`<button class="page-btn${i+1===cur?' active':''}" onclick="${prefix}GoPage(${i+1})">${i+1}</button>`).join('');
+}
+function bizGoPage(p){bizPage=p;renderBiz();document.getElementById('sec-directory').scrollIntoView({behavior:'smooth',block:'start'});}
+</script>
+</body>
+</html>
+DIREOF2
+echo "directory.html: $(wc -l < /mnt/user-data/outputs/santafe/directory.html) lines"

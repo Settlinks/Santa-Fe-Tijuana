@@ -8,7 +8,7 @@ cat > /mnt/user-data/outputs/santafe/shared.js << 'JSEOF'
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbyUlDfx-2sUJAJh0j1zQReHLGnNOQf4mixJ4_uurvqF1j6OtKDgH8uOlBet3etrpLXESw/exec';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbzzncAYyi0xHgwR7ywzHBkD9wLNc1OyPaoYEKb9KSSZAhEo65sCTkGCn0ZeJV4GOMac5Q/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';

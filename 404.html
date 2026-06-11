@@ -1,22 +1,539 @@
-ABOUT
-We are the coolest community in Tijuana, we promote local business trough our service catalog, additionally people can enjoy networking and chilling with others from the community in our Blog and Groups for sharing their ideas, selling, supporting each other and get updated with news.
-OUR LOGO
-Our logo represents key and unique elements from Santa Fe & Tijuana México;​
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="Página no encontrada — Santa Fe Tijuana">
+<link rel="icon" id="faviconTag" href="data:,">
+<title>404 — Santa Fe Tijuana</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── 404-specific styles ── */
+  :root {
+    --crimson:#5A0F0F; --crimson2:#7A1515; --crimson3:#3D0A0A;
+    --black:#1E1E1E; --black2:#111111; --gray:#6B6B6B;
+    --light:#ECEAE6; --surface:#F7F6F4; --card:#FFFFFF;
+    --border:rgba(30,30,30,0.10); --r:12px; --r-sm:8px;
+    --t:0.22s cubic-bezier(0.4,0,0.2,1);
+    --fd:'Montserrat',sans-serif; --fb:'Poppins',sans-serif;
+    --shadow-lg:0 16px 48px rgba(0,0,0,0.15);
+  }
 
-01
-The Ram
-Animal that become an identity from the region.
+  html,body { margin:0; padding:0; min-height:100vh; }
 
-02
-The (Horns & Head)
-Symbolizes Santa Fe forming the letter S.
+  /* Full-page layout: header + hero fills viewport, links below */
+  .e404-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--black2);
+  }
 
-03
-The (Ram's body) 
-Forms the letter T Symbolizing the Baja Peninsula of México & Tijuana's Geographic's location.
+  /* ── HERO ── */
+  .e404-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
 
-04
-Rammed position
-Characteristic of Tijuana's locals anger and determination.
+  /* Subtle grid texture */
+  .e404-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+  }
 
-soporte@santafetijuana.com
+  /* Crimson glow blob behind the 404 number */
+  .e404-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -54%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(90,15,15,0.28) 0%, transparent 70%);
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.7; transform: translate(-50%,-54%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%,-54%) scale(1.07); }
+  }
+
+  /* Decorative floating shapes */
+  .e404-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .e404-shape {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(90,15,15,0.18);
+    animation: floatShape 8s ease-in-out infinite;
+  }
+  .e404-shape:nth-child(1) { width:320px; height:320px; top:-60px; left:-80px; animation-delay:0s; }
+  .e404-shape:nth-child(2) { width:200px; height:200px; top:30px; right:-40px; animation-delay:-3s; }
+  .e404-shape:nth-child(3) { width:140px; height:140px; bottom:40px; left:10%; animation-delay:-5s; }
+  .e404-shape:nth-child(4) { width:80px;  height:80px;  bottom:80px; right:12%; animation-delay:-1.5s; }
+  @keyframes floatShape {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  /* ── BIG 404 NUMBER ── */
+  .e404-number {
+    position: relative;
+    z-index: 1;
+    font-family: var(--fd);
+    font-size: clamp(120px, 20vw, 220px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -8px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.08);
+    background: linear-gradient(160deg,
+      rgba(255,255,255,0.12) 0%,
+      rgba(90,15,15,0.5) 40%,
+      rgba(255,255,255,0.06) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-bottom: 0;
+    user-select: none;
+    /* Layered text shadow for depth */
+    filter: drop-shadow(0 2px 40px rgba(90,15,15,0.6));
+  }
+
+  /* Icon badge that sits on top of the number */
+  .e404-icon-wrap {
+    position: relative;
+    z-index: 2;
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: var(--crimson3);
+    border: 1px solid rgba(90,15,15,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -24px auto 28px;
+    box-shadow: 0 8px 32px rgba(90,15,15,0.5), 0 0 0 8px rgba(90,15,15,0.12);
+  }
+
+  /* ── COPY ── */
+  .e404-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+  }
+  .e404-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(90,15,15,0.35);
+    border: 1px solid rgba(90,15,15,0.55);
+    border-radius: 4px;
+    padding: 5px 13px;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--fd);
+    margin-bottom: 22px;
+  }
+  .e404-tag-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--crimson2);
+    flex-shrink: 0;
+  }
+  .e404-title {
+    font-family: var(--fd);
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .e404-title .accent { color: #7A1515; }
+  .e404-body {
+    font-size: 15px;
+    color: rgba(255,255,255,0.38);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  /* ── ACTIONS ── */
+  .e404-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  /* ── QUICK LINKS ── */
+  .e404-links-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    font-family: var(--fd);
+    margin-bottom: 16px;
+  }
+  .e404-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .e404-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-sm);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-family: var(--fd);
+    transition: var(--t);
+  }
+  .e404-link svg { color: rgba(255,255,255,0.3); transition: var(--t); }
+  .e404-link:hover {
+    background: rgba(90,15,15,0.22);
+    border-color: rgba(90,15,15,0.45);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .e404-link:hover svg { color: rgba(255,255,255,0.7); }
+
+  /* ── COUNTDOWN ── */
+  .e404-redirect {
+    margin-top: 48px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.18);
+    font-family: var(--fd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .e404-redirect-count {
+    font-weight: 700;
+    color: rgba(255,255,255,0.32);
+    min-width: 18px;
+    text-align: center;
+  }
+  .e404-redirect-bar {
+    width: 120px;
+    height: 2px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-left: 4px;
+  }
+  .e404-redirect-fill {
+    height: 100%;
+    background: var(--crimson);
+    border-radius: 2px;
+    width: 100%;
+    transform-origin: left;
+    animation: countdown 10s linear forwards;
+  }
+  @keyframes countdown {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+  }
+
+  /* ── FOOTER ── */
+  .e404-footer {
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.14);
+    font-family: var(--fb);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.2);
+  }
+  .e404-footer a {
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+  }
+  .e404-footer a:hover { color: rgba(255,255,255,0.5); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .e404-number { letter-spacing: -4px; }
+    .e404-actions { flex-direction: column; align-items: center; }
+    .e404-actions .btn { width: 100%; max-width: 280px; justify-content: center; }
+    .e404-links { gap: 8px; }
+    .e404-link { padding: 8px 13px; font-size: 11px; }
+    .e404-glow { width: 320px; height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG SPRITE -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
+  <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ic-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon" id="logoIconWrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <div>
+        <div class="logo-wordmark">Santa Fe <span>Tijuana</span></div>
+        <div class="logo-sub">Directorio Comunitario</div>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a class="nav-link nav-page-link" href="index.html">
+        <svg width="13" height="13"><use href="#ic-home"/></svg>
+        <span>Inicio</span>
+      </a>
+      <a class="nav-link nav-page-link" href="directory.html">
+        <svg width="13" height="13"><use href="#ic-store"/></svg>
+        <span>Directorio</span>
+      </a>
+      <a class="nav-link nav-page-link" href="about.html">
+        <svg width="13" height="13"><use href="#ic-users"/></svg>
+        <span>Nosotros</span>
+      </a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-pill">
+        <button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button>
+        <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 404 HERO -->
+<div class="e404-page">
+  <main class="e404-hero">
+    <div class="e404-glow"></div>
+    <div class="e404-shapes">
+      <div class="e404-shape"></div>
+      <div class="e404-shape"></div>
+      <div class="e404-shape"></div>
+      <div class="e404-shape"></div>
+    </div>
+
+    <!-- Big number -->
+    <div class="e404-number">404</div>
+
+    <!-- Icon badge -->
+    <div class="e404-icon-wrap">
+      <svg width="30" height="30" style="color:rgba(255,255,255,0.5)"><use href="#ic-alert"/></svg>
+    </div>
+
+    <!-- Copy -->
+    <div class="e404-content">
+      <div class="e404-tag"><span class="e404-tag-dot"></span><span id="tagText">PÁGINA NO ENCONTRADA</span></div>
+      <h1 class="e404-title" id="e404Title">
+        Esta página <span class="accent">se perdió</span><br>en Santa Fe
+      </h1>
+      <p class="e404-body" id="e404Body">
+        La página que buscas no existe, fue movida o el enlace está roto.
+        Pero no te preocupes — el directorio de negocios de tu comunidad sigue aquí.
+      </p>
+
+      <!-- Actions -->
+      <div class="e404-actions">
+        <a class="btn btn-crimson btn-lg" href="index.html">
+          <svg width="16" height="16"><use href="#ic-home"/></svg>
+          <span id="btnHome">Ir al Inicio</span>
+        </a>
+        <a class="btn btn-ghost-dark btn-lg" href="directory.html">
+          <svg width="16" height="16"><use href="#ic-store"/></svg>
+          <span id="btnDir">Ver Directorio</span>
+        </a>
+        <button class="btn btn-ghost-dark btn-lg" onclick="history.back()">
+          <svg width="16" height="16"><use href="#ic-arrow-left"/></svg>
+          <span id="btnBack">Volver Atrás</span>
+        </button>
+      </div>
+
+      <!-- Quick links -->
+      <div class="e404-links-label" id="linksLabel">O explora el directorio:</div>
+      <div class="e404-links">
+        <a class="e404-link" href="directory.html">
+          <svg width="13" height="13"><use href="#ic-store"/></svg>
+          <span id="linkBiz">Negocios</span>
+        </a>
+        <a class="e404-link" href="directory.html#offers">
+          <svg width="13" height="13"><use href="#ic-tag"/></svg>
+          <span id="linkOff">Ofertas</span>
+        </a>
+        <a class="e404-link" href="directory.html">
+          <svg width="13" height="13"><use href="#ic-clipboard"/></svg>
+          <span id="linkReq">Solicitudes</span>
+        </a>
+        <a class="e404-link" href="about.html">
+          <svg width="13" height="13"><use href="#ic-users"/></svg>
+          <span id="linkAbout">Nosotros</span>
+        </a>
+        <a class="e404-link" href="directory.html">
+          <svg width="13" height="13"><use href="#ic-map"/></svg>
+          <span id="linkArea">Santa Fe TJ</span>
+        </a>
+      </div>
+
+      <!-- Auto-redirect countdown -->
+      <div class="e404-redirect">
+        <span id="redirectLabel">Redirigiendo al inicio en</span>
+        <span class="e404-redirect-count" id="countNum">10</span>
+        <span id="secsLabel">seg</span>
+        <div class="e404-redirect-bar"><div class="e404-redirect-fill"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="e404-footer">
+    © 2025 <a href="index.html">santafetijuana.com</a> · Directorio Comunitario · Diseñado por YATELASA
+  </footer>
+</div>
+
+<script src="shared.js"></script>
+<script>
+'use strict';
+
+/* ── i18n strings for this page ── */
+const PAGE_STRINGS = {
+  es: {
+    tagText:      'PÁGINA NO ENCONTRADA',
+    title:        'Esta página <span class="accent">se perdió</span><br>en Santa Fe',
+    body:         'La página que buscas no existe, fue movida o el enlace está roto. Pero no te preocupes — el directorio de negocios de tu comunidad sigue aquí.',
+    btnHome:      'Ir al Inicio',
+    btnDir:       'Ver Directorio',
+    btnBack:      'Volver Atrás',
+    linksLabel:   'O explora el directorio:',
+    linkBiz:      'Negocios',
+    linkOff:      'Ofertas',
+    linkReq:      'Solicitudes',
+    linkAbout:    'Nosotros',
+    linkArea:     'Santa Fe TJ',
+    redirectLabel:'Redirigiendo al inicio en',
+    secsLabel:    'seg',
+    langDoc:      'es',
+  },
+  en: {
+    tagText:      'PAGE NOT FOUND',
+    title:        'This page got <span class="accent">lost</span><br>in Santa Fe',
+    body:         "The page you're looking for doesn't exist, was moved, or the link is broken. But don't worry — your community business directory is still right here.",
+    btnHome:      'Go to Home',
+    btnDir:       'Browse Directory',
+    btnBack:      'Go Back',
+    linksLabel:   'Or explore the directory:',
+    linkBiz:      'Businesses',
+    linkOff:      'Offers',
+    linkReq:      'Requests',
+    linkAbout:    'About Us',
+    linkArea:     'Santa Fe TJ',
+    redirectLabel:'Redirecting to home in',
+    secsLabel:    'sec',
+    langDoc:      'en',
+  }
+};
+
+function applyPageStrings(lang) {
+  const s = PAGE_STRINGS[lang] || PAGE_STRINGS.es;
+  document.documentElement.lang = s.langDoc;
+  document.getElementById('tagText').textContent      = s.tagText;
+  document.getElementById('e404Title').innerHTML      = s.title;
+  document.getElementById('e404Body').textContent     = s.body;
+  document.getElementById('btnHome').textContent      = s.btnHome;
+  document.getElementById('btnDir').textContent       = s.btnDir;
+  document.getElementById('btnBack').textContent      = s.btnBack;
+  document.getElementById('linksLabel').textContent   = s.linksLabel;
+  document.getElementById('linkBiz').textContent      = s.linkBiz;
+  document.getElementById('linkOff').textContent      = s.linkOff;
+  document.getElementById('linkReq').textContent      = s.linkReq;
+  document.getElementById('linkAbout').textContent    = s.linkAbout;
+  document.getElementById('linkArea').textContent     = s.linkArea;
+  document.getElementById('redirectLabel').textContent= s.redirectLabel;
+  document.getElementById('secsLabel').textContent    = s.secsLabel;
+}
+
+/* Override setLang so the page strings update too */
+const _origSetLang = typeof setLang === 'function' ? setLang : null;
+function setLang(lang) {
+  LANG = lang;
+  const en = document.getElementById('langEN');
+  const es = document.getElementById('langES');
+  if (en) en.classList.toggle('active', lang === 'en');
+  if (es) es.classList.toggle('active', lang === 'es');
+  applyPageStrings(lang);
+}
+
+/* ── Auto-redirect countdown ── */
+let secondsLeft = 10;
+const countEl = document.getElementById('countNum');
+
+const timer = setInterval(() => {
+  secondsLeft--;
+  if (countEl) countEl.textContent = secondsLeft;
+  if (secondsLeft <= 0) {
+    clearInterval(timer);
+    window.location.href = 'index.html';
+  }
+}, 1000);
+
+/* Cancel redirect if user interacts */
+function cancelRedirect() {
+  clearInterval(timer);
+  const redir = document.querySelector('.e404-redirect');
+  if (redir) redir.style.display = 'none';
+}
+document.querySelectorAll('.e404-actions a, .e404-actions button, .e404-link, .e404-link').forEach(el => {
+  el.addEventListener('click', cancelRedirect, { once: true });
+});
+document.addEventListener('keydown', cancelRedirect, { once: true });
+document.addEventListener('scroll', cancelRedirect, { once: true, passive: true });
+
+/* ── Boot ── */
+window.addEventListener('load', () => {
+  applyBranding();
+  setLang('es');
+});
+</script>
+</body>
+</html>

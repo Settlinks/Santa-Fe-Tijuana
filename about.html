@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="Acerca de Santa Fe Tijuana — La plataforma comunitaria que conecta negocios y vecinos.">
+<link rel="icon" id="faviconTag" href="data:,">
+<title>Nosotros — Santa Fe Tijuana</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="ic-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
+  <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
+  <symbol id="ic-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ic-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+  <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.32 9.81 19.79 19.79 0 01.26 1.18 2 2 0 012.24 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.64a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
+  <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01"/></symbol>
+  <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="ic-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="ic-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol>
+  <symbol id="ic-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+  <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="ic-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+  <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+  <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="ic-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></symbol>
+  <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></symbol>
+  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+  <symbol id="ic-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="ic-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+</svg>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon" id="logoIconWrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <div><div class="logo-wordmark">Santa Fe <span>Tijuana</span></div><div class="logo-sub" data-t="portalSub">Directorio Comunitario</div></div>
+    </a>
+    <nav class="header-nav">
+      <a class="nav-link nav-page-link" href="index.html"><svg width="13" height="13"><use href="#ic-store"/></svg><span data-t="navDir">Directorio</span></a>
+      <a class="nav-link nav-page-link" href="directory.html"><svg width="13" height="13"><use href="#ic-clipboard"/></svg><span data-t="navReq">Solicitudes</span></a>
+      <a class="nav-link nav-page-link" href="directory.html"><svg width="13" height="13"><use href="#ic-tag"/></svg><span data-t="navOff">Ofertas</span></a>
+      <a class="nav-link nav-page-link active" href="about.html"><svg width="13" height="13"><use href="#ic-users"/></svg><span data-t="navAbout">Nosotros</span></a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-pill"><button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button><button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button></div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnRegister">Registrar Negocio</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=80&auto=format&fit=crop')"></div>
+  <div class="about-hero-inner">
+    <div class="about-hero-eyebrow"><span class="lp-eyebrow-dot"></span> Santa Fe Tijuana · 2024</div>
+    <h1 class="about-hero-title">Conectando a <span class="accent">nuestra comunidad</span></h1>
+    <p class="about-hero-sub">Somos el directorio comunitario que une a los negocios locales con los vecinos de Santa Fe Tijuana — gratis, fácil y construido para crecer contigo.</p>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="about-section">
+  <div class="about-inner">
+    <div class="about-grid-2">
+      <div>
+        <div class="about-label">Nuestra Misión</div>
+        <h2 class="about-title">Hacer visible lo que ya existe en Santa Fe</h2>
+        <p class="about-body">Santa Fe Tijuana tiene negocios increíbles, talento real y una comunidad que quiere apoyarse. El problema siempre fue la visibilidad: los vecinos no sabían qué había disponible, y los negocios no tenían dónde anunciarse sin gastar en redes sociales o volantes.</p>
+        <p class="about-body">Creamos este directorio para resolver exactamente eso — un espacio gratuito, limpio y fácil de usar donde cualquier negocio puede publicarse y cualquier vecino puede encontrar lo que necesita.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+          <a class="btn btn-crimson" href="directory.html"><svg width="14" height="14"><use href="#ic-store"/></svg><span data-t="ctaDir">Ver Directorio</span></a>
+          <button class="btn btn-light" onclick="openModal('modalBusiness')"><svg width="14" height="14"><use href="#ic-plus"/></svg><span data-t="ctaRegister">Registrar Negocio</span></button>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&auto=format&fit=crop" alt="Negocios locales Santa Fe Tijuana" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="about-section" style="background:var(--black);padding-top:0;padding-bottom:60px">
+  <div class="about-inner">
+    <div class="about-stat-grid">
+      <div class="about-stat"><div class="about-stat-num" id="aStatBiz">—</div><div class="about-stat-label">Negocios Registrados</div></div>
+      <div class="about-stat"><div class="about-stat-num" id="aStatReq">—</div><div class="about-stat-label">Solicitudes Activas</div></div>
+      <div class="about-stat"><div class="about-stat-num" id="aStatOff">—</div><div class="about-stat-label">Ofertas Publicadas</div></div>
+      <div class="about-stat"><div class="about-stat-num">16</div><div class="about-stat-label">Categorías</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="about-section">
+  <div class="about-inner">
+    <div style="text-align:center;max-width:640px;margin:0 auto 48px">
+      <div class="about-label">Nuestros Valores</div>
+      <h2 class="about-title" style="margin:0 auto 12px">Lo que nos guía cada día</h2>
+      <p class="about-body" style="margin:0">Construimos esta plataforma con principios claros que van más allá de la tecnología.</p>
+    </div>
+    <div class="about-grid-3">
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-users"/></svg></div>
+        <div class="about-value-title">Comunidad Primero</div>
+        <p class="about-value-desc">Somos de Santa Fe Tijuana. Cada decisión que tomamos está pensada para beneficiar a los vecinos y negocios locales — no a inversionistas externos.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-shield"/></svg></div>
+        <div class="about-value-title">Acceso Gratuito</div>
+        <p class="about-value-desc">Registrar tu negocio, publicar solicitudes y crear ofertas es completamente gratis. Siempre lo será. Nuestro modelo es sostenible a través de banners opcionales.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-award"/></svg></div>
+        <div class="about-value-title">Calidad y Confianza</div>
+        <p class="about-value-desc">Revisamos cada registro para mantener la calidad del directorio. Los negocios verificados generan más confianza y más clientes para toda la comunidad.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-trending"/></svg></div>
+        <div class="about-value-title">Crecimiento Local</div>
+        <p class="about-value-desc">Cada negocio que se registra ayuda a toda la economía local. Más visibilidad significa más clientes, más empleos y una comunidad más próspera.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-globe"/></svg></div>
+        <div class="about-value-title">Bilingüe</div>
+        <p class="about-value-desc">Santa Fe Tijuana es una comunidad diversa. Por eso nuestra plataforma funciona igual de bien en español que en inglés — sin barreras de idioma.</p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-share"/></svg></div>
+        <div class="about-value-title">Fácil de Compartir</div>
+        <p class="about-value-desc">Cada negocio, solicitud y oferta tiene su propio enlace directo. Comparte por WhatsApp, Instagram o donde quieras con un solo clic.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT STARTED -->
+<div class="about-section" style="background:var(--surface)">
+  <div class="about-inner">
+    <div class="about-grid-2" style="align-items:start">
+      <div class="about-img" style="aspect-ratio:16/10">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80&auto=format&fit=crop" alt="Servicios a domicilio" loading="lazy">
+      </div>
+      <div>
+        <div class="about-label">El Origen</div>
+        <h2 class="about-title">Nació de una necesidad real</h2>
+        <p class="about-body">Todo empezó cuando un vecino de Santa Fe necesitaba un plomero y no sabía a quién llamar. No había ningún directorio local, ningún grupo organizado, ninguna forma fácil de encontrar servicios en la colonia.</p>
+        <p class="about-body">Al mismo tiempo, había plomeros, electricistas, costureras y cocineras en Santa Fe sin manera de anunciarse más allá de pegar carteles en postes.</p>
+        <p class="about-body">La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.</p>
+        <div style="background:var(--card);border-radius:var(--r);border:1px solid var(--border);border-left:3px solid var(--crimson);padding:16px 20px;margin-top:24px">
+          <p style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.75;margin:0">"El mejor directorio de Santa Fe Tijuana no es el más grande, sino el más útil para la comunidad."</p>
+          <p style="font-size:11px;font-weight:700;color:var(--crimson);font-family:var(--fd);margin-top:10px;margin-bottom:0;letter-spacing:0.5px">— EQUIPO YATELASA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO COLLAGE -->
+<div class="about-section" style="padding:60px 24px">
+  <div class="about-inner">
+    <div class="lp-photo-grid">
+      <div class="lp-photo-item">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop" alt="Gastronomía" loading="lazy">
+        <div class="lp-photo-overlay"><span class="lp-photo-label">Gastronomía Local</span></div>
+      </div>
+      <div class="lp-photo-item">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80&auto=format&fit=crop" alt="Belleza" loading="lazy">
+        <div class="lp-photo-overlay"><span class="lp-photo-label">Belleza y Cuidado</span></div>
+      </div>
+      <div class="lp-photo-item">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80&auto=format&fit=crop" alt="Servicios del hogar" loading="lazy">
+        <div class="lp-photo-overlay"><span class="lp-photo-label">Servicios del Hogar</span></div>
+      </div>
+      <div class="lp-photo-item">
+        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=700&q=80&auto=format&fit=crop" alt="Tecnología" loading="lazy">
+        <div class="lp-photo-overlay"><span class="lp-photo-label">Tecnología e IT</span></div>
+      </div>
+      <div class="lp-photo-item">
+        <img src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=700&q=80&auto=format&fit=crop" alt="Comercio local" loading="lazy">
+        <div class="lp-photo-overlay"><span class="lp-photo-label">Comercio Local</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="about-section" style="background:var(--card)">
+  <div class="about-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto 48px">
+      <div class="about-label">El Equipo</div>
+      <h2 class="about-title" style="margin:0 auto 12px">Hecho por vecinos, para vecinos</h2>
+      <p class="about-body" style="margin:0">Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.</p>
+    </div>
+    <div class="about-team">
+      <div class="about-team-card">
+        <div class="about-team-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&face" alt="Fundador" loading="lazy">
+        </div>
+        <div class="about-team-name">Yusef Eedr</div>
+        <div class="about-team-role">Fundador &amp; Desarrollo</div>
+      </div>
+      <div class="about-team-card">
+        <div class="about-team-photo">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop&face" alt="Comunidad" loading="lazy">
+        </div>
+        <div class="about-team-name">Comunidad SFT</div>
+        <div class="about-team-role">Negocios y Vecinos</div>
+      </div>
+      <div class="about-team-card">
+        <div class="about-team-photo" style="background:var(--light);display:flex;align-items:center;justify-content:center">
+          <div style="text-align:center;padding:20px">
+            <div style="width:52px;height:52px;background:var(--crimson);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="22" height="22" style="color:#fff"><use href="#ic-plus"/></svg></div>
+            <div style="font-family:var(--fd);font-size:13px;font-weight:700;color:var(--gray)">¿Quieres colaborar?</div>
+          </div>
+        </div>
+        <div class="about-team-name">Tu lugar aquí</div>
+        <div class="about-team-role">Únete al equipo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="about-section" style="background:var(--surface)">
+  <div class="about-inner" style="max-width:800px">
+    <div class="about-label">Preguntas Frecuentes</div>
+    <h2 class="about-title">Todo lo que necesitas saber</h2>
+    <div id="faqList" style="margin-top:32px;display:flex;flex-direction:column;gap:12px"></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="about-cta">
+  <div class="about-cta-inner">
+    <h2 class="about-cta-title">¿Tienes un negocio en Santa Fe?</h2>
+    <p class="about-cta-sub">Regístralo gratis hoy y empieza a conectar con tu comunidad.</p>
+    <div class="lp-cta-actions">
+      <button class="btn btn-light btn-xl" onclick="openModal('modalBusiness')"><svg width="17" height="17"><use href="#ic-store"/></svg><span data-t="ctaRegister">Registrar Negocio Gratis</span></button>
+      <a class="btn btn-ghost-dark btn-xl" href="directory.html"><svg width="17" height="17"><use href="#ic-search"/></svg><span data-t="ctaDir">Ver Directorio</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(193,48,48,0.8)"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Santa Fe <span>Tijuana</span></div>
+      <p class="footer-tagline" data-t="footerTagline">El directorio oficial de negocios y mercado de la comunidad Santa Fe Tijuana.</p>
+    </div>
+    <div><div class="footer-col-title">Navegación</div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="directory.html" data-t="navDir">Directorio</a>
+        <a href="directory.html" data-t="navReq">Solicitudes</a>
+        <a href="directory.html" data-t="navOff">Ofertas</a>
+        <a href="about.html" data-t="navAbout">Nosotros</a>
+      </div>
+    </div>
+    <div><div class="footer-col-title">Contacto</div>
+      <div class="footer-links">
+        <a href="mailto:yusefeedr@gmail.com"><svg width="12" height="12" style="display:inline;vertical-align:middle;margin-right:5px;color:rgba(255,255,255,0.4)"><use href="#ic-mail"/></svg>yusefeedr@gmail.com</a>
+        <a href="https://santafetijuana.com">santafetijuana.com</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalBusiness')" data-t="btnRegister">Registrar Negocio</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 <a href="https://santafetijuana.com" style="color:rgba(255,255,255,0.35)">santafetijuana.com</a> · <span data-t="footerRights">Todos los derechos reservados.</span></span>
+    <span class="footer-by" data-t="footerBy">Diseñado por YATELASA</span>
+  </div>
+</footer>
+<div class="share-toast" id="shareToast"></div>
+
+<!-- MODAL: REGISTER BUSINESS -->
+<div class="modal-overlay" id="modalBusiness">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-store"/></svg></div><span data-t="modalBizTitle">Registra Tu Negocio</span></div><button class="modal-close" onclick="closeModal('modalBusiness')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-row"><div class="form-group"><label class="form-label">Nombre del Negocio <span class="req">*</span></label><input class="form-input" id="biz_name" type="text" placeholder="Ej. Mi Tienda Favorita"></div><div class="form-group"><label class="form-label">Nombre del Dueño <span class="req">*</span></label><input class="form-input" id="biz_owner" type="text" placeholder="Nombre completo"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Categoría <span class="req">*</span></label><select class="form-select" id="biz_category"></select></div><div class="form-group"><label class="form-label">Tipo de Servicio <span class="req">*</span></label><input class="form-input" id="biz_service" type="text" placeholder="Ej. Cortes, Entrega"></div></div>
+      <div class="form-group"><label class="form-label">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="biz_desc" placeholder="Describe tu negocio y servicios…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Teléfono <span class="req">*</span></label><input class="form-input" id="biz_phone" type="tel" placeholder="+52 664 000 0000"></div><div class="form-group"><label class="form-label">Correo <span class="req">*</span></label><input class="form-input" id="biz_email" type="email" placeholder="negocio@correo.com"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label">Dirección</label><input class="form-input" id="biz_address" type="text" placeholder="Calle, Colonia"></div><div class="form-group"><label class="form-label">Sitio Web / Redes</label><input class="form-input" id="biz_website" type="text" placeholder="https://..."></div></div>
+      <div class="form-group"><label class="form-label">Foto del Negocio / Logo</label>
+        <div class="upload-zone" id="biz_zone" onclick="document.getElementById('biz_img').click()"><button class="upload-del" id="biz_del" type="button" onclick="event.stopPropagation();clearImg('biz')"><svg width="11" height="11"><use href="#ic-close"/></svg></button><div class="upload-icon-wrap"><svg width="20" height="20"><use href="#ic-upload"/></svg></div><p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p><input type="file" id="biz_img" accept="image/*" style="display:none" onchange="previewImg(this,'biz_prev','biz_del')"><img id="biz_prev" class="img-preview" alt=""></div>
+        <div class="upload-progress" id="biz_progress"><div class="upload-progress-bar" id="biz_bar" style="width:0%"></div></div>
+      </div>
+      <div class="banner-upsell"><div class="banner-upsell-title"><svg width="13" height="13"><use href="#ic-star"/></svg><span>¡Destaca tu Negocio en el Banner!</span></div><p>Promociona tu negocio por <strong>30 días</strong> — $29.99 USD vía PayPal.</p><div class="check-row"><input type="checkbox" id="biz_banner" onchange="toggleBannerNote()"><label for="biz_banner">Sí, destacar mi negocio — <strong>$29.99 USD</strong> / 30 días</label></div><div class="banner-note" id="bannerNote">Al registrarte serás redirigido a PayPal. Tu banner se activa en 24 horas.</div></div>
+      <button class="btn btn-crimson btn-lg" id="btnSubmitBiz" style="width:100%;justify-content:center;margin-top:18px" onclick="submitBusiness(this)"><svg width="16" height="16"><use href="#ic-store"/></svg><span data-t="btnSubmitBiz">Registrar Negocio</span></button>
+      <div id="bizResult" class="submit-result"></div>
+      <a id="paypalBtn" href="#" target="_blank" rel="noopener" class="paypal-btn"><svg width="18" height="18"><use href="#ic-globe"/></svg> Pagar $29.99 en PayPal</a>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY (needed by shared.js) -->
+<div id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-card"><div class="detail-hero" id="dtHero"><button class="detail-close-btn" onclick="closeDetail()"><svg width="13" height="13"><use href="#ic-close"/></svg></button><div class="detail-hero-icon" id="dtIcon"></div></div>
+  <div class="detail-body"><div class="detail-name" id="dtName"></div><div class="detail-sub" id="dtSub"></div><div class="detail-desc" id="dtDesc"></div><div class="detail-meta" id="dtMeta"></div><div class="detail-actions" id="dtActions"></div></div></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+'use strict';
+const FAQS_ES = [
+  { q: '¿Es gratis registrar mi negocio?', a: 'Sí, completamente. Registrar tu negocio, publicar solicitudes y crear ofertas es 100% gratuito. El único servicio de pago es el Banner Destacado ($29.99 USD / 30 días), que es totalmente opcional.' },
+  { q: '¿Cuánto tiempo tarda en aparecer mi negocio?', a: 'Tu ficha aparece en el directorio de forma inmediata tras el registro. No hay proceso de aprobación — solo llena el formulario y tu negocio ya está visible.' },
+  { q: '¿Qué es el Banner Destacado?', a: 'Es un espacio en la barra superior de cada página donde tu negocio aparece con foto, nombre y categoría, visto por todos los visitantes. El costo es $29.99 USD por 30 días, pagado vía PayPal. Se activa dentro de 24 horas tras confirmar el pago.' },
+  { q: '¿Por cuánto tiempo está visible mi negocio?', a: 'Los negocios registrados permanecen activos de forma indefinida. Las solicitudes y ofertas expiran después de 60 días, y se conservan como archivados 60 días adicionales.' },
+  { q: '¿Puedo editar mi información después de registrarme?', a: 'Por ahora, para actualizar tu información contáctanos directamente a yusefeedr@gmail.com con tu nombre de negocio y los cambios que necesitas. Estamos trabajando en un panel de administración para negocios.' },
+  { q: '¿Quién puede ver mi información de contacto?', a: 'Tu nombre de negocio, servicio, categoría y teléfono son visibles para todos los visitantes del directorio. Esto es intencional — el objetivo es que los clientes puedan contactarte directamente.' },
+  { q: '¿Cómo funciona el sistema de solicitudes y ofertas?', a: 'Las solicitudes son publicaciones de vecinos que buscan un servicio ("Necesito plomero"). Las ofertas son de negocios o personas que ofrecen algo ("Tamales caseros $150 la docena"). Ambas son gratuitas y expiran en 60 días.' },
+  { q: '¿Qué hago si mi publicación ya expiró?', a: 'Puedes volver a publicar cuando quieras. Las publicaciones expiradas se mueven a la sección de Archivados donde se mantienen visibles 60 días adicionales para referencia.' }
+];
+const FAQS_EN = [
+  { q: 'Is it free to register my business?', a: 'Yes, completely free. Registering your business, posting requests and creating offers is 100% free. The only paid service is the Featured Banner ($29.99 USD / 30 days), which is totally optional.' },
+  { q: 'How long does it take for my business to appear?', a: 'Your listing appears in the directory immediately after registration. There is no approval process — just fill out the form and your business is already visible.' },
+  { q: 'What is the Featured Banner?', a: 'It is a space in the top bar of every page where your business appears with photo, name and category, seen by all visitors. The cost is $29.99 USD for 30 days, paid via PayPal. It activates within 24 hours of confirming payment.' },
+  { q: 'How long is my business visible?', a: 'Registered businesses remain active indefinitely. Requests and offers expire after 60 days, and are kept as archived for 60 additional days.' },
+  { q: 'Can I edit my information after registering?', a: 'For now, to update your information contact us directly at yusefeedr@gmail.com with your business name and the changes you need. We are working on an admin panel for businesses.' },
+  { q: 'Who can see my contact information?', a: 'Your business name, service, category and phone are visible to all directory visitors. This is intentional — the goal is for customers to be able to contact you directly.' },
+  { q: 'How do requests and offers work?', a: 'Requests are posts from residents looking for a service. Offers are from businesses or individuals offering something. Both are free and expire in 60 days.' },
+  { q: 'What do I do if my post has expired?', a: 'You can repost anytime. Expired posts move to the Archived section where they remain visible for 60 additional days for reference.' }
+];
+function renderFAQs() {
+  const faqs = LANG === 'en' ? FAQS_EN : FAQS_ES;
+  document.getElementById('faqList').innerHTML = faqs.map((f,i) => `
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden">
+      <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--fd);font-size:14px;font-weight:700;color:var(--black)">
+        <span>${f.q}</span>
+        <svg width="16" height="16" style="flex-shrink:0;transition:transform 0.2s;color:var(--gray)"><use href="#ic-chevron-down"/></svg>
+      </button>
+      <div style="display:none;padding:0 20px 18px;font-size:13px;color:var(--gray);line-height:1.7">${f.a}</div>
+    </div>`).join('');
+}
+function toggleFaq(btn) {
+  const ans = btn.nextElementSibling;
+  const ico = btn.querySelector('svg');
+  const open = ans.style.display === 'block';
+  ans.style.display = open ? 'none' : 'block';
+  ico.style.transform = open ? '' : 'rotate(180deg)';
+  ico.style.color = open ? 'var(--gray)' : 'var(--crimson)';
+}
+function onLangChange() { renderFAQs(); }
+
+window.addEventListener('load', () => {
+  applyBranding(); setLang('es'); renderFAQs();
+  /* Load stats */
+  api('getBusinesses',{}).then(r=>{ if(r.success){const el=document.getElementById('aStatBiz');if(el)el.textContent=(r.data||[]).length;} });
+  api('getRequests',{}).then(r=>{ if(r.success){const el=document.getElementById('aStatReq');if(el)el.textContent=(r.data||[]).length;} });
+  api('getOffers',{}).then(r=>{ if(r.success){const el=document.getElementById('aStatOff');if(el)el.textContent=(r.data||[]).length;} });
+  api('getCategories').then(r=>{ if(r.success&&r.data) populateCategorySelects(r.data); });
+});
+</script>
+</body>
+</html>

@@ -322,11 +322,27 @@ async function loadCats(){
   }
 }
 function buildChips(prefix){
-  const c=document.getElementById(prefix+'Chips');if(!c)return;
-  c.innerHTML='<span class="chip active" data-cat="all" onclick="setCat(this,\''+prefix+'\')" data-t="all">'+T('all')+'</span>';
+  const c=document.getElementById(prefix+'Chips');
+  if(!c) return;
+  /* Remove all existing chips */
+  c.innerHTML='';
+  /* Build Todos chip via createElement — same method as category chips,
+     no HTML-attribute string parsing, guaranteed correct onclick binding */
+  const allChip=document.createElement('span');
+  allChip.className='chip active';
+  allChip.dataset.cat='all';
+  allChip.setAttribute('data-t','all');
+  allChip.textContent=T('all');
+  allChip.addEventListener('click',()=>setCat(allChip,prefix));
+  c.appendChild(allChip);
+  /* Build one chip per category */
   categories.forEach(cat=>{
-    const chip=document.createElement('span');chip.className='chip';chip.dataset.cat=cat;chip.textContent=cat;
-    chip.onclick=()=>setCat(chip,prefix);c.appendChild(chip);
+    const chip=document.createElement('span');
+    chip.className='chip';
+    chip.dataset.cat=cat;
+    chip.textContent=cat;
+    chip.addEventListener('click',()=>setCat(chip,prefix));
+    c.appendChild(chip);
   });
 }
 
@@ -476,16 +492,18 @@ function filterBiz(){bizFilter.q=document.getElementById('bizSearch').value;bizP
 function filterReq(){reqFilter.q=document.getElementById('reqSearch').value;renderReq();}
 function filterOff(){offFilter.q=document.getElementById('offSearch').value;renderOff();}
 function setCat(el,prefix){
-  /* Always resolve to the .chip element even if a child was clicked */
-  const chip=el.classList.contains('chip')?el:el.closest('.chip');
-  if(!chip)return;
+  /* Resolve to the .chip element — handles click on child elements too */
+  const chip=el.classList&&el.classList.contains('chip') ? el : el.closest&&el.closest('.chip');
+  if(!chip) return;
+  /* Deactivate all chips in the same container */
   const container=chip.closest('.filter-chips');
-  if(container)container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  if(container) container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   chip.classList.add('active');
   const cat=chip.dataset.cat||'all';
-  if(prefix==='biz'){bizFilter.cat=cat;bizPage=1;renderBiz();}
-  if(prefix==='req'){reqFilter.cat=cat;renderReq();}
-  if(prefix==='off'){offFilter.cat=cat;renderOff();}
+  /* Apply filter and reset to page 1 */
+  if(prefix==='biz'){ bizFilter.cat=cat; bizPage=1; renderBiz(); }
+  if(prefix==='req'){ reqFilter.cat=cat; renderReq(); }
+  if(prefix==='off'){ offFilter.cat=cat; renderOff(); }
 }
 function renderPages(total,cur,prefix){
   const pages=Math.ceil(total/SFT.PAGE_SIZE);

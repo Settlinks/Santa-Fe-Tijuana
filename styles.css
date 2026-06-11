@@ -283,6 +283,7 @@ a{text-decoration:none;color:inherit}
 .search-input:focus{border-color:var(--crimson);box-shadow:0 0 0 3px rgba(90,15,15,0.07)}
 .filter-chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{padding:6px 14px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;transition:var(--t);border:1.5px solid var(--border-med);background:#fff;color:var(--gray);white-space:nowrap;font-family:var(--fd);letter-spacing:0.3px;user-select:none}
+.chip *{pointer-events:none} /* prevent child spans from swallowing click events */
 .chip:hover{border-color:var(--crimson);color:var(--black)}
 .chip.active{background:var(--black);color:#fff;border-color:var(--black)}
 
@@ -429,7 +430,63 @@ a{text-decoration:none;color:inherit}
 .detail-hero img.detail-img{width:100%;height:100%;object-fit:cover;opacity:0.85}
 /* detail icon: dark bg → white icon */
 .detail-hero-icon{width:64px;height:64px;border-radius:14px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;color:#fff}
+/* ── EXPLICIT ICON CONTRAST OVERRIDES ─────────────────────────
+   SVG <use> elements inherit CSS 'color' via currentColor.
+   Every dark/crimson container must explicitly set svg{color:#fff}.
+   Every light container must set svg{color:dark-value}.
+   These rules are authoritative — they override inherited values.
+─────────────────────────────────────────────────────────────── */
+
+/* Dark hero section bg → white icons */
 .detail-hero-icon svg,.icon-on-dark svg{color:#fff}
+
+/* Nav chevron — explicit white-ish on dark header */
+.nav-chevron{color:rgba(255,255,255,0.4)!important}
+.nav-link:hover .nav-chevron,.nav-link.active .nav-chevron{color:rgba(255,255,255,0.7)!important}
+
+/* Mega menu icons — dark bg, light icons */
+.mega-link-icon svg{color:rgba(255,255,255,0.75)}
+.mega-link:hover .mega-link-icon svg{color:#fff}
+
+/* Onboarding banner: crimson bg → white */
+.onboarding-banner-icon svg{color:#fff!important}
+
+/* Banner header star: dark bg → gold */
+.banner-header svg{color:#c59a1a}
+
+/* Biz card: biz-avatar on light bg → muted dark */
+.biz-avatar svg{color:rgba(30,30,30,0.38)!important}
+
+/* Biz card action icons: white bg → dark, hover white */
+.icon-btn svg{color:rgba(30,30,30,0.45)!important}
+.icon-btn:hover svg{color:#fff!important}
+
+/* Market card icons */
+.req-type svg{color:var(--black)!important}
+.off-type svg{color:var(--crimson)!important}
+.expiry svg,.mc-contact svg{color:var(--gray)!important}
+.expiry.urgent svg{color:#B03030!important}
+
+/* Modal close: light bg → gray; hover crimson bg → white */
+.modal-close svg{color:var(--gray)!important}
+.modal-close:hover svg{color:#fff!important}
+
+/* Form upload zone: light bg → muted dark */
+.upload-icon-wrap svg{color:rgba(30,30,30,0.4)!important}
+.upload-del svg{color:#fff!important}
+
+/* Search icon: white bg → dark */
+.search-icon svg{color:var(--black)!important;opacity:0.45}
+
+/* Empty/error state icons: light bg → muted dark */
+.empty-state-icon svg{color:rgba(30,30,30,0.4)!important}
+.error-state-icon svg{color:var(--crimson)!important}
+
+/* Footer link icons */
+.footer-links svg{color:rgba(255,255,255,0.35)!important}
+
+/* Detail close: dark overlay → white */
+.detail-close-btn svg{color:#fff!important}
 .detail-type-badge{position:absolute;top:14px;left:14px;padding:4px 11px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-family:var(--fd)}
 .dtb-biz{background:var(--crimson);color:#fff}
 .dtb-req{background:var(--black);color:#fff}

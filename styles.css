@@ -1,1266 +1,363 @@
-<!DOCTYPE html>
-<html lang="es" id="htmlRoot">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Santa Fe Tijuana — Directorio de negocios y mercado comunitario. Registra tu negocio, publica servicios y crece con la comunidad.">
-<link rel="icon" id="faviconTag" href="data:,">
-<title>Santa Fe Tijuana — Lo Tenemos Todo</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<!-- SVG SPRITE -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="ic-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
-  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
-  <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
-  <symbol id="ic-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></symbol>
-  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
-  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
-  <symbol id="ic-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
-  <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
-  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.32 9.81 19.79 19.79 0 01.26 1.18 2 2 0 012.24 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.64a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
-  <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
-  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
-  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
-  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
-  <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01"/></symbol>
-  <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
-  <symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
-  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
-  <symbol id="ic-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></symbol>
-  <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
-  <symbol id="ic-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol>
-  <symbol id="ic-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
-  <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></symbol>
-  <symbol id="ic-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
-  <symbol id="ic-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
-  <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
-  <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
-  <symbol id="ic-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></symbol>
-  <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></symbol>
-  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
-</svg>
-
-<!-- ══════════ SHARED HEADER ══════════ -->
-<header class="site-header">
-  <div class="header-inner">
-    <a class="logo" href="#" onclick="showPage('landing');return false">
-      <div class="logo-icon" id="logoIconWrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-      </div>
-      <div>
-        <div class="logo-wordmark">Santa Fe <span>Tijuana</span></div>
-        <div class="logo-sub" data-t="portalSub">Directorio Comunitario</div>
-      </div>
-    </a>
-
-    <nav class="header-nav">
-      <div class="nav-item">
-        <button class="nav-link" onclick="gotoSection('directory')" id="tab-directory">
-          <svg width="13" height="13"><use href="#ic-store"/></svg>
-          <span data-t="tabDir">Directorio</span>
-          <svg class="nav-chevron"><use href="#ic-chevron-down"/></svg>
-        </button>
-        <div class="mega-menu" style="grid-template-columns:1fr 1fr;min-width:420px">
-          <div class="mega-col">
-            <div class="mega-col-label">Negocios</div>
-            <button class="mega-link" onclick="gotoSection('directory')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-store"/></svg></div>
-              <div><div class="mega-link-title">Ver Directorio</div><div class="mega-link-sub">Todos los negocios registrados</div></div>
-            </button>
-            <button class="mega-link" onclick="openModal('modalBusiness')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-plus"/></svg></div>
-              <div><div class="mega-link-title">Registrar Negocio</div><div class="mega-link-sub">Gratis — solo 2 minutos</div></div>
-            </button>
-          </div>
-          <div class="mega-col">
-            <div class="mega-col-label">Más opciones</div>
-            <button class="mega-link" onclick="openModal('modalBusiness')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-star"/></svg></div>
-              <div><div class="mega-link-title">Banner Destacado</div><div class="mega-link-sub">$29.99 USD / 30 días</div></div>
-            </button>
-            <button class="mega-link" onclick="openModal('modalArchive')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-archive"/></svg></div>
-              <div><div class="mega-link-title">Archivados</div><div class="mega-link-sub">Publicaciones expiradas</div></div>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button class="nav-link" onclick="gotoSection('requests')" id="tab-requests">
-          <svg width="13" height="13"><use href="#ic-clipboard"/></svg>
-          <span data-t="tabReq">Solicitudes</span>
-          <svg class="nav-chevron"><use href="#ic-chevron-down"/></svg>
-        </button>
-        <div class="mega-menu" style="grid-template-columns:1fr;min-width:260px">
-          <div class="mega-col">
-            <div class="mega-col-label">Solicitudes de Servicio</div>
-            <button class="mega-link" onclick="gotoSection('requests')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-clipboard"/></svg></div>
-              <div><div class="mega-link-title">Ver Solicitudes</div><div class="mega-link-sub">Lo que la comunidad necesita</div></div>
-            </button>
-            <button class="mega-link" onclick="openModal('modalRequest')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-plus"/></svg></div>
-              <div><div class="mega-link-title">Publicar Solicitud</div><div class="mega-link-sub">¿Buscas un servicio?</div></div>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="nav-item">
-        <button class="nav-link" onclick="gotoSection('offers')" id="tab-offers">
-          <svg width="13" height="13"><use href="#ic-tag"/></svg>
-          <span data-t="tabOff">Ofertas</span>
-          <svg class="nav-chevron"><use href="#ic-chevron-down"/></svg>
-        </button>
-        <div class="mega-menu" style="grid-template-columns:1fr;min-width:260px">
-          <div class="mega-col">
-            <div class="mega-col-label">Ofertas y Productos</div>
-            <button class="mega-link" onclick="gotoSection('offers')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-tag"/></svg></div>
-              <div><div class="mega-link-title">Ver Ofertas</div><div class="mega-link-sub">Servicios y productos locales</div></div>
-            </button>
-            <button class="mega-link" onclick="openModal('modalOffer')">
-              <div class="mega-link-icon"><svg width="15" height="15" color="rgba(255,255,255,0.7)"><use href="#ic-plus"/></svg></div>
-              <div><div class="mega-link-title">Publicar Oferta</div><div class="mega-link-sub">Vende o presta tus servicios</div></div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="header-right">
-      <div class="lang-pill">
-        <button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button>
-        <button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button>
-      </div>
-      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')" data-t="btnRegister">
-        <svg width="12" height="12"><use href="#ic-plus"/></svg>
-        Registrar Negocio
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- ══════════════════════════════════════
-     LANDING PAGE
-══════════════════════════════════════ -->
-<div id="page-landing">
-
-  <!-- HERO -->
-  <section class="lp-hero">
-    <div class="lp-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&q=80&auto=format&fit=crop')"></div>
-    <div class="lp-hero-overlay"></div>
-    <div class="lp-hero-inner">
-      <div class="lp-hero-content">
-        <div class="lp-eyebrow"><span class="lp-eyebrow-dot"></span><span data-t="heroBadge">SANTA FE TIJUANA · DIRECTORIO OFICIAL</span></div>
-        <h1 class="lp-headline">
-          <span data-t="heroLine1">En Santa Fe</span><br>
-          <span class="accent" data-t="heroLine2">Lo Tenemos Todo</span>
-        </h1>
-        <p class="lp-tagline" data-t="heroTagline">Conecta · Publica · Cotiza · Crece</p>
-        <p class="lp-body" data-t="heroSub">Tu plataforma confiable para anunciar negocios, ofrecer servicios, publicar y solicitar cotizaciones en la comunidad Santa Fe Tijuana.</p>
-        <div class="lp-actions">
-          <button class="btn btn-crimson btn-xl" onclick="openModal('modalBusiness')">
-            <svg width="17" height="17"><use href="#ic-store"/></svg>
-            <span data-t="ctaRegister">Registra tu Negocio</span>
-          </button>
-          <button class="btn btn-outline btn-xl" onclick="gotoSection('directory')">
-            <svg width="17" height="17"><use href="#ic-search"/></svg>
-            <span data-t="ctaDir">Ver Directorio</span>
-          </button>
-        </div>
-        <div class="lp-stats">
-          <div class="lp-stat"><div class="lp-stat-num" id="heroStatBiz">0</div><div class="lp-stat-label" data-t="statBiz">Negocios</div></div>
-          <div class="lp-stat"><div class="lp-stat-num" id="heroStatReq">0</div><div class="lp-stat-label" data-t="statReq">Solicitudes</div></div>
-          <div class="lp-stat"><div class="lp-stat-num" id="heroStatOff">0</div><div class="lp-stat-label" data-t="statOff">Ofertas Activas</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="lp-hero-scroll" onclick="gotoSection('directory')">
-      <span data-t="scrollLabel">VER DIRECTORIO</span>
-      <div class="lp-scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="lp-section" style="background:#fff">
-    <div class="lp-section-inner">
-      <div class="lp-section-label" data-t="howLabel">Cómo funciona</div>
-      <h2 class="lp-section-title" data-t="howTitle">Simple, rápido y gratuito</h2>
-      <p class="lp-section-sub" data-t="howSub">Tres pasos para conectar con toda la comunidad de Santa Fe Tijuana.</p>
-      <div class="lp-steps">
-        <div class="lp-step">
-          <div class="lp-step-num">01</div>
-          <div class="lp-step-icon"><svg width="22" height="22" color="var(--crimson)"><use href="#ic-store"/></svg></div>
-          <div class="lp-step-title" data-t="step1Title">Registra tu Negocio</div>
-          <p class="lp-step-desc" data-t="step1Desc">Crea tu ficha gratuita en menos de 2 minutos. Sube fotos, agrega tu teléfono y descripción de servicios.</p>
-          <button class="lp-step-cta" onclick="openModal('modalBusiness')">
-            <span data-t="step1Cta">Registrar ahora</span>
-            <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
-          </button>
-        </div>
-        <div class="lp-step">
-          <div class="lp-step-num">02</div>
-          <div class="lp-step-icon"><svg width="22" height="22" color="var(--crimson)"><use href="#ic-clipboard"/></svg></div>
-          <div class="lp-step-title" data-t="step2Title">Publica o Solicita</div>
-          <p class="lp-step-desc" data-t="step2Desc">¿Necesitas un servicio? Publica tu solicitud. ¿Tienes algo que ofrecer? Crea tu anuncio gratis con fotos y precio.</p>
-          <button class="lp-step-cta" onclick="openModal('modalRequest')">
-            <span data-t="step2Cta">Publicar solicitud</span>
-            <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
-          </button>
-        </div>
-        <div class="lp-step">
-          <div class="lp-step-num">03</div>
-          <div class="lp-step-icon"><svg width="22" height="22" color="var(--crimson)"><use href="#ic-share"/></svg></div>
-          <div class="lp-step-title" data-t="step3Title">Conecta y Crece</div>
-          <p class="lp-step-desc" data-t="step3Desc">Comparte tu ficha por WhatsApp, recibe llamadas directas y hazte visible en toda la comunidad 24/7.</p>
-          <button class="lp-step-cta" onclick="gotoSection('directory')">
-            <span data-t="step3Cta">Explorar directorio</span>
-            <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES DARK -->
-  <div class="lp-cats-dark">
-    <div class="lp-cats-inner">
-      <div class="lp-cats-header">
-        <div>
-          <div class="lp-section-label" style="color:rgba(255,255,255,0.35)" data-t="catsLabel">Categorías</div>
-          <h2 class="lp-section-title" style="color:#fff;margin-bottom:0" data-t="catsTitle">Encuentra lo que buscas</h2>
-        </div>
-        <button class="btn btn-ghost-dark btn-sm" onclick="gotoSection('directory')">
-          <span data-t="catsViewAll">Ver todo</span>
-          <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
-        </button>
-      </div>
-      <div class="lp-cats-grid" id="lpCatGrid">
-        <!-- filled by JS -->
-      </div>
-    </div>
-  </div>
-
-  <!-- PHOTO GRID -->
-  <section class="lp-photos">
-    <div class="lp-photos-inner">
-      <div class="lp-section-label" data-t="photosLabel">La comunidad</div>
-      <h2 class="lp-section-title" data-t="photosTitle">Santa Fe Tijuana en acción</h2>
-      <div class="lp-photo-grid">
-        <div class="lp-photo-item" onclick="gotoSection('directory')" style="cursor:pointer">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop" alt="Negocios locales" loading="lazy">
-          <div class="lp-photo-overlay"><span class="lp-photo-label" data-t="photo1">Negocios Locales</span></div>
-        </div>
-        <div class="lp-photo-item" onclick="openModal('modalRequest')" style="cursor:pointer">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80&auto=format&fit=crop" alt="Servicios a domicilio" loading="lazy">
-          <div class="lp-photo-overlay"><span class="lp-photo-label" data-t="photo2">Servicios a Domicilio</span></div>
-        </div>
-        <div class="lp-photo-item" onclick="openModal('modalOffer')" style="cursor:pointer">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80&auto=format&fit=crop" alt="Gastronomía local" loading="lazy">
-          <div class="lp-photo-overlay"><span class="lp-photo-label" data-t="photo3">Gastronomía Local</span></div>
-        </div>
-        <div class="lp-photo-item" onclick="gotoSection('offers')" style="cursor:pointer">
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80&auto=format&fit=crop" alt="Belleza y cuidado" loading="lazy">
-          <div class="lp-photo-overlay"><span class="lp-photo-label" data-t="photo4">Belleza y Cuidado</span></div>
-        </div>
-        <div class="lp-photo-item" onclick="gotoSection('directory')" style="cursor:pointer">
-          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80&auto=format&fit=crop" alt="Servicios del hogar" loading="lazy">
-          <div class="lp-photo-overlay"><span class="lp-photo-label" data-t="photo5">Servicios del Hogar</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <div class="lp-trust">
-    <div class="lp-trust-inner">
-      <div class="lp-section-label" style="color:rgba(255,255,255,0.35)" data-t="trustLabel">Testimonios</div>
-      <h2 class="lp-section-title" style="color:#fff;margin-bottom:0" data-t="trustTitle">Lo que dice la comunidad</h2>
-      <div class="lp-trust-grid">
-        <div class="lp-trust-card">
-          <div class="lp-trust-stars">
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-          </div>
-          <p class="lp-trust-quote" data-t="quote1">"Registré mi negocio de tamales en 5 minutos y esa misma semana tuve 3 pedidos nuevos. El directorio sí funciona."</p>
-          <div class="lp-trust-author">
-            <div class="lp-trust-avatar">M</div>
-            <div><div class="lp-trust-name">María González</div><div class="lp-trust-biz" data-t="trustBiz1">Tamales La Esperanza</div></div>
-          </div>
-        </div>
-        <div class="lp-trust-card">
-          <div class="lp-trust-stars">
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-          </div>
-          <p class="lp-trust-quote" data-t="quote2">"Publiqué una solicitud para reparar mi baño y al día siguiente ya tenía 4 personas contactándome. Super rápido y fácil."</p>
-          <div class="lp-trust-author">
-            <div class="lp-trust-avatar">C</div>
-            <div><div class="lp-trust-name">Carlos Mendoza</div><div class="lp-trust-biz" data-t="trustBiz2">Residente Santa Fe</div></div>
-          </div>
-        </div>
-        <div class="lp-trust-card">
-          <div class="lp-trust-stars">
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-            <svg width="14" height="14" color="#BA7517"><use href="#ic-star"/></svg>
-          </div>
-          <p class="lp-trust-quote" data-t="quote3">"El banner destacado valió cada centavo. Mi salon de belleza ahora tiene visibilidad permanente en toda la comunidad."</p>
-          <div class="lp-trust-author">
-            <div class="lp-trust-avatar">A</div>
-            <div><div class="lp-trust-name">Ana Ramírez</div><div class="lp-trust-biz" data-t="trustBiz3">Studio Belleza AR</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FINAL CTA -->
-  <div class="lp-cta-banner">
-    <div class="lp-cta-inner">
-      <h2 class="lp-cta-title" data-t="ctaBannerTitle">¿Listo para crecer?</h2>
-      <p class="lp-cta-sub" data-t="ctaBannerSub">Únete a cientos de negocios que ya forman parte del directorio más completo de Santa Fe Tijuana.</p>
-      <div class="lp-cta-actions">
-        <button class="btn btn-light btn-xl" onclick="openModal('modalBusiness')">
-          <svg width="17" height="17"><use href="#ic-store"/></svg>
-          <span data-t="ctaRegister">Registra tu Negocio Gratis</span>
-        </button>
-        <button class="btn btn-ghost-dark btn-xl" onclick="gotoSection('directory')">
-          <span data-t="ctaDir">Ver el Directorio</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-</div><!-- end #page-landing -->
-
-<!-- ══════════════════════════════════════
-     APP PAGE (Directory / Requests / Offers)
-══════════════════════════════════════ -->
-<div id="page-app">
-
-  <!-- BANNER STRIP -->
-  <div class="banner-section">
-    <div class="banner-header">
-      <svg width="10" height="10" color="rgba(255,255,255,0.4)"><use href="#ic-star"/></svg>
-      <span class="banner-header-label" data-t="featuredBiz">Negocios Destacados</span>
-      <div class="banner-sep"></div>
-    </div>
-    <div class="banner-track-wrap"><div class="banner-track" id="bannerTrack"></div></div>
-  </div>
-
-  <!-- SECTION TABS -->
-  <div class="section-nav">
-    <div class="section-nav-inner">
-      <button class="sec-tab active" onclick="showSection('directory')" id="sectab-directory">
-        <svg width="14" height="14"><use href="#ic-store"/></svg>
-        <span data-t="tabDir">Directorio</span>
-        <span class="sec-tab-count" id="cnt-directory">—</span>
-      </button>
-      <button class="sec-tab" onclick="showSection('requests')" id="sectab-requests">
-        <svg width="14" height="14"><use href="#ic-clipboard"/></svg>
-        <span data-t="tabReq">Solicitudes</span>
-        <span class="sec-tab-count" id="cnt-requests">—</span>
-      </button>
-      <button class="sec-tab" onclick="showSection('offers')" id="sectab-offers">
-        <svg width="14" height="14"><use href="#ic-tag"/></svg>
-        <span data-t="tabOff">Ofertas y Productos</span>
-        <span class="sec-tab-count" id="cnt-offers">—</span>
-      </button>
-    </div>
-  </div>
-
-  <main class="main-content">
-    <!-- Onboarding banner -->
-    <div class="onboarding-banner" id="onboardingBanner">
-      <div class="onboarding-banner-icon"><svg width="24" height="24" color="#fff"><use href="#ic-store"/></svg></div>
-      <div class="onboarding-banner-text">
-        <div class="onboarding-banner-title" data-t="onboardTitle">¿Tienes un negocio en Santa Fe Tijuana?</div>
-        <div class="onboarding-banner-sub" data-t="onboardSub">Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.</div>
-      </div>
-      <button class="btn btn-light" onclick="openModal('modalBusiness')">
-        <svg width="13" height="13"><use href="#ic-plus"/></svg>
-        <span data-t="onboardCta">Registrar gratis</span>
-      </button>
-      <button class="onboarding-close" onclick="dismissOnboarding()" aria-label="Cerrar">
-        <svg width="13" height="13"><use href="#ic-close"/></svg>
-      </button>
-    </div>
-
-    <!-- DIRECTORY -->
-    <section id="sec-directory">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><span data-t="dirTitle">Directorio de Negocios</span><span class="dot">.</span></h2>
-          <p class="section-desc" data-t="dirDesc">Los más recientes primero · Actualizado hoy</p>
-        </div>
-        <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')" data-t="btnAddBiz">
-          <svg width="12" height="12"><use href="#ic-plus"/></svg> Agregar Negocio
-        </button>
-      </div>
-      <div class="filter-bar">
-        <div class="search-wrap">
-          <span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span>
-          <input class="search-input" id="bizSearch" placeholder="Buscar negocios…" oninput="filterBiz()">
-        </div>
-        <div class="filter-chips" id="bizChips">
-          <span class="chip active" data-cat="all" onclick="setCat(this,'biz')"><span data-t="all">Todos</span></span>
-        </div>
-      </div>
-      <div class="biz-grid" id="bizList">
-        <div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div>
-      </div>
-      <div class="pagination" id="bizPages"></div>
-    </section>
-
-    <!-- REQUESTS -->
-    <section id="sec-requests" style="display:none">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><span data-t="reqTitle">Solicitudes de Servicio</span><span class="dot">.</span></h2>
-          <p class="section-desc" data-t="reqDesc">Personas buscando servicios · Expira en 60 días</p>
-        </div>
-        <button class="btn btn-dark btn-sm" onclick="openModal('modalRequest')" data-t="btnPostReq">
-          <svg width="12" height="12"><use href="#ic-plus"/></svg> Publicar Solicitud
-        </button>
-      </div>
-      <div class="filter-bar">
-        <div class="search-wrap">
-          <span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span>
-          <input class="search-input" id="reqSearch" placeholder="Buscar solicitudes…" oninput="filterReq()">
-        </div>
-        <div class="filter-chips" id="reqChips">
-          <span class="chip active" data-cat="all" onclick="setCat(this,'req')"><span data-t="all">Todos</span></span>
-        </div>
-      </div>
-      <div class="market-grid" id="reqList">
-        <div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div>
-      </div>
-    </section>
-
-    <!-- OFFERS -->
-    <section id="sec-offers" style="display:none">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title"><span data-t="offTitle">Ofertas y Productos</span><span class="dot">.</span></h2>
-          <p class="section-desc" data-t="offDesc">Servicios y productos de la comunidad</p>
-        </div>
-        <button class="btn btn-crimson btn-sm" onclick="openModal('modalOffer')" data-t="btnPostOff">
-          <svg width="12" height="12"><use href="#ic-plus"/></svg> Publicar Oferta
-        </button>
-      </div>
-      <div class="filter-bar">
-        <div class="search-wrap">
-          <span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span>
-          <input class="search-input" id="offSearch" placeholder="Buscar ofertas…" oninput="filterOff()">
-        </div>
-        <div class="filter-chips" id="offChips">
-          <span class="chip active" data-cat="all" onclick="setCat(this,'off')"><span data-t="all">Todos</span></span>
-        </div>
-      </div>
-      <div class="market-grid" id="offList">
-        <div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">Santa Fe <span>Tijuana</span></div>
-      <p>© 2025 <a href="https://santafetijuana.com">santafetijuana.com</a> · <span data-t="footerLine1">Directorio Comunitario · Todos los derechos reservados</span></p>
-      <p><span data-t="footerLine2">Las publicaciones expiran en 60 días · Los archivados se conservan 60 días adicionales</span></p>
-      <p><span data-t="footerLine3">Diseñado por YATELASA</span></p>
-    </div>
-  </footer>
-
-</div><!-- end #page-app -->
-
-<!-- FAB (shown only in app page) -->
-<button class="fab" id="fabBtn" onclick="openModal('modalBusiness')" title="Registrar negocio" style="display:none">
-  <svg width="18" height="18"><use href="#ic-store"/></svg>
-  <span class="fab-label" data-t="fabLabel">Registra tu Negocio</span>
-</button>
-
-<div class="share-toast" id="shareToast"></div>
-
-<!-- ════════════════════ MODALS ════════════════════ -->
-
-<!-- REGISTER BUSINESS -->
-<div class="modal-overlay" id="modalBusiness">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">
-        <div class="modal-title-icon"><svg width="17" height="17" color="var(--crimson)"><use href="#ic-store"/></svg></div>
-        <span data-t="modalBizTitle">Registra Tu Negocio</span>
-      </div>
-      <button class="modal-close" onclick="closeModal('modalBusiness')"><svg width="15" height="15"><use href="#ic-close"/></svg></button>
-    </div>
-    <div class="modal-body">
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fBizName">Nombre del Negocio <span class="req">*</span></label><input class="form-input" id="biz_name" type="text" placeholder="Ej. Mi Tienda Favorita"></div>
-        <div class="form-group"><label class="form-label" data-t="fOwner">Nombre del Dueño <span class="req">*</span></label><input class="form-input" id="biz_owner" type="text" placeholder="Nombre completo"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="biz_category"></select></div>
-        <div class="form-group"><label class="form-label" data-t="fServiceType">Tipo de Servicio <span class="req">*</span></label><input class="form-input" id="biz_service" type="text" placeholder="Ej. Cortes, Entrega"></div>
-      </div>
-      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="biz_desc" placeholder="Describe tu negocio y servicios…"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="biz_phone" type="tel" placeholder="+52 664 000 0000"></div>
-        <div class="form-group"><label class="form-label" data-t="fEmail">Correo <span class="req">*</span></label><input class="form-input" id="biz_email" type="email" placeholder="negocio@correo.com"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fAddress">Dirección</label><input class="form-input" id="biz_address" type="text" placeholder="Calle, Colonia"></div>
-        <div class="form-group"><label class="form-label" data-t="fWebsite">Sitio Web / Redes</label><input class="form-input" id="biz_website" type="text" placeholder="https://..."></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" data-t="fPhoto">Foto del Negocio / Logo</label>
-        <div class="upload-zone" id="biz_zone" onclick="document.getElementById('biz_img').click()">
-          <button class="upload-del" id="biz_del" type="button" onclick="event.stopPropagation();clearImg('biz')"><svg width="11" height="11"><use href="#ic-close"/></svg></button>
-          <div class="upload-icon-wrap"><svg width="20" height="20" color="var(--mid)"><use href="#ic-upload"/></svg></div>
-          <p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p>
-          <input type="file" id="biz_img" accept="image/*" style="display:none" onchange="previewImg(this,'biz_prev','biz_del')">
-          <img id="biz_prev" class="img-preview" alt="">
-        </div>
-        <div class="upload-progress" id="biz_progress"><div class="upload-progress-bar" id="biz_bar" style="width:0%"></div></div>
-      </div>
-      <div class="banner-upsell">
-        <div class="banner-upsell-title"><svg width="13" height="13"><use href="#ic-star"/></svg><span data-t="bannerTitle">¡Destaca tu Negocio en el Banner!</span></div>
-        <p data-t="bannerDesc">Promociona tu negocio en la parte superior de cada página por <strong>30 días</strong> — $29.99 USD vía PayPal.</p>
-        <div class="check-row"><input type="checkbox" id="biz_banner" onchange="toggleBannerNote()"><label for="biz_banner" data-t="bannerCheck">Sí, destacar mi negocio — <strong>$29.99 USD</strong> / 30 días</label></div>
-        <div class="banner-note" id="bannerNote" data-t="bannerNote">Al registrarte serás redirigido a PayPal. Tu banner se activa tras la aprobación del administrador (normalmente en 24 horas).</div>
-      </div>
-      <button class="btn btn-crimson btn-lg" id="btnSubmitBiz" style="width:100%;justify-content:center;margin-top:18px" onclick="submitBusiness(this)">
-        <svg width="16" height="16"><use href="#ic-store"/></svg>
-        <span data-t="btnSubmitBiz">Registrar Negocio</span>
-      </button>
-      <div id="bizResult" class="submit-result"></div>
-      <a id="paypalBtn" href="#" target="_blank" rel="noopener" class="paypal-btn">
-        <svg width="18" height="18"><use href="#ic-globe"/></svg> Pagar $29.99 en PayPal
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- POST REQUEST -->
-<div class="modal-overlay" id="modalRequest">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17" color="var(--crimson)"><use href="#ic-clipboard"/></svg></div><span data-t="modalReqTitle">Publicar Solicitud</span></div>
-      <button class="modal-close" onclick="closeModal('modalRequest')"><svg width="15" height="15"><use href="#ic-close"/></svg></button>
-    </div>
-    <div class="modal-body">
-      <p style="font-size:12px;color:var(--mid);margin-bottom:16px;line-height:1.55" data-t="reqHint">Dile a la comunidad qué necesitas. La publicación expira en 60 días.</p>
-      <div class="form-group"><label class="form-label" data-t="fReqTitle">Título de la Solicitud <span class="req">*</span></label><input class="form-input" id="req_title" type="text" placeholder="Ej. Necesito plomero para fuga en baño"></div>
-      <div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="req_category"></select></div>
-      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="req_desc" placeholder="Describe qué necesitas, ubicación, disponibilidad…"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fBudgetMin">Presupuesto Mín (MXN)</label><input class="form-input" id="req_min" type="number" placeholder="500" min="0"></div>
-        <div class="form-group"><label class="form-label" data-t="fBudgetMax">Presupuesto Máx (MXN)</label><input class="form-input" id="req_max" type="number" placeholder="1500" min="0"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fYourName">Tu Nombre <span class="req">*</span></label><input class="form-input" id="req_name" type="text" placeholder="Tu primer nombre"></div>
-        <div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="req_phone" type="tel" placeholder="+52 664 000 0000"></div>
-      </div>
-      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="req_email" type="email" placeholder="tu@correo.com"></div>
-      <button class="btn btn-dark btn-lg" id="btnSubmitReq" style="width:100%;justify-content:center;margin-top:8px" onclick="submitRequest(this)">
-        <svg width="16" height="16"><use href="#ic-clipboard"/></svg>
-        <span data-t="btnPostReqSubmit">Publicar Solicitud</span>
-      </button>
-      <div id="reqResult" class="submit-result"></div>
-    </div>
-  </div>
-</div>
-
-<!-- POST OFFER -->
-<div class="modal-overlay" id="modalOffer">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17" color="var(--crimson)"><use href="#ic-tag"/></svg></div><span data-t="modalOffTitle">Publicar Oferta</span></div>
-      <button class="modal-close" onclick="closeModal('modalOffer')"><svg width="15" height="15"><use href="#ic-close"/></svg></button>
-    </div>
-    <div class="modal-body">
-      <p style="font-size:12px;color:var(--mid);margin-bottom:16px;line-height:1.55" data-t="offHint">Ofrece tus servicios o productos a la comunidad. Expira en 60 días.</p>
-      <div class="form-group"><label class="form-label" data-t="fOffTitle">Título de la Oferta <span class="req">*</span></label><input class="form-input" id="off_title" type="text" placeholder="Ej. Tamales caseros, paquete de 12"></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="off_category"></select></div>
-        <div class="form-group"><label class="form-label" data-t="fPrice">Precio (MXN)</label><input class="form-input" id="off_price" type="number" placeholder="250" min="0"></div>
-      </div>
-      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="off_desc" placeholder="Describe tu oferta, disponibilidad, condiciones…"></textarea></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label" data-t="fBizYourName">Negocio / Tu Nombre <span class="req">*</span></label><input class="form-input" id="off_biz" type="text" placeholder="Nombre de negocio o personal"></div>
-        <div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="off_phone" type="tel" placeholder="+52 664 000 0000"></div>
-      </div>
-      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="off_email" type="email" placeholder="tu@correo.com"></div>
-      <div class="form-group">
-        <label class="form-label" data-t="fPhotoOpt">Foto (opcional)</label>
-        <div class="upload-zone" id="off_zone" onclick="document.getElementById('off_img').click()">
-          <button class="upload-del" id="off_del" type="button" onclick="event.stopPropagation();clearImg('off')"><svg width="11" height="11"><use href="#ic-close"/></svg></button>
-          <div class="upload-icon-wrap"><svg width="20" height="20" color="var(--mid)"><use href="#ic-upload"/></svg></div>
-          <p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p>
-          <input type="file" id="off_img" accept="image/*" style="display:none" onchange="previewImg(this,'off_prev','off_del')">
-          <img id="off_prev" class="img-preview" alt="">
-        </div>
-        <div class="upload-progress" id="off_progress"><div class="upload-progress-bar" id="off_bar" style="width:0%"></div></div>
-      </div>
-      <button class="btn btn-crimson btn-lg" id="btnSubmitOff" style="width:100%;justify-content:center;margin-top:8px" onclick="submitOffer(this)">
-        <svg width="16" height="16"><use href="#ic-tag"/></svg>
-        <span data-t="btnPostOffSubmit">Publicar Oferta</span>
-      </button>
-      <div id="offResult" class="submit-result"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ARCHIVE -->
-<div class="modal-overlay" id="modalArchive">
-  <div class="modal" style="max-width:620px">
-    <div class="modal-header">
-      <div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17" color="var(--crimson)"><use href="#ic-archive"/></svg></div><span data-t="modalArchTitle">Publicaciones Archivadas</span></div>
-      <button class="modal-close" onclick="closeModal('modalArchive')"><svg width="15" height="15"><use href="#ic-close"/></svg></button>
-    </div>
-    <div class="modal-body">
-      <p style="font-size:12px;color:var(--mid);margin-bottom:14px;line-height:1.55" data-t="archHint">Busca publicaciones expiradas. Los archivados se conservan 60 días adicionales.</p>
-      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
-        <input class="form-input" id="arch_query" type="text" placeholder="Buscar en archivados…" style="flex:1;min-width:140px">
-        <select class="form-select" id="arch_type" style="width:140px">
-          <option value="all">Todo</option>
-          <option value="requests">Solicitudes</option>
-          <option value="offers">Ofertas</option>
-        </select>
-        <button class="btn btn-crimson btn-sm" onclick="searchArchive()">
-          <svg width="12" height="12"><use href="#ic-search"/></svg> <span data-t="btnSearch">Buscar</span>
-        </button>
-      </div>
-      <div id="archResults">
-        <div class="empty-state"><div class="empty-state-icon"><svg width="22" height="22" color="var(--mid)"><use href="#ic-search"/></svg></div><h3 data-t="archEmpty">Ingresa un término</h3><p data-t="archEmptySub">Busca entre publicaciones archivadas</p></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- DETAIL OVERLAY -->
-<div id="detailOverlay" onclick="if(event.target===this)closeDetail()">
-  <div class="detail-card">
-    <div class="detail-hero" id="dtHero">
-      <button class="detail-close-btn" onclick="closeDetail()"><svg width="13" height="13"><use href="#ic-close"/></svg></button>
-      <div class="detail-hero-icon" id="dtIcon"></div>
-    </div>
-    <div class="detail-body">
-      <div class="detail-name" id="dtName"></div>
-      <div class="detail-sub" id="dtSub"></div>
-      <div class="detail-desc" id="dtDesc"></div>
-      <div class="detail-meta" id="dtMeta"></div>
-      <div class="detail-actions" id="dtActions"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-'use strict';
-/* ════ CONFIG ════ */
-const GAS_URL   = 'https://script.google.com/macros/s/AKfycbyYmPIbNolfbBKYU43UNW9F-kWWh-ZKTlABw4AEzXVTAytvmjsCmHypNVDP9aCzgl-WUw/exec';
-const SITE_NAME = 'Santafetijuana.com';
-const SITE_URL  = 'https://santafetijuana.com';
-const FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
-const LOGO_URL    = 'https://static.wixstatic.com/media/49ea47_e8709539ce4a48caaa44d7629e3679c4~mv2.png';
-const PAGE_SIZE = 12;
-
-/* ════ API ════ */
-const IS_GAS = (typeof google!=='undefined'&&google.script&&google.script.run);
-async function api(action,payload){
-  payload=payload||{};
-  if(IS_GAS)return new Promise(r=>{google.script.run.withSuccessHandler(r).withFailureHandler(e=>r({success:false,error:e.message})).handleRequest(action,payload);});
-  try{
-    const res=await fetch(GAS_URL,{method:'POST',redirect:'follow',headers:{'Content-Type':'text/plain'},body:JSON.stringify({action,payload})});
-    return JSON.parse(await res.text());
-  }catch(e){
-    const RO=['getBusinesses','getRequests','getOffers','getActiveBannerAds','getCategories','searchArchived'];
-    if(RO.includes(action)){try{const p=new URLSearchParams({action,payload:JSON.stringify(payload)});return JSON.parse(await(await fetch(GAS_URL+'?'+p,{redirect:'follow'})).text());}catch(e2){}}
-    return{success:false,error:T('errNetwork')};
-  }
+/* ================================================================
+   SANTA FE TIJUANA — Brand Stylesheet v2
+   Crimson #5A0F0F · Black #1E1E1E · Gray #A0A0A0 · White #FFFFFF
+   Montserrat (headings) + Poppins (body)
+================================================================ */
+:root{
+  --crimson:#5A0F0F;--crimson2:#7A1515;--crimson3:#3D0A0A;--crimson-light:rgba(90,15,15,0.08);
+  --black:#1E1E1E;--black2:#111111;--mid:#A0A0A0;--light:#E8E6E2;--surface:#F7F6F4;--card:#FFFFFF;
+  --border:rgba(30,30,30,0.10);--border-dark:rgba(255,255,255,0.10);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.07);--shadow:0 4px 24px rgba(0,0,0,0.10);--shadow-lg:0 16px 48px rgba(0,0,0,0.15);
+  --r:12px;--r-sm:8px;--t:0.22s cubic-bezier(0.4,0,0.2,1);
+  --fd:'Montserrat',sans-serif;--fb:'Poppins',sans-serif;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--fb);background:var(--surface);color:var(--black);overflow-x:hidden;font-size:15px;line-height:1.65;min-height:100vh}
+img{display:block;max-width:100%}
+button,input,select,textarea{font-family:inherit}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--crimson);border-radius:2px}
 
-/* ════ i18n ════ */
-let LANG='es';
-const STRINGS={
-  en:{
-    portalSub:'Community Directory',heroBadge:'SANTA FE TIJUANA · OFFICIAL DIRECTORY',heroLine1:'In Santa Fe',heroLine2:'We Have It All',
-    heroTagline:'Connect · Publish · Quote · Grow',heroSub:'Your trusted platform to advertise businesses, offer services, and request quotes in the Santa Fe Tijuana community.',
-    statBiz:'Businesses',statReq:'Requests',statOff:'Active Offers',ctaRegister:'Register Your Business',ctaDir:'Browse Directory',
-    scrollLabel:'VIEW DIRECTORY',howLabel:'How it works',howTitle:'Simple, fast and free',howSub:'Three steps to connect with the entire Santa Fe Tijuana community.',
-    step1Title:'Register Your Business',step1Desc:'Create your free listing in under 2 minutes. Upload photos, add your phone and service description.',step1Cta:'Register now',
-    step2Title:'Publish or Request',step2Desc:'Need a service? Post your request. Have something to offer? Create your free listing with photos and price.',step2Cta:'Post a request',
-    step3Title:'Connect and Grow',step3Desc:'Share your listing via WhatsApp, receive direct calls and be visible to the whole community 24/7.',step3Cta:'Explore directory',
-    catsLabel:'Categories',catsTitle:'Find what you need',catsViewAll:'View all',photosLabel:'The community',photosTitle:'Santa Fe Tijuana in action',
-    photo1:'Local Businesses',photo2:'Home Services',photo3:'Local Gastronomy',photo4:'Beauty & Care',photo5:'Home Services',
-    trustLabel:'Testimonials',trustTitle:'What the community says',quote1:'"I registered my tamale business in 5 minutes and that same week I had 3 new orders. The directory really works."',trustBiz1:'Tamales La Esperanza',
-    quote2:'"I posted a request to fix my bathroom and by the next day I already had 4 people contacting me. Super fast and easy."',trustBiz2:'Santa Fe Resident',
-    quote3:'"The featured banner was worth every cent. My beauty salon now has permanent visibility throughout the community."',trustBiz3:'Studio Belleza AR',
-    ctaBannerTitle:'Ready to grow?',ctaBannerSub:'Join hundreds of businesses already part of the most complete directory in Santa Fe Tijuana.',
-    featuredBiz:'Featured Businesses',tabDir:'Directory',tabReq:'Requests',tabOff:'Offers & Products',
-    onboardTitle:'Do you have a business in Santa Fe Tijuana?',onboardSub:'Register it for free and reach the whole community. Takes just 2 minutes.',onboardCta:'Register free',
-    dirTitle:'Business Directory',dirDesc:'Newest first · Updated today',reqTitle:'Service Requests',reqDesc:'People looking for services · Expires after 60 days',
-    offTitle:'Offers & Products',offDesc:'Services and products from the community',
-    btnAddBiz:'Add Business',btnPostReq:'Post Request',btnPostOff:'Post Offer',btnRegister:'Register Business',fabLabel:'Register your Business',
-    all:'All',loading:'Loading…',modalBizTitle:'Register Your Business',fBizName:'Business Name',fOwner:'Owner Name',fCategory:'Category',fServiceType:'Service Type',
-    fDesc:'Description',fPhone:'Phone',fEmail:'Email',fAddress:'Address',fWebsite:'Website / Social',fPhoto:'Business Photo / Logo',
-    uploadHint:'Click to upload · JPG/PNG · max 5 MB',bannerTitle:'Get Featured in the Banner!',
-    bannerDesc:'Promote your business at the top of every page for <strong>30 days</strong> — $29.99 USD via PayPal.',
-    bannerCheck:'Yes! Feature my business — <strong>$29.99 USD</strong> / 30 days',
-    bannerNote:"After registration you'll be redirected to PayPal. Banner goes live after admin approval (within 24 hours).",
-    btnSubmitBiz:'Register Business',modalReqTitle:'Post a Service Request',reqHint:'Tell the community what you need. Listing expires in 60 days.',
-    fReqTitle:'Request Title',fBudgetMin:'Budget Min (MXN)',fBudgetMax:'Budget Max (MXN)',fYourName:'Your Name',fEmailOpt:'Email (optional)',btnPostReqSubmit:'Post Request',
-    modalOffTitle:'Post an Offer',offHint:'Offer your services or products to the community. Expires in 60 days.',
-    fOffTitle:'Offer Title',fPrice:'Price (MXN)',fBizYourName:'Business / Your Name',fPhotoOpt:'Photo (optional)',btnPostOffSubmit:'Post Offer',
-    modalArchTitle:'Archived Posts',archHint:'Search expired posts. Archived items are kept for 60 additional days.',
-    btnSearch:'Search',archEmpty:'Enter a search term',archEmptySub:'Search through archived posts',
-    noBizFound:'No businesses found',noBizFoundSub:'Try a different search or category — or be the first to register!',
-    noReq:'No requests found',noReqSub:'Be the first to post what you need!',noOff:'No offers yet',noOffSub:'Post your first offer!',
-    noArch:'No archived results',noArchSub:'Nothing found for',budget:'Budget',price:'Price',negotiable:'Negotiable',priceOnRequest:'Price on request',
-    dLeft:'d left',share:'Share',linkCopied:'Link copied!',errRequired:'Please fill in all required fields.',errNetwork:'Network error — check your connection.',
-    submitting:'Registering…',submitBizOk:'Business registered! It will appear in the directory shortly.',
-    submitBizBannerOk:'Business registered! Click below to complete your PayPal payment.',submitFail:'Registration failed. Please try again.',
-    posting:'Posting…',submitReqOk:'Request posted! Visible for 60 days.',submitOffOk:'Offer posted! Visible for 60 days.',postFail:'Failed to post. Please try again.',
-    justNow:'Just now',ago:'ago',archived:'Archived',footerLine1:'Community Directory · All rights reserved',
-    footerLine2:'Listings expire after 60 days · Archived items kept 60 additional days',footerLine3:'Designed by YATELASA',
-    catOptSel:'Select category…',REQUEST:'REQUEST',OFFER:'OFFER',ARCHIVED_LABEL:'ARCHIVED',
-    dtPhone:'Phone',dtEmail:'Email',dtAddress:'Address',dtWebsite:'Website',dtBudget:'Budget',dtPrice:'Price',dtExpires:'Expires',dtCategory:'Category',dtPosted:'Posted',dtContact:'Contact',
-    btnCall:'Call',btnWA:'WhatsApp',btnWeb:'Website',btnShareDet:'Share',dtYourBiz:'Your Business Here',dtYourBizCat:'$29.99/mo · Click to feature',
-    errLoadBiz:'Could not load businesses. Check your GAS deployment.',retryBtn:'Try again',
-  },
-  es:{
-    portalSub:'Directorio Comunitario',heroBadge:'SANTA FE TIJUANA · DIRECTORIO OFICIAL',heroLine1:'En Santa Fe',heroLine2:'Lo Tenemos Todo',
-    heroTagline:'Conecta · Publica · Cotiza · Crece',heroSub:'Tu plataforma confiable para anunciar negocios, ofrecer servicios, publicar y solicitar cotizaciones en la comunidad Santa Fe Tijuana.',
-    statBiz:'Negocios',statReq:'Solicitudes',statOff:'Ofertas Activas',ctaRegister:'Registra tu Negocio',ctaDir:'Ver Directorio',
-    scrollLabel:'VER DIRECTORIO',howLabel:'Cómo funciona',howTitle:'Simple, rápido y gratuito',howSub:'Tres pasos para conectar con toda la comunidad de Santa Fe Tijuana.',
-    step1Title:'Registra tu Negocio',step1Desc:'Crea tu ficha gratuita en menos de 2 minutos. Sube fotos, agrega tu teléfono y descripción de servicios.',step1Cta:'Registrar ahora',
-    step2Title:'Publica o Solicita',step2Desc:'¿Necesitas un servicio? Publica tu solicitud. ¿Tienes algo que ofrecer? Crea tu anuncio gratis con fotos y precio.',step2Cta:'Publicar solicitud',
-    step3Title:'Conecta y Crece',step3Desc:'Comparte tu ficha por WhatsApp, recibe llamadas directas y hazte visible en toda la comunidad 24/7.',step3Cta:'Explorar directorio',
-    catsLabel:'Categorías',catsTitle:'Encuentra lo que buscas',catsViewAll:'Ver todo',photosLabel:'La comunidad',photosTitle:'Santa Fe Tijuana en acción',
-    photo1:'Negocios Locales',photo2:'Servicios a Domicilio',photo3:'Gastronomía Local',photo4:'Belleza y Cuidado',photo5:'Servicios del Hogar',
-    trustLabel:'Testimonios',trustTitle:'Lo que dice la comunidad',quote1:'"Registré mi negocio de tamales en 5 minutos y esa misma semana tuve 3 pedidos nuevos. El directorio sí funciona."',trustBiz1:'Tamales La Esperanza',
-    quote2:'"Publiqué una solicitud para reparar mi baño y al día siguiente ya tenía 4 personas contactándome. Super rápido y fácil."',trustBiz2:'Residente Santa Fe',
-    quote3:'"El banner destacado valió cada centavo. Mi salón de belleza ahora tiene visibilidad permanente en toda la comunidad."',trustBiz3:'Studio Belleza AR',
-    ctaBannerTitle:'¿Listo para crecer?',ctaBannerSub:'Únete a cientos de negocios que ya forman parte del directorio más completo de Santa Fe Tijuana.',
-    featuredBiz:'Negocios Destacados',tabDir:'Directorio',tabReq:'Solicitudes',tabOff:'Ofertas y Productos',
-    onboardTitle:'¿Tienes un negocio en Santa Fe Tijuana?',onboardSub:'Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.',onboardCta:'Registrar gratis',
-    dirTitle:'Directorio de Negocios',dirDesc:'Los más recientes primero · Actualizado hoy',reqTitle:'Solicitudes de Servicio',reqDesc:'Personas buscando servicios · Expira en 60 días',
-    offTitle:'Ofertas y Productos',offDesc:'Servicios y productos de la comunidad',
-    btnAddBiz:'Agregar Negocio',btnPostReq:'Publicar Solicitud',btnPostOff:'Publicar Oferta',btnRegister:'Registrar Negocio',fabLabel:'Registra tu Negocio',
-    all:'Todos',loading:'Cargando…',modalBizTitle:'Registra Tu Negocio',fBizName:'Nombre del Negocio',fOwner:'Nombre del Dueño',fCategory:'Categoría',fServiceType:'Tipo de Servicio',
-    fDesc:'Descripción',fPhone:'Teléfono',fEmail:'Correo',fAddress:'Dirección',fWebsite:'Sitio Web / Redes',fPhoto:'Foto del Negocio / Logo',
-    uploadHint:'Haz clic para subir · JPG/PNG · máx 5 MB',bannerTitle:'¡Destaca tu Negocio en el Banner!',
-    bannerDesc:'Promociona tu negocio en la parte superior de cada página por <strong>30 días</strong> — $29.99 USD vía PayPal.',
-    bannerCheck:'¡Sí! Destacar mi negocio — <strong>$29.99 USD</strong> / 30 días',
-    bannerNote:'Al registrarte serás redirigido a PayPal. Tu banner se activa tras la aprobación del administrador (normalmente en 24 horas).',
-    btnSubmitBiz:'Registrar Negocio',modalReqTitle:'Publicar Solicitud de Servicio',reqHint:'Dile a la comunidad qué necesitas. La publicación expira en 60 días.',
-    fReqTitle:'Título de la Solicitud',fBudgetMin:'Presupuesto Mín (MXN)',fBudgetMax:'Presupuesto Máx (MXN)',fYourName:'Tu Nombre',fEmailOpt:'Correo (opcional)',btnPostReqSubmit:'Publicar Solicitud',
-    modalOffTitle:'Publicar Oferta o Producto',offHint:'Ofrece tus servicios o productos a la comunidad. Expira en 60 días.',
-    fOffTitle:'Título de la Oferta',fPrice:'Precio (MXN)',fBizYourName:'Negocio / Tu Nombre',fPhotoOpt:'Foto (opcional)',btnPostOffSubmit:'Publicar Oferta',
-    modalArchTitle:'Publicaciones Archivadas',archHint:'Busca publicaciones expiradas. Los archivados se conservan 60 días adicionales.',
-    btnSearch:'Buscar',archEmpty:'Ingresa un término',archEmptySub:'Busca entre publicaciones archivadas',
-    noBizFound:'No se encontraron negocios',noBizFoundSub:'Intenta otra búsqueda o categoría — ¡o sé el primero en registrarse!',
-    noReq:'No se encontraron solicitudes',noReqSub:'¡Sé el primero en publicar!',noOff:'Aún no hay ofertas',noOffSub:'¡Publica tu primera oferta!',
-    noArch:'Sin resultados archivados',noArchSub:'Nada encontrado para',budget:'Presupuesto',price:'Precio',negotiable:'Negociable',priceOnRequest:'Precio a convenir',
-    dLeft:'d restantes',share:'Compartir',linkCopied:'¡Enlace copiado!',errRequired:'Por favor completa todos los campos requeridos.',errNetwork:'Error de red — verifica tu conexión.',
-    submitting:'Registrando…',submitBizOk:'¡Negocio registrado! Aparecerá en el directorio en breve.',
-    submitBizBannerOk:'¡Negocio registrado! Haz clic abajo para completar tu pago en PayPal.',submitFail:'Error al registrar. Por favor intenta de nuevo.',
-    posting:'Publicando…',submitReqOk:'¡Solicitud publicada! Será visible por 60 días.',submitOffOk:'¡Oferta publicada! Será visible por 60 días.',postFail:'Error al publicar. Intenta de nuevo.',
-    justNow:'Ahora mismo',ago:'',archived:'Archivado',footerLine1:'Directorio Comunitario · Todos los derechos reservados',
-    footerLine2:'Las publicaciones expiran en 60 días · Los archivados se conservan 60 días adicionales',footerLine3:'Diseñado por YATELASA',
-    catOptSel:'Selecciona categoría…',REQUEST:'SOLICITUD',OFFER:'OFERTA',ARCHIVED_LABEL:'ARCHIVADO',
-    dtPhone:'Teléfono',dtEmail:'Correo',dtAddress:'Dirección',dtWebsite:'Sitio Web',dtBudget:'Presupuesto',dtPrice:'Precio',dtExpires:'Expira',dtCategory:'Categoría',dtPosted:'Publicado',dtContact:'Contacto',
-    btnCall:'Llamar',btnWA:'WhatsApp',btnWeb:'Sitio Web',btnShareDet:'Compartir',dtYourBiz:'Tu Negocio Aquí',dtYourBizCat:'$29.99/mes · Clic para destacar',
-    errLoadBiz:'No se pudieron cargar los negocios. Verifica el despliegue de GAS.',retryBtn:'Reintentar',
-  }
-};
-function T(k){return(STRINGS[LANG]||STRINGS.es)[k]||k;}
-function setLang(lang){
-  LANG=lang;
-  document.getElementById('htmlRoot').lang=lang;
-  document.getElementById('langEN').classList.toggle('active',lang==='en');
-  document.getElementById('langES').classList.toggle('active',lang==='es');
-  document.querySelectorAll('[data-t]').forEach(el=>{const v=T(el.dataset.t);if(v.includes('<'))el.innerHTML=v;else el.textContent=v;});
-  renderBiz();renderReq();renderOff();
-  populateCategorySelects();
-  buildLandingCats();
-}
+/* ── HEADER ── */
+.site-header{background:var(--black2);position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.06)}
+.header-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{width:40px;height:40px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--crimson);display:flex;align-items:center;justify-content:center}
+.logo-icon img{width:100%;height:100%;object-fit:contain}
+.logo-wordmark{font-family:var(--fd);font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.15}
+.logo-wordmark span{color:rgba(255,255,255,0.5)}
+.logo-sub{font-size:8px;color:rgba(255,255,255,0.28);font-weight:500;letter-spacing:1.6px;text-transform:uppercase;margin-top:1px}
+.header-nav{display:flex;align-items:center;flex:1;justify-content:center}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:6px;padding:0 16px;height:64px;font-size:12px;font-weight:700;color:rgba(255,255,255,0.48);font-family:var(--fd);letter-spacing:0.5px;text-transform:uppercase;transition:var(--t);cursor:pointer;background:none;border:none;white-space:nowrap;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--crimson);transform:scaleX(0);transition:var(--t)}
+.nav-link:hover,.nav-link.active{color:#fff}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-chevron{width:11px;height:11px;opacity:0.4;transition:transform var(--t)}
+.nav-item:hover .nav-chevron{transform:rotate(180deg)}
+.mega-menu{display:none;position:absolute;top:64px;left:50%;transform:translateX(-50%);background:var(--black);border:1px solid rgba(255,255,255,0.07);border-top:2px solid var(--crimson);border-radius:0 0 var(--r) var(--r);padding:20px;min-width:460px;box-shadow:var(--shadow-lg);gap:20px;z-index:300}
+.nav-item:hover .mega-menu{display:grid}
+.mega-col{display:flex;flex-direction:column;gap:3px}
+.mega-col-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;font-family:var(--fd)}
+.mega-link{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r-sm);transition:var(--t);cursor:pointer;color:rgba(255,255,255,0.6);font-size:13px;font-weight:500;border:none;background:none;text-align:left;width:100%}
+.mega-link:hover{background:rgba(90,15,15,0.35);color:#fff}
+.mega-link-icon{width:30px;height:30px;border-radius:7px;background:rgba(90,15,15,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t)}
+.mega-link:hover .mega-link-icon{background:var(--crimson)}
+.mega-link-title{font-weight:600;font-size:13px;line-height:1}
+.mega-link-sub{font-size:10px;color:rgba(255,255,255,0.3);margin-top:2px}
+.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lang-pill{display:flex;align-items:center;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.13);border-radius:50px;padding:3px;gap:2px;flex-shrink:0}
+.lang-opt{padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:0.5px;cursor:pointer;transition:var(--t);color:rgba(255,255,255,0.4);border:none;background:transparent;white-space:nowrap;font-family:var(--fd)}
+.lang-opt.active{background:var(--crimson);color:#fff}
 
-/* ════ BRANDING ════ */
-function applyBranding(){
-  if(FAVICON_URL)document.getElementById('faviconTag').href=FAVICON_URL;
-  if(LOGO_URL){const w=document.getElementById('logoIconWrap');w.innerHTML='';const i=document.createElement('img');i.src=LOGO_URL;i.alt=SITE_NAME;i.style.cssText='width:100%;height:100%;object-fit:contain;';w.appendChild(i);}
-}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;transition:var(--t);border:none;white-space:nowrap;line-height:1;font-family:var(--fd);letter-spacing:0.3px}
+.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none!important}
+.btn-crimson{background:var(--crimson);color:#fff}
+.btn-crimson:hover:not(:disabled){background:var(--crimson2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(90,15,15,0.4)}
+.btn-outline{background:transparent;color:rgba(255,255,255,0.75);border:1.5px solid rgba(255,255,255,0.2)}
+.btn-outline:hover{background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.4)}
+.btn-dark{background:var(--black);color:#fff}
+.btn-dark:hover:not(:disabled){background:#2a2a2a;transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-light{background:var(--light);color:var(--black)}
+.btn-light:hover:not(:disabled){background:#fff;box-shadow:var(--shadow-sm)}
+.btn-ghost-dark{background:transparent;color:rgba(255,255,255,0.6);border:1.5px solid rgba(255,255,255,0.15)}
+.btn-ghost-dark:hover{background:rgba(255,255,255,0.06);color:#fff}
+.btn-sm{padding:7px 14px;font-size:11px}
+.btn-lg{padding:14px 28px;font-size:14px}
+.btn-xl{padding:16px 36px;font-size:15px}
 
-/* ════ PAGE ROUTER ════ */
-function showPage(page){
-  document.getElementById('page-landing').style.display=page==='landing'?'block':'none';
-  document.getElementById('page-app').style.display=page==='app'?'block':'none';
-  document.getElementById('fabBtn').style.display=page==='app'?'flex':'none';
-  if(page==='app'&&!dataLoaded){startLoad();}
-}
-function gotoSection(name){
-  showPage('app');
-  showSection(name);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+/* ── FAB ── */
+.fab{position:fixed;bottom:28px;right:28px;z-index:150;background:var(--crimson);color:#fff;border:none;border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:9px;font-family:var(--fd);font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(90,15,15,0.5);transition:var(--t);letter-spacing:0.3px}
+.fab:hover{background:var(--crimson2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(90,15,15,0.55)}
+.fab-label{white-space:nowrap}
 
-/* ════ STATE ════ */
-let allBiz=[],allReq=[],allOff=[],categories=[];
-let bizFilter={cat:'all',q:''},reqFilter={cat:'all',q:''},offFilter={cat:'all',q:''};
-let bizPage=1;
-let dataLoaded=false;
+/* ════════════════════════════════════════════
+   LANDING PAGE
+════════════════════════════════════════════ */
+#page-landing{display:block}
+#page-app{display:none}
 
-/* ════ BOOT ════ */
-window.addEventListener('load',async()=>{
-  applyBranding();
-  setLang('es');
-  if(sessionStorage.getItem('onboardDismissed')){const ob=document.getElementById('onboardingBanner');if(ob)ob.style.display='none';}
-  const params=new URLSearchParams(window.location.search);
-  const hasDL=params.get('business')||params.get('request')||params.get('offer');
-  if(hasDL){showPage('app');await startLoad();handleDeepLink();}
-  else{showPage('landing');startLoad();}/* load in background */
-});
+/* ── HERO ── */
+.lp-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;background:var(--black2)}
+.lp-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+.lp-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,5,5,0.88) 0%,rgba(20,5,5,0.72) 50%,rgba(30,10,10,0.80) 100%)}
+.lp-hero-inner{position:relative;z-index:2;flex:1;display:flex;align-items:center;max-width:1400px;margin:0 auto;padding:100px 60px 80px;width:100%}
+.lp-hero-content{max-width:680px}
+.lp-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(90,15,15,0.4);border:1px solid rgba(90,15,15,0.6);border-radius:4px;padding:6px 14px;font-size:10px;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:2px;text-transform:uppercase;font-family:var(--fd);margin-bottom:24px}
+.lp-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--crimson2);flex-shrink:0}
+.lp-headline{font-family:var(--fd);font-size:clamp(36px,5vw,72px);font-weight:900;color:#fff;line-height:1.03;letter-spacing:-2px;margin-bottom:8px}
+.lp-headline .accent{color:var(--crimson2)}
+.lp-tagline{font-family:var(--fd);font-size:clamp(18px,2.5vw,28px);font-weight:600;color:rgba(255,255,255,0.55);letter-spacing:-0.5px;margin-bottom:20px}
+.lp-body{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:520px;margin-bottom:36px;font-weight:300}
+.lp-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.lp-stats{display:flex;gap:40px;flex-wrap:wrap;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08)}
+.lp-stat-num{font-family:var(--fd);font-size:32px;font-weight:800;color:#fff;line-height:1}
+.lp-stat-label{font-size:11px;color:rgba(255,255,255,0.32);text-transform:uppercase;letter-spacing:1.2px;margin-top:4px;font-family:var(--fd)}
+.lp-hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;opacity:0.45;transition:opacity var(--t)}
+.lp-hero-scroll:hover{opacity:0.8}
+.lp-hero-scroll span{font-size:9px;color:#fff;letter-spacing:2px;text-transform:uppercase;font-family:var(--fd)}
+.lp-scroll-line{width:1px;height:32px;background:rgba(255,255,255,0.4);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1)}}
 
-async function startLoad(){
-  if(dataLoaded)return;
-  dataLoaded=true;
-  await Promise.all([loadCats(),loadBiz(),loadBanners(),loadReq(),loadOff()]);
-}
+/* ── HOW IT WORKS ── */
+.lp-section{padding:96px 24px}
+.lp-section-inner{max-width:1200px;margin:0 auto}
+.lp-section-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);font-family:var(--fd);margin-bottom:12px}
+.lp-section-title{font-family:var(--fd);font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--black);letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
+.lp-section-sub{font-size:16px;color:var(--mid);line-height:1.7;max-width:520px;font-weight:300;margin-bottom:56px}
+.lp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-radius:var(--r);overflow:hidden}
+.lp-step{background:var(--card);padding:40px 32px;position:relative}
+.lp-step-num{font-family:var(--fd);font-size:64px;font-weight:900;color:var(--light);line-height:1;margin-bottom:16px;letter-spacing:-3px}
+.lp-step-icon{width:48px;height:48px;border-radius:12px;background:var(--crimson-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:1px solid rgba(90,15,15,0.12)}
+.lp-step-title{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--black);margin-bottom:8px;letter-spacing:-0.3px}
+.lp-step-desc{font-size:13px;color:var(--mid);line-height:1.65}
+.lp-step-cta{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-size:12px;font-weight:700;color:var(--crimson);font-family:var(--fd);letter-spacing:0.3px;cursor:pointer;border:none;background:none;padding:0}
+.lp-step-cta:hover{color:var(--crimson2)}
 
-function dismissOnboarding(){
-  sessionStorage.setItem('onboardDismissed','1');
-  const ob=document.getElementById('onboardingBanner');
-  if(ob){ob.style.opacity='0';ob.style.transition='opacity 0.3s';setTimeout(()=>ob.style.display='none',300);}
-}
+/* ── CATEGORIES GRID ── */
+.lp-cats-dark{background:var(--black);padding:80px 24px}
+.lp-cats-inner{max-width:1200px;margin:0 auto}
+.lp-cats-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;gap:20px;flex-wrap:wrap}
+.lp-cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.lp-cat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r);padding:24px 20px;cursor:pointer;transition:var(--t);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.lp-cat-card:hover{background:rgba(90,15,15,0.25);border-color:rgba(90,15,15,0.5);transform:translateY(-2px)}
+.lp-cat-icon{width:40px;height:40px;border-radius:9px;background:rgba(90,15,15,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lp-cat-name{font-family:var(--fd);font-size:13px;font-weight:700;color:#fff;line-height:1.2}
+.lp-cat-count{font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px}
 
-function handleDeepLink(){
-  const params=new URLSearchParams(window.location.search);
-  const biz=params.get('business'),req=params.get('request'),off=params.get('offer');
-  if(biz){const item=allBiz.find(b=>b.slug===biz||b.id===biz);if(item)openDetail('biz',item);}
-  else if(req){const item=allReq.find(r=>r.slug===req||r.id===req);if(item){showSection('requests');openDetail('req',item);}}
-  else if(off){const item=allOff.find(o=>o.slug===off||o.id===off);if(item){showSection('offers');openDetail('off',item);}}
-}
+/* ── PHOTO GRID ── */
+.lp-photos{padding:80px 24px;background:var(--surface)}
+.lp-photos-inner{max-width:1200px;margin:0 auto}
+.lp-photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:220px 220px;gap:12px;margin-top:40px}
+.lp-photo-item{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer}
+.lp-photo-item:first-child{grid-row:1/3;grid-column:1/2}
+.lp-photo-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.lp-photo-item:hover img{transform:scale(1.04)}
+.lp-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,5,5,0.7) 0%,transparent 50%);display:flex;align-items:flex-end;padding:20px}
+.lp-photo-label{font-family:var(--fd);font-size:14px;font-weight:700;color:#fff}
 
-/* ════ CATEGORIES ════ */
-const CAT_ICONS={
-  'Food & Beverages':'ic-food','Beauty & Personal Care':'ic-scissors','Home Services':'ic-wrench','Auto Services':'ic-car',
-  'Health & Wellness':'ic-heart','Education & Tutoring':'ic-book','Technology & IT':'ic-monitor','Professional Services':'ic-briefcase',
-  'Arts & Crafts':'ic-star','Fashion & Clothing':'ic-tag','Entertainment':'ic-star','Retail & Shopping':'ic-tag',
-  'Construction & Repairs':'ic-wrench','Transportation':'ic-car','Pet Services':'ic-heart','Other':'ic-building'
-};
-function catIcon(cat){return CAT_ICONS[cat]||'ic-building';}
+/* ── TESTIMONIALS / TRUST ── */
+.lp-trust{background:var(--black);padding:80px 24px}
+.lp-trust-inner{max-width:1200px;margin:0 auto}
+.lp-trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.lp-trust-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r);padding:28px}
+.lp-trust-stars{display:flex;gap:3px;margin-bottom:14px}
+.lp-trust-quote{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:20px;font-style:italic}
+.lp-trust-author{display:flex;align-items:center;gap:12px}
+.lp-trust-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--crimson);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.lp-trust-avatar img{width:100%;height:100%;object-fit:cover}
+.lp-trust-name{font-family:var(--fd);font-size:13px;font-weight:700;color:#fff}
+.lp-trust-biz{font-size:11px;color:rgba(255,255,255,0.3)}
 
-async function loadCats(){
-  const r=await api('getCategories');
-  if(r.success&&r.data&&r.data.length){
-    categories=r.data;
-    populateCategorySelects();
-    buildChips('biz');buildChips('req');buildChips('off');
-    buildLandingCats();
-  }
-}
-function populateCategorySelects(){
-  ['biz_category','req_category','off_category'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    const prev=el.value;
-    el.innerHTML='<option value="">'+T('catOptSel')+'</option>';
-    categories.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;el.appendChild(o);});
-    if(prev)el.value=prev;
-  });
-}
-function buildChips(prefix){
-  const c=document.getElementById(prefix+'Chips');if(!c)return;
-  c.innerHTML='<span class="chip active" data-cat="all" onclick="setCat(this,\''+prefix+'\')"><span data-t="all">'+T('all')+'</span></span>';
-  categories.forEach(cat=>{
-    const chip=document.createElement('span');chip.className='chip';chip.dataset.cat=cat;chip.textContent=cat;
-    chip.onclick=()=>setCat(chip,prefix);c.appendChild(chip);
-  });
-}
-function buildLandingCats(){
-  const grid=document.getElementById('lpCatGrid');if(!grid)return;
-  const cats=categories.length?categories:['Food & Beverages','Beauty & Personal Care','Home Services','Auto Services','Health & Wellness','Education & Tutoring','Technology & IT','Professional Services'];
-  grid.innerHTML=cats.slice(0,8).map(cat=>`
-    <div class="lp-cat-card" onclick="gotoSectionFiltered('directory','${esc(cat)}')">
-      <div class="lp-cat-icon"><svg width="18" height="18" color="var(--crimson)"><use href="#${catIcon(cat)}"/></svg></div>
-      <div class="lp-cat-name">${esc(cat)}</div>
-      <div class="lp-cat-count">&rarr;</div>
-    </div>`).join('');
-}
-function gotoSectionFiltered(section,cat){
-  gotoSection(section);
-  setTimeout(()=>{
-    const chips=document.getElementById('bizChips');
-    if(chips){const chip=[...chips.querySelectorAll('.chip')].find(c=>c.dataset.cat===cat);if(chip)setCat(chip,'biz');}
-  },100);
-}
+/* ── CTA BANNER ── */
+.lp-cta-banner{background:linear-gradient(135deg,var(--crimson3),var(--crimson));padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.lp-cta-banner::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:48px 48px}
+.lp-cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.lp-cta-title{font-family:var(--fd);font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:12px}
+.lp-cta-sub{font-size:16px;color:rgba(255,255,255,0.55);margin-bottom:32px;font-weight:300}
+.lp-cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* ════ BUSINESSES ════ */
-async function loadBiz(){
-  document.getElementById('bizList').innerHTML='<div class="loading"><div class="spinner"></div><span>'+T('loading')+'</span></div>';
-  const r=await api('getBusinesses',{});
-  if(!r.success){
-    showBizError();return;
-  }
-  allBiz=r.data||[];
-  updateStat('cnt-directory',allBiz.length);updateStat('statBusinesses',allBiz.length);
-  updateStat('heroStatBiz',allBiz.length);
-  bizPage=1;
-  renderBiz();
-}
-function showBizError(){
-  document.getElementById('bizList').innerHTML=`
-    <div class="error-state">
-      <div class="error-state-icon"><svg width="22" height="22" color="var(--crimson)"><use href="#ic-alert"/></svg></div>
-      <h3>${T('errLoadBiz')}</h3>
-      <p style="margin-bottom:0">GAS URL: ${GAS_URL.slice(0,60)}…</p>
-      <button class="btn btn-dark btn-sm" style="margin-top:12px" onclick="dataLoaded=false;loadBiz()">
-        <svg width="13" height="13"><use href="#ic-refresh"/></svg> ${T('retryBtn')}
-      </button>
-    </div>`;
-}
-function updateStat(id,val){const el=document.getElementById(id);if(el)el.textContent=val;}
+/* ════════════════════════════════════════════
+   APP PAGE
+════════════════════════════════════════════ */
+.banner-section{background:var(--black)}
+.banner-header{max-width:1400px;margin:0 auto;padding:10px 24px 6px;display:flex;align-items:center;gap:10px}
+.banner-header-label{font-family:var(--fd);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+.banner-sep{flex:1;height:1px;background:rgba(255,255,255,0.05)}
+.banner-track-wrap{overflow:hidden;padding:10px 0 12px}
+.banner-track{display:flex;gap:10px;animation:scrollBanner 40s linear infinite;width:max-content}
+.banner-track:hover{animation-play-state:paused}
+@keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.banner-card{flex-shrink:0;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:9px 14px;cursor:pointer;transition:var(--t);min-width:190px;text-decoration:none}
+.banner-card:hover{background:rgba(90,15,15,0.2);border-color:rgba(90,15,15,0.4)}
+.banner-card.dummy{border-style:dashed;border-color:rgba(255,255,255,0.08);opacity:0.6}
+.banner-card.dummy:hover{opacity:1;border-style:solid;border-color:rgba(90,15,15,0.4)}
+.banner-card-img{width:34px;height:34px;border-radius:7px;background:rgba(90,15,15,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.banner-card-img img{width:100%;height:100%;object-fit:cover;border-radius:7px}
+.banner-card-name{font-size:11px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--fd)}
+.banner-card-cat{font-size:9px;color:rgba(255,255,255,0.3);margin-top:1px}
+.banner-star{color:var(--crimson2);flex-shrink:0}
 
-function renderBiz(){
-  /* FIX: normalize category comparison */
-  const cat=bizFilter.cat;
-  const q=bizFilter.q.trim().toLowerCase();
-  const filtered=allBiz.filter(b=>{
-    const catOk=(cat==='all'||String(b.category||'').trim()===cat);
-    const qOk=!q||(String(b.businessName||'')+' '+String(b.serviceType||'')+' '+String(b.category||'')).toLowerCase().includes(q);
-    return catOk&&qOk;
-  });
-  const total=filtered.length;
-  const pages=Math.max(1,Math.ceil(total/PAGE_SIZE));
-  if(bizPage>pages)bizPage=pages;
-  if(bizPage<1)bizPage=1;
-  const slice=filtered.slice((bizPage-1)*PAGE_SIZE,bizPage*PAGE_SIZE);
-  const el=document.getElementById('bizList');
-  if(!slice.length){el.innerHTML=emptyHtml('ic-store',T('noBizFound'),T('noBizFoundSub'));document.getElementById('bizPages').innerHTML='';return;}
-  el.innerHTML=slice.map(b=>bizCardHtml(b)).join('');
-  renderPages(total,bizPage,'biz');
-}
-function bizCardHtml(b){
-  const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
-  const isFeat=b.isBannerSubscriber===true||String(b.isBannerSubscriber).toUpperCase()==='TRUE';
-  const idx=allBiz.indexOf(b);
-  const avatarInner=b.imageUrl
-    ?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">`
-    :`<svg width="20" height="20" color="var(--mid)"><use href="#${catIcon(b.category)}"/></svg>`;
-  return `<div class="biz-card${isFeat?' featured':''}" onclick="openDetail('biz',allBiz[${idx}])">
-    <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;Destacado</div>
-    <div class="biz-avatar">${avatarInner}</div>
-    <div class="biz-info">
-      <div class="biz-name">${esc(b.businessName)}</div>
-      <div class="biz-type">${esc(b.serviceType||b.category)}</div>
-      <div class="biz-tags">
-        <span class="tag tag-cat">${esc(b.category)}</span>
-        ${isNew?`<span class="tag tag-new">${T('tagNew')||'NUEVO'}</span>`:''}
-      </div>
-    </div>
-    <div class="biz-right">
-      ${b.phone?`<a class="biz-phone" href="tel:${esc(b.phone)}" onclick="event.stopPropagation()">${esc(b.phone)}</a>`:''}
-      <div class="biz-time">${timeAgo(b.registeredDate)}</div>
-      <div class="biz-actions">
-        <button class="icon-btn" title="${T('share')}" onclick="event.stopPropagation();shareItem('business','${esc(b.slug||b.id)}','${esc(b.businessName)}')">
-          <svg width="12" height="12"><use href="#ic-share"/></svg>
-        </button>
-        ${b.phone?`<a class="icon-btn" href="https://wa.me/${(b.phone||'').replace(/\D/g,'')}" target="_blank" onclick="event.stopPropagation()" style="text-decoration:none"><svg width="12" height="12"><use href="#ic-whatsapp"/></svg></a>`:''}
-      </div>
-    </div>
-  </div>`;
-}
+.section-nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:100}
+.section-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+.section-nav-inner::-webkit-scrollbar{display:none}
+.sec-tab{display:flex;align-items:center;gap:8px;padding:0 20px;height:52px;color:var(--mid);font-size:12px;font-weight:700;font-family:var(--fd);letter-spacing:0.3px;cursor:pointer;transition:var(--t);border:none;border-bottom:2px solid transparent;background:none;white-space:nowrap;text-transform:uppercase}
+.sec-tab:hover{color:var(--black)}
+.sec-tab.active{color:var(--crimson);border-bottom-color:var(--crimson)}
+.sec-tab-count{background:var(--light);color:var(--mid);padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;font-family:var(--fd);min-width:22px;text-align:center}
+.sec-tab.active .sec-tab-count{background:rgba(90,15,15,0.1);color:var(--crimson)}
 
-/* ════ BANNER ════ */
-async function loadBanners(){
-  const r=await api('getActiveBannerAds');
-  renderBanner((r.success&&r.data)?r.data:[]);
-}
-function renderBanner(ads){
-  const track=document.getElementById('bannerTrack');if(!track)return;
-  const ICONS=['ic-food','ic-scissors','ic-wrench','ic-car','ic-heart','ic-book','ic-monitor','ic-briefcase'];
-  const real=ads.map(ad=>{
-    const biz=ad.business||{};
-    const imgSrc=ad.imageUrl||biz.imageUrl||'';
-    const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14" color="rgba(255,255,255,0.5)"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
-    return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
-  });
-  const dc=ads.length===0?ICONS.length:2;
-  const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14" color="rgba(255,255,255,0.35)"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></div>`);
-  const all=[...real,...dummy];
-  track.innerHTML=all.join('')+all.join('');
-}
+.main-content{max-width:1400px;margin:0 auto;padding:32px 24px 64px}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.section-title{font-family:var(--fd);font-size:22px;font-weight:800;letter-spacing:-0.5px;color:var(--black);line-height:1}
+.section-title .dot{color:var(--crimson)}
+.section-desc{font-size:12px;color:var(--mid);margin-top:4px;font-weight:400}
 
-/* ════ REQUESTS ════ */
-async function loadReq(){
-  const r=await api('getRequests',{});
-  allReq=r.success?(r.data||[]):[];
-  updateStat('cnt-requests',allReq.length);updateStat('statRequests',allReq.length);updateStat('heroStatReq',allReq.length);
-  renderReq();
-}
-function renderReq(){
-  const cat=reqFilter.cat,q=reqFilter.q.trim().toLowerCase();
-  const filtered=allReq.filter(r=>(cat==='all'||String(r.category||'').trim()===cat)&&(!q||(String(r.title||'')+' '+String(r.description||'')).toLowerCase().includes(q)));
-  const el=document.getElementById('reqList');
-  if(!filtered.length){el.innerHTML=emptyHtml('ic-clipboard',T('noReq'),T('noReqSub'));return;}
-  el.innerHTML=filtered.map((r,i)=>reqCardHtml(r,i)).join('');
-}
-function reqCardHtml(r,idx){
-  const days=Math.ceil((new Date(r.expiryDate)-Date.now())/86400000);
-  const budget=(r.budgetMin||r.budgetMax)?`$${r.budgetMin||0}${r.budgetMax&&r.budgetMax!=r.budgetMin?' – $'+r.budgetMax:''} MXN`:T('negotiable');
-  return`<div class="market-card req-card" onclick="openDetail('req',allReq[${idx}])">
-    <div class="mc-header"><span class="mc-type req-type"><svg width="9" height="9"><use href="#ic-clipboard"/></svg> ${T('REQUEST')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
-    <div class="mc-title">${esc(r.title)}</div><div class="mc-desc">${esc(r.description)}</div>
-    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(r.category)}</span>
-    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-user"/></svg> ${esc(r.contactName)} · <svg width="10" height="10"><use href="#ic-phone"/></svg> ${esc(r.contactPhone)}</div>
-    <div class="mc-footer"><div><div class="price-label">${T('budget')}</div><div class="price-badge req">${budget}</div></div>
-    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('request','${esc(r.slug||r.id)}','${esc(r.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
-  </div>`;
-}
+.onboarding-banner{background:linear-gradient(135deg,var(--crimson3),var(--crimson));border-radius:var(--r);padding:24px 28px;display:flex;align-items:center;gap:20px;margin-bottom:28px;position:relative;overflow:hidden}
+.onboarding-banner::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;border:40px solid rgba(255,255,255,0.04);pointer-events:none}
+.onboarding-banner-icon{width:50px;height:50px;border-radius:12px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.onboarding-banner-text{flex:1;min-width:0}
+.onboarding-banner-title{font-family:var(--fd);font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.onboarding-banner-sub{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.5}
+.onboarding-close{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.1);border:none;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.5);transition:var(--t)}
+.onboarding-close:hover{background:rgba(255,255,255,0.2);color:#fff}
 
-/* ════ OFFERS ════ */
-async function loadOff(){
-  const r=await api('getOffers',{});
-  allOff=r.success?(r.data||[]):[];
-  updateStat('cnt-offers',allOff.length);updateStat('statOffers',allOff.length);updateStat('heroStatOff',allOff.length);
-  renderOff();
-}
-function renderOff(){
-  const cat=offFilter.cat,q=offFilter.q.trim().toLowerCase();
-  const filtered=allOff.filter(o=>(cat==='all'||String(o.category||'').trim()===cat)&&(!q||(String(o.title||'')+' '+String(o.description||'')).toLowerCase().includes(q)));
-  const el=document.getElementById('offList');
-  if(!filtered.length){el.innerHTML=emptyHtml('ic-tag',T('noOff'),T('noOffSub'));return;}
-  el.innerHTML=filtered.map((o,i)=>offCardHtml(o,i)).join('');
-}
-function offCardHtml(o,idx){
-  const days=Math.ceil((new Date(o.expiryDate)-Date.now())/86400000);
-  const price=o.price?`$${Number(o.price).toLocaleString()} MXN`:T('priceOnRequest');
-  return`<div class="market-card off-card" onclick="openDetail('off',allOff[${idx}])">
-    ${o.imageUrl?`<div class="offer-img"><img src="${esc(o.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`:''}
-    <div class="mc-header"><span class="mc-type off-type"><svg width="9" height="9"><use href="#ic-tag"/></svg> ${T('OFFER')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
-    <div class="mc-title">${esc(o.title)}</div><div class="mc-desc">${esc(o.description)}</div>
-    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(o.category)}</span>
-    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-building"/></svg> ${esc(o.businessName||'—')} · <a href="tel:${esc(o.contactPhone)}" style="color:var(--crimson)" onclick="event.stopPropagation()">${esc(o.contactPhone)}</a></div>
-    <div class="mc-footer"><div><div class="price-label">${T('price')}</div><div class="price-badge off">${price}</div></div>
-    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('offer','${esc(o.slug||o.id)}','${esc(o.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
-  </div>`;
-}
+.filter-bar{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;align-items:center}
+.search-wrap{position:relative;flex:1;min-width:200px;max-width:340px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--mid);display:flex}
+.search-input{width:100%;padding:10px 14px 10px 38px;border:1.5px solid var(--border);border-radius:6px;background:#fff;font-size:13px;outline:none;transition:var(--t);color:var(--black);font-family:var(--fb)}
+.search-input::placeholder{color:var(--mid)}
+.search-input:focus{border-color:var(--crimson);box-shadow:0 0 0 3px rgba(90,15,15,0.07)}
+.filter-chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:6px 14px;border-radius:4px;font-size:11px;font-weight:700;cursor:pointer;transition:var(--t);border:1.5px solid var(--border);background:#fff;color:var(--mid);white-space:nowrap;font-family:var(--fd);letter-spacing:0.3px;user-select:none}
+.chip:hover{border-color:var(--crimson);color:var(--black)}
+.chip.active{background:var(--black);color:#fff;border-color:var(--black)}
 
-/* ════ DETAIL OVERLAY ════ */
-function openDetail(type,item){
-  if(!item)return;
-  const ov=document.getElementById('detailOverlay');
-  const hero=document.getElementById('dtHero');
-  const oldImg=hero.querySelector('img.detail-img');if(oldImg)oldImg.remove();
-  const iconEl=document.getElementById('dtIcon');
-  const imgUrl=item.imageUrl||'';
-  if(imgUrl){
-    const img=document.createElement('img');img.className='detail-img';img.src=imgUrl;img.alt='';
-    img.onerror=()=>{img.remove();iconEl.innerHTML=svgIcon(type==='biz'?catIcon(item.category||''):type==='req'?'ic-clipboard':'ic-tag',28);};
-    hero.insertBefore(img,hero.querySelector('.detail-close-btn'));iconEl.innerHTML='';
-  }else{iconEl.innerHTML=svgIcon(type==='biz'?catIcon(item.category||''):type==='req'?'ic-clipboard':'ic-tag',28);}
-  let badge=hero.querySelector('.detail-type-badge');
-  if(!badge){badge=document.createElement('div');badge.className='detail-type-badge';hero.insertBefore(badge,hero.querySelector('.detail-close-btn'));}
-  badge.className='detail-type-badge '+(type==='biz'?'dtb-biz':type==='req'?'dtb-req':'dtb-off');
-  badge.textContent=type==='biz'?'Negocio':type==='req'?T('REQUEST'):T('OFFER');
-  document.getElementById('dtName').textContent=item.businessName||item.title||'';
-  document.getElementById('dtSub').textContent=type==='biz'?(item.serviceType||item.category||''):(item.category||'');
-  document.getElementById('dtDesc').textContent=item.description||'';
-  const metaItems=[];
-  if(type==='biz'){
-    if(item.phone)metaItems.push([T('dtPhone'),`<a href="tel:${esc(item.phone)}">${esc(item.phone)}</a>`]);
-    if(item.email)metaItems.push([T('dtEmail'),`<a href="mailto:${esc(item.email)}">${esc(item.email)}</a>`]);
-    if(item.address)metaItems.push([T('dtAddress'),esc(item.address)]);
-    if(item.website)metaItems.push([T('dtWebsite'),`<a href="${safeUrl(item.website)}" target="_blank" rel="noopener">${esc(item.website)}</a>`]);
-    if(item.category)metaItems.push([T('dtCategory'),esc(item.category)]);
-    if(item.registeredDate)metaItems.push([T('dtPosted'),new Date(item.registeredDate).toLocaleDateString()]);
-  }else if(type==='req'){
-    const budget=(item.budgetMin||item.budgetMax)?`$${item.budgetMin||0}${item.budgetMax&&item.budgetMax!=item.budgetMin?' – $'+item.budgetMax:''} MXN`:T('negotiable');
-    metaItems.push([T('dtBudget'),budget]);
-    if(item.category)metaItems.push([T('dtCategory'),esc(item.category)]);
-    metaItems.push([T('dtContact'),esc(item.contactName)]);
-    if(item.contactPhone)metaItems.push([T('dtPhone'),`<a href="tel:${esc(item.contactPhone)}">${esc(item.contactPhone)}</a>`]);
-    if(item.expiryDate)metaItems.push([T('dtExpires'),new Date(item.expiryDate).toLocaleDateString()]);
-  }else{
-    const price=item.price?`$${Number(item.price).toLocaleString()} MXN`:T('priceOnRequest');
-    metaItems.push([T('dtPrice'),price]);
-    if(item.category)metaItems.push([T('dtCategory'),esc(item.category)]);
-    if(item.businessName)metaItems.push(['Negocio',esc(item.businessName)]);
-    if(item.contactPhone)metaItems.push([T('dtPhone'),`<a href="tel:${esc(item.contactPhone)}">${esc(item.contactPhone)}</a>`]);
-    if(item.expiryDate)metaItems.push([T('dtExpires'),new Date(item.expiryDate).toLocaleDateString()]);
-  }
-  document.getElementById('dtMeta').innerHTML=metaItems.map(([l,v])=>`<div class="detail-meta-item"><div class="dmi-label">${l}</div><div class="dmi-val">${v}</div></div>`).join('');
-  const actions=[];
-  const slug=item.slug||item.id||'',nameStr=item.businessName||item.title||'';
-  const typeKey=type==='biz'?'business':type==='req'?'request':'offer';
-  const phone=item.phone||item.contactPhone||'';
-  if(phone)actions.push(`<a class="btn btn-dark" href="tel:${esc(phone)}">${svgIcon('ic-phone',14)} ${T('btnCall')}</a>`);
-  if(phone)actions.push(`<a class="btn btn-crimson" href="https://wa.me/${phone.replace(/\D/g,'')}" target="_blank" rel="noopener">${svgIcon('ic-whatsapp',14)} ${T('btnWA')}</a>`);
-  if(type==='biz'&&item.website)actions.push(`<a class="btn btn-dark" href="${safeUrl(item.website)}" target="_blank" rel="noopener">${svgIcon('ic-globe',14)} ${T('btnWeb')}</a>`);
-  actions.push(`<button class="btn btn-light" onclick="shareItem('${typeKey}','${esc(slug)}','${esc(nameStr)}')">${svgIcon('ic-share',14)} ${T('btnShareDet')}</button>`);
-  document.getElementById('dtActions').innerHTML=actions.join('');
-  ov.classList.add('open');document.body.style.overflow='hidden';
-}
-function svgIcon(id,size){return`<svg width="${size}" height="${size}"><use href="#${id}"/></svg>`;}
-function closeDetail(){document.getElementById('detailOverlay').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+/* ── BIZ CARDS ── */
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.biz-card{background:var(--card);border-radius:var(--r);border:1.5px solid var(--border);display:flex;align-items:center;gap:14px;padding:16px 18px;transition:var(--t);position:relative;overflow:hidden;cursor:pointer;min-width:0}
+.biz-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crimson);transform:scaleY(0);transform-origin:bottom;transition:var(--t)}
+.biz-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:rgba(90,15,15,0.2)}
+.biz-card:hover::before{transform:scaleY(1)}
+.biz-card.featured{border-color:rgba(90,15,15,0.25)}
+.biz-featured-badge{display:none;position:absolute;top:10px;right:10px;align-items:center;gap:4px;background:var(--crimson);color:#fff;font-size:8px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px;font-family:var(--fd)}
+.biz-card.featured .biz-featured-badge{display:flex}
+.biz-avatar{width:52px;height:52px;border-radius:10px;flex-shrink:0;background:var(--light);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.biz-avatar img{width:100%;height:100%;object-fit:cover}
+.biz-info{flex:1;min-width:0}
+.biz-name{font-family:var(--fd);font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--black)}
+.biz-type{font-size:11px;color:var(--mid);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.biz-tags{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.tag{padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;font-family:var(--fd);letter-spacing:0.3px}
+.tag-cat{background:rgba(30,30,30,0.06);color:rgba(30,30,30,0.45)}
+.tag-new{background:rgba(90,15,15,0.08);color:var(--crimson)}
+.biz-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.biz-phone{font-size:11px;color:var(--crimson);white-space:nowrap;font-family:var(--fd);font-weight:600}
+.biz-time{font-size:9px;color:var(--mid);white-space:nowrap}
+.biz-actions{display:flex;gap:5px}
+.icon-btn{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);border:1.5px solid var(--border);background:transparent;color:var(--mid);text-decoration:none}
+.icon-btn:hover{background:var(--black);color:#fff;border-color:var(--black)}
 
-/* ════ FORM SUBMISSIONS ════
-   FIX: btn passed directly — no event.target.closest() needed */
-async function submitBusiness(btn){
-  const name=gv('biz_name'),owner=gv('biz_owner'),cat=gv('biz_category'),service=gv('biz_service'),desc=gv('biz_desc'),phone=gv('biz_phone'),email=gv('biz_email');
-  if(!name||!owner||!cat||!service||!desc||!phone||!email){showResult('bizResult','error',T('errRequired'));return;}
-  setBtnState(btn,true,T('submitting'));
-  showProgress('biz',30);
-  const img64=await getBase64('biz_img');
-  showProgress('biz',70);
-  const res=await api('registerBusiness',{businessName:name,ownerName:owner,category:cat,serviceType:service,description:desc,phone,email,website:gv('biz_website'),address:gv('biz_address'),imageBase64:img64,wantsBanner:document.getElementById('biz_banner').checked});
-  showProgress('biz',100);
-  setBtnState(btn,false,null);
-  if(res.success){
-    if(res.redirectToBanner&&res.paypalUrl){
-      showResult('bizResult','success',T('submitBizBannerOk'));
-      const pp=document.getElementById('paypalBtn');pp.href=res.paypalUrl;pp.style.display='flex';
-      pp.scrollIntoView({behavior:'smooth',block:'nearest'});
-    }else{
-      showResult('bizResult','success',T('submitBizOk'));
-      setTimeout(()=>{closeModal('modalBusiness');loadBiz();},2800);
-    }
-  }else{showResult('bizResult','error',res.error||T('submitFail'));}
-  setTimeout(()=>hideProgress('biz'),1500);
-}
-async function submitRequest(btn){
-  const title=gv('req_title'),cat=gv('req_category'),desc=gv('req_desc'),name=gv('req_name'),phone=gv('req_phone');
-  if(!title||!cat||!desc||!name||!phone){showResult('reqResult','error',T('errRequired'));return;}
-  setBtnState(btn,true,T('posting'));
-  const res=await api('postRequest',{title,category:cat,description:desc,budgetMin:gv('req_min')||0,budgetMax:gv('req_max')||0,contactName:name,contactPhone:phone,contactEmail:gv('req_email')});
-  setBtnState(btn,false,null);
-  if(res.success){showResult('reqResult','success',T('submitReqOk'));setTimeout(()=>{closeModal('modalRequest');loadReq();showSection('requests');},2800);}
-  else showResult('reqResult','error',res.error||T('postFail'));
-}
-async function submitOffer(btn){
-  const title=gv('off_title'),cat=gv('off_category'),desc=gv('off_desc'),biz=gv('off_biz'),phone=gv('off_phone');
-  if(!title||!cat||!desc||!biz||!phone){showResult('offResult','error',T('errRequired'));return;}
-  setBtnState(btn,true,T('posting'));
-  showProgress('off',30);
-  const img64=await getBase64('off_img');
-  showProgress('off',70);
-  const res=await api('postOffer',{title,category:cat,description:desc,price:gv('off_price')||0,businessName:biz,contactPhone:phone,contactEmail:gv('off_email'),imageBase64:img64});
-  showProgress('off',100);
-  setBtnState(btn,false,null);
-  if(res.success){showResult('offResult','success',T('submitOffOk'));setTimeout(()=>{closeModal('modalOffer');loadOff();showSection('offers');},2800);}
-  else showResult('offResult','error',res.error||T('postFail'));
-  setTimeout(()=>hideProgress('off'),1500);
-}
-async function searchArchive(){
-  const q=gv('arch_query'),type=gv('arch_type');if(!q)return;
-  document.getElementById('archResults').innerHTML='<div class="loading"><div class="spinner"></div><span>'+T('loading')+'</span></div>';
-  const r=await api('searchArchived',{query:q,type});
-  if(!r.success||!r.data?.length){document.getElementById('archResults').innerHTML=emptyHtml('ic-archive',T('noArch'),T('noArchSub')+' "'+esc(q)+'"');return;}
-  document.getElementById('archResults').innerHTML=r.data.map(item=>`
-    <div style="background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:8px;border-left:3px solid var(--mid)">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--mid);font-family:var(--fd);margin-bottom:5px">${T('ARCHIVED_LABEL')}</div>
-      <div style="font-family:var(--fd);font-size:14px;font-weight:700;color:var(--black);margin-bottom:3px">${esc(item.title)}</div>
-      <div style="font-size:12px;color:var(--mid)">${esc(item.description)}</div>
-    </div>`).join('');
-}
+/* ── MARKET CARDS ── */
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.market-card{background:var(--card);border-radius:var(--r);border:1.5px solid var(--border);padding:20px;transition:var(--t);position:relative;overflow:hidden;cursor:pointer}
+.market-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.market-card.req-card{border-top:3px solid var(--black)}
+.market-card.off-card{border-top:3px solid var(--crimson)}
+.mc-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.mc-type{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:4px;font-family:var(--fd);display:flex;align-items:center;gap:5px}
+.req-type{background:rgba(30,30,30,0.07);color:var(--black)}
+.off-type{background:rgba(90,15,15,0.07);color:var(--crimson)}
+.mc-title{font-family:var(--fd);font-size:14px;font-weight:700;line-height:1.35;margin-bottom:6px;color:var(--black)}
+.mc-desc{font-size:12px;color:var(--mid);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap;gap:8px}
+.price-badge{font-family:var(--fd);font-size:16px;font-weight:800}
+.price-badge.req{color:var(--black)}
+.price-badge.off{color:var(--crimson)}
+.price-label{font-size:9px;color:var(--mid);text-transform:uppercase;letter-spacing:0.5px;font-family:var(--fd)}
+.expiry{font-size:10px;color:var(--mid);display:flex;align-items:center;gap:4px}
+.expiry.urgent{color:#B03030}
+.mc-contact{font-size:11px;color:var(--mid);margin-top:8px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.offer-img{width:100%;height:130px;border-radius:8px;overflow:hidden;margin-bottom:12px;background:var(--light);display:flex;align-items:center;justify-content:center}
+.offer-img img{width:100%;height:100%;object-fit:cover}
 
-/* ════ UI HELPERS ════ */
-function setBtnState(btn,disabled,text){
-  if(!btn)return;
-  btn.disabled=disabled;
-  if(text){const span=btn.querySelector('span[data-t]');if(span)span.textContent=text;}
-}
-function showSection(name){
-  ['directory','requests','offers'].forEach(s=>{
-    const sec=document.getElementById('sec-'+s);if(sec)sec.style.display=s===name?'block':'none';
-    const tab=document.getElementById('sectab-'+s);if(tab)tab.classList.toggle('active',s===name);
-    const htab=document.getElementById('tab-'+s);if(htab)htab.classList.toggle('active',s===name);
-  });
-}
-function filterBiz(){bizFilter.q=document.getElementById('bizSearch').value;bizPage=1;renderBiz();}
-function filterReq(){reqFilter.q=document.getElementById('reqSearch').value;renderReq();}
-function filterOff(){offFilter.q=document.getElementById('offSearch').value;renderOff();}
-function setCat(el,prefix){
-  /* FIX: remove active from ALL chips in the container */
-  const container=el.closest('.filter-chips');
-  if(container)container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  const cat=el.dataset.cat||'all';
-  if(prefix==='biz'){bizFilter.cat=cat;bizPage=1;renderBiz();}
-  if(prefix==='req'){reqFilter.cat=cat;renderReq();}
-  if(prefix==='off'){offFilter.cat=cat;renderOff();}
-}
-function renderPages(total,cur,prefix){
-  const pages=Math.ceil(total/PAGE_SIZE);
-  const el=document.getElementById(prefix+'Pages');
-  if(!el||pages<=1){if(el)el.innerHTML='';return;}
-  el.innerHTML=Array.from({length:pages},(_,i)=>`<button class="page-btn${i+1===cur?' active':''}" onclick="${prefix}GoPage(${i+1})">${i+1}</button>`).join('');
-}
-function bizGoPage(p){bizPage=p;renderBiz();document.querySelector('#sec-directory').scrollIntoView({behavior:'smooth',block:'start'});}
-function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
-function closeModal(id){
-  document.getElementById(id).classList.remove('open');document.body.style.overflow='';
-  if(id==='modalBusiness'){
-    const pp=document.getElementById('paypalBtn');if(pp){pp.style.display='none';pp.href='#';}
-    const r=document.getElementById('bizResult');if(r){r.className='submit-result';r.textContent='';}
-    const btn=document.getElementById('btnSubmitBiz');if(btn)setBtnState(btn,false,null);
-  }
-}
-document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id);}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));closeDetail();}});
+/* ── ERROR / RETRY ── */
+.error-state{text-align:center;padding:48px 20px;grid-column:1/-1}
+.error-state-icon{width:52px;height:52px;border-radius:14px;background:rgba(90,15,15,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.error-state h3{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--black);margin-bottom:6px}
+.error-state p{font-size:13px;color:var(--mid);margin-bottom:16px}
 
-function shareItem(type,slug,title){
-  const url=window.location.origin+window.location.pathname+'?'+type+'='+encodeURIComponent(slug);
-  if(navigator.share){navigator.share({title:title+' — '+SITE_NAME,url}).catch(()=>copyUrl(url));}else copyUrl(url);
-}
-function copyUrl(url){if(navigator.clipboard)navigator.clipboard.writeText(url).then(()=>showToast(T('linkCopied'))).catch(()=>fallbackCopy(url));else fallbackCopy(url);}
-function fallbackCopy(url){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);showToast(T('linkCopied'));}
-function showToast(msg){const t=document.getElementById('shareToast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-function showResult(id,type,msg){const el=document.getElementById(id);el.className='submit-result '+type;el.textContent=msg;el.scrollIntoView({behavior:'smooth',block:'nearest'});}
-function showProgress(p,pct){const w=document.getElementById(p+'_progress'),b=document.getElementById(p+'_bar');if(w&&b){w.style.display='block';b.style.width=pct+'%';}}
-function hideProgress(p){const w=document.getElementById(p+'_progress');if(w)w.style.display='none';}
-function toggleBannerNote(){document.getElementById('bannerNote').style.display=document.getElementById('biz_banner').checked?'block':'none';}
-function previewImg(input,prevId,delId){
-  if(!input.files?.length)return;
-  const r=new FileReader();r.onload=e=>{const img=document.getElementById(prevId);img.src=e.target.result;img.style.display='block';const d=document.getElementById(delId);if(d)d.classList.add('show');};r.readAsDataURL(input.files[0]);
-}
-function clearImg(prefix){
-  const i=document.getElementById(prefix+'_img'),p=document.getElementById(prefix+'_prev'),d=document.getElementById(prefix+'_del');
-  if(i)i.value='';if(p){p.src='';p.style.display='none';}if(d)d.classList.remove('show');
-}
-async function getBase64(inputId){
-  const input=document.getElementById(inputId);if(!input?.files?.length)return null;
-  return new Promise(resolve=>{
-    const r=new FileReader();r.onload=e=>{
-      const img=new Image();img.onload=()=>{
-        const MAX=1400;let{width:w,height:h}=img;
-        if(w>MAX||h>MAX){const ratio=MAX/Math.max(w,h);w=Math.round(w*ratio);h=Math.round(h*ratio);}
-        const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);
-        resolve(c.toDataURL('image/jpeg',0.82));
-      };img.src=e.target.result;
-    };r.readAsDataURL(input.files[0]);
-  });
-}
-function gv(id){return(document.getElementById(id)?.value||'').trim();}
-function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function safeUrl(url){if(!url)return'#';const u=url.trim();return/^https?:\/\//i.test(u)?u:'https://'+u;}
-function emptyHtml(iconId,title,msg){return`<div class="empty-state"><div class="empty-state-icon"><svg width="22" height="22" color="var(--mid)"><use href="#${iconId}"/></svg></div><h3>${title}</h3><p>${msg}</p></div>`;}
-function timeAgo(d){if(!d)return'';const m=Math.floor((Date.now()-new Date(d).getTime())/60000);if(m<1)return T('justNow');if(m<60)return m+'m';const h=Math.floor(m/60);if(h<24)return h+'h';const dy=Math.floor(h/24);if(dy<30)return dy+'d';return Math.floor(dy/30)+'mo';}
-</script>
-</body>
-</html>
+/* ── MODALS ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:560px;max-height:calc(100dvh - 32px);overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,0.3);animation:modalIn 0.26s cubic-bezier(0.34,1.56,0.64,1);margin:auto}
+@keyframes modalIn{from{opacity:0;transform:scale(0.93) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;z-index:1;border-radius:16px 16px 0 0}
+.modal-title{font-family:var(--fd);font-size:17px;font-weight:800;display:flex;align-items:center;gap:10px;color:var(--black)}
+.modal-title-icon{width:34px;height:34px;border-radius:8px;background:var(--crimson-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-close{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--t);background:var(--light);border:none;color:var(--mid)}
+.modal-close:hover{background:var(--crimson);color:#fff}
+.modal-body{padding:20px 24px 28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:10px;font-weight:700;color:var(--black);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.7px;font-family:var(--fd)}
+.form-label .req{color:var(--crimson)}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:var(--surface);font-size:13px;outline:none;transition:var(--t);color:var(--black);font-family:var(--fb)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--crimson);background:#fff;box-shadow:0 0 0 3px rgba(90,15,15,0.06)}
+.form-textarea{resize:vertical;min-height:88px}
+.upload-zone{position:relative;border:2px dashed var(--border);border-radius:var(--r-sm);padding:24px;text-align:center;cursor:pointer;transition:var(--t);background:var(--surface)}
+.upload-zone:hover{border-color:var(--crimson);background:rgba(90,15,15,0.02)}
+.upload-icon-wrap{width:44px;height:44px;border-radius:10px;background:var(--light);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.upload-zone p{font-size:11px;color:var(--mid);line-height:1.5}
+.img-preview{width:100%;max-height:140px;object-fit:cover;border-radius:7px;margin-top:10px;display:none}
+.upload-del{display:none;position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--crimson);border:none;color:#fff;font-size:12px;cursor:pointer;align-items:center;justify-content:center;transition:var(--t);z-index:3}
+.upload-del.show{display:flex}
+.upload-del:hover{background:var(--crimson3)}
+.upload-progress{height:3px;background:var(--border);border-radius:3px;margin-top:8px;overflow:hidden;display:none}
+.upload-progress-bar{height:100%;background:var(--crimson);border-radius:3px;transition:width 0.3s ease}
+.banner-upsell{background:linear-gradient(135deg,rgba(90,15,15,0.05),rgba(90,15,15,0.01));border:1.5px solid rgba(90,15,15,0.15);border-radius:var(--r-sm);padding:16px;margin-top:4px}
+.banner-upsell-title{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--crimson);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.banner-upsell p{font-size:11px;color:var(--mid);margin-bottom:12px;line-height:1.55}
+.check-row{display:flex;align-items:center;gap:10px;cursor:pointer}
+.check-row input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--crimson);flex-shrink:0}
+.check-row label{font-size:12px;cursor:pointer;line-height:1.4;font-weight:500}
+.banner-note{display:none;margin-top:10px;font-size:11px;color:var(--mid);padding:9px 12px;background:rgba(90,15,15,0.04);border-radius:6px;line-height:1.55;border-left:3px solid var(--crimson)}
+.submit-result{padding:12px 14px;border-radius:var(--r-sm);font-size:13px;text-align:center;margin-top:14px;display:none;line-height:1.5;font-weight:500;font-family:var(--fd)}
+.submit-result.success{background:rgba(0,120,80,0.07);color:#00663D;border:1px solid rgba(0,120,80,0.18);display:block}
+.submit-result.error{background:rgba(180,0,0,0.07);color:var(--crimson);border:1px solid rgba(180,0,0,0.18);display:block}
+.paypal-btn{display:none;width:100%;justify-content:center;align-items:center;gap:8px;margin-top:12px;padding:13px;background:#003087;color:#fff;font-weight:700;font-size:14px;border-radius:6px;text-decoration:none;font-family:var(--fd);transition:var(--t)}
+.paypal-btn:hover{background:#001F5A}
+
+/* ── DETAIL OVERLAY ── */
+#detailOverlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+#detailOverlay.open{display:flex}
+.detail-card{background:var(--card);border-radius:16px;width:100%;max-width:500px;box-shadow:0 50px 120px rgba(0,0,0,0.4);animation:modalIn 0.28s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden;margin:auto}
+.detail-hero{width:100%;height:180px;background:linear-gradient(135deg,var(--black),var(--crimson3));position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.detail-hero img.detail-img{width:100%;height:100%;object-fit:cover;opacity:0.85}
+.detail-hero-icon{width:64px;height:64px;border-radius:14px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center}
+.detail-type-badge{position:absolute;top:14px;left:14px;padding:4px 11px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-family:var(--fd)}
+.dtb-biz{background:var(--crimson);color:#fff}
+.dtb-req{background:var(--black);color:#fff}
+.dtb-off{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.25)}
+.detail-close-btn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.4);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.detail-close-btn:hover{background:var(--crimson)}
+.detail-body{padding:22px 24px 26px}
+.detail-name{font-family:var(--fd);font-size:20px;font-weight:800;line-height:1.2;margin-bottom:3px;color:var(--black)}
+.detail-sub{font-size:12px;color:var(--mid);margin-bottom:14px}
+.detail-desc{font-size:13px;color:rgba(30,30,30,0.7);line-height:1.75;margin-bottom:18px;white-space:pre-wrap}
+.detail-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.detail-meta-item{background:var(--surface);border-radius:8px;padding:10px 13px;border:1px solid var(--border)}
+.dmi-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--mid);margin-bottom:3px;font-family:var(--fd)}
+.dmi-val{font-size:12px;font-weight:500;color:var(--black);word-break:break-word}
+.dmi-val a{color:var(--crimson)}
+.detail-actions{display:flex;gap:8px;flex-wrap:wrap}
+.detail-actions .btn{flex:1;justify-content:center;min-width:100px}
+
+/* ── MISC ── */
+.share-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--black);color:#fff;padding:11px 22px;border-radius:50px;font-size:12px;font-weight:600;z-index:9999;transition:transform 0.32s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;box-shadow:var(--shadow-lg);font-family:var(--fd)}
+.share-toast.show{transform:translateX(-50%) translateY(0)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--mid);grid-column:1/-1}
+.empty-state-icon{width:52px;height:52px;border-radius:14px;background:var(--light);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.empty-state h3{font-family:var(--fd);font-size:17px;font-weight:700;margin-bottom:6px;color:var(--black)}
+.empty-state p{font-size:12px}
+.loading{display:flex;align-items:center;justify-content:center;padding:56px;gap:12px;color:var(--mid);grid-column:1/-1;font-family:var(--fd);font-size:13px}
+.spinner{width:22px;height:22px;border-radius:50%;border:2.5px solid var(--border);border-top-color:var(--crimson);animation:spin 0.7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pagination{display:flex;gap:5px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.page-btn{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;transition:var(--t);border:1.5px solid var(--border);background:#fff;font-family:var(--fd);color:var(--mid)}
+.page-btn:hover,.page-btn.active{background:var(--black);color:#fff;border-color:var(--black)}
+.footer{background:var(--black2);color:rgba(255,255,255,0.28);text-align:center;padding:32px 24px;font-size:11px;line-height:2;font-family:var(--fb)}
+.footer a{color:rgba(255,255,255,0.45)}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-logo{font-family:var(--fd);font-size:15px;font-weight:800;color:rgba(255,255,255,0.5);margin-bottom:8px}
+.footer-logo span{color:var(--crimson2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.biz-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.header-nav{display:none}.lp-cats-grid{grid-template-columns:repeat(3,1fr)}.lp-steps{grid-template-columns:1fr}.lp-step-num{font-size:48px}.lp-trust-grid{grid-template-columns:repeat(2,1fr)}.lp-photo-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.lp-photo-item:first-child{grid-row:auto;grid-column:auto}}
+@media(max-width:768px){.biz-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.lp-hero-inner{padding:80px 24px 60px}.lp-cats-grid{grid-template-columns:repeat(2,1fr)}.lp-trust-grid{grid-template-columns:1fr}.lp-photo-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.header-inner{padding:0 16px}.main-content{padding:20px 16px 64px}.lp-section{padding:60px 16px}.lp-cats-dark{padding:60px 16px}.modal{border-radius:16px 16px 0 0;max-height:95dvh;position:fixed;bottom:0;left:0;right:0;width:100%;margin:0;animation:slideUp 0.26s ease}.modal-overlay{align-items:flex-end;padding:0}#detailOverlay{align-items:flex-end;padding:0}.detail-card{border-radius:16px 16px 0 0;max-height:95dvh;overflow-y:auto;animation:slideUp 0.26s ease}@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}.modal-header{padding:16px 18px 12px;border-radius:16px 16px 0 0}.modal-body{padding:14px 18px 32px}.biz-right{display:none}.fab-label{display:none}.fab{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center}.section-header{flex-direction:column;align-items:flex-start}.section-header .btn{width:100%;justify-content:center}.detail-meta{grid-template-columns:1fr}.onboarding-banner{flex-direction:column;text-align:center}.lp-cta-actions{flex-direction:column;align-items:center}.lp-photo-grid{grid-template-rows:200px 160px 160px}.lp-cats-grid{grid-template-columns:repeat(2,1fr)}.search-wrap{max-width:100%}}
+@media(max-width:380px){.lp-headline{font-size:32px}.lp-stats{gap:20px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}

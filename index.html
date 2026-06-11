@@ -162,6 +162,47 @@
   </div>
 </div>
 
+<!-- FEATURED BUSINESSES BANNER -->
+<div class="lp-featured-section">
+  <div class="lp-featured-inner">
+    <div class="lp-featured-header">
+      <div class="lp-featured-left">
+        <div class="lp-featured-eyebrow">
+          <svg width="11" height="11" style="color:#c59a1a"><use href="#ic-star"/></svg>
+          <span>Negocios Destacados</span>
+        </div>
+        <h2 class="lp-featured-title">Apoyados por la comunidad</h2>
+        <p class="lp-featured-sub">Estos negocios invierten en visibilidad para servir mejor a Santa Fe Tijuana.</p>
+      </div>
+      <a class="btn btn-ghost-dark btn-sm lp-featured-cta" href="directory.html">
+        Ver directorio completo
+        <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
+      </a>
+    </div>
+
+    <!-- Cards grid — filled by JS, dummy cards shown until data loads -->
+    <div class="lp-feat-grid" id="lpFeatGrid">
+      <!-- Dummy skeleton cards -->
+      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
+      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
+      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
+      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
+    </div>
+
+    <!-- Upsell strip for businesses not yet featured -->
+    <div class="lp-feat-upsell">
+      <div class="lp-feat-upsell-text">
+        <svg width="15" height="15" style="color:#c59a1a;flex-shrink:0"><use href="#ic-star"/></svg>
+        <span>¿Quieres aparecer aquí? Destaca tu negocio por solo <strong>$29.99 USD / 30 días</strong></span>
+      </div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')">
+        <svg width="12" height="12"><use href="#ic-plus"/></svg>
+        Destacar mi negocio
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- PHOTO GRID -->
 <section class="lp-photos">
   <div class="lp-photos-inner">
@@ -336,15 +377,98 @@
 <script src="shared.js"></script>
 <script>
 'use strict';
-/* Load stats in background */
+
+/* ── Featured businesses card renderer ── */
+function renderFeatured(ads) {
+  const grid = document.getElementById('lpFeatGrid');
+  if (!grid) return;
+
+  const CAT_ICONS_MAP = {
+    'Food & Beverages':'ic-food','Beauty & Personal Care':'ic-scissors',
+    'Home Services':'ic-wrench','Auto Services':'ic-car',
+    'Health & Wellness':'ic-heart','Education & Tutoring':'ic-book',
+    'Technology & IT':'ic-monitor','Professional Services':'ic-briefcase',
+    'Arts & Crafts':'ic-star','Fashion & Clothing':'ic-tag',
+    'Entertainment':'ic-star','Retail & Shopping':'ic-tag',
+    'Construction & Repairs':'ic-wrench','Transportation':'ic-car',
+    'Pet Services':'ic-heart','Other':'ic-building'
+  };
+  function icon(cat){ return CAT_ICONS_MAP[cat] || 'ic-building'; }
+
+  if (!ads || !ads.length) {
+    /* No featured businesses yet — show tasteful placeholder cards */
+    grid.innerHTML = Array(4).fill(0).map((_,i) => `
+      <div class="lp-feat-card lp-feat-placeholder" onclick="openModal('modalBusiness')">
+        <div class="lp-feat-card-img lp-feat-card-img--empty">
+          <svg width="28" height="28" style="color:rgba(255,255,255,0.2)"><use href="#ic-store"/></svg>
+        </div>
+        <div class="lp-feat-card-body">
+          <div class="lp-feat-card-badge">
+            <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg>
+            Destacado
+          </div>
+          <div class="lp-feat-card-name">Tu Negocio Aquí</div>
+          <div class="lp-feat-card-type">$29.99 USD · 30 días · PayPal</div>
+          <div class="lp-feat-card-desc">Sé el primero en aparecer en esta sección y llega a todos los visitantes de Santa Fe Tijuana.</div>
+          <div class="lp-feat-card-footer">
+            <span class="lp-feat-card-cta">Destacar ahora →</span>
+          </div>
+        </div>
+      </div>`).join('');
+    return;
+  }
+
+  grid.innerHTML = ads.map(ad => {
+    const biz = ad.business || {};
+    const cat = biz.category || '';
+    const phone = biz.phone || '';
+    const wa = phone.replace(/\D/g, '');
+    const hasImg = !!(ad.imageUrl || biz.imageUrl);
+    const imgSrc = ad.imageUrl || biz.imageUrl || '';
+
+    const imgHtml = hasImg
+      ? `<img src="${imgSrc}" alt="${biz.businessName || ''}" loading="lazy"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      : '';
+    const iconHtml = `<div class="lp-feat-card-icon-fallback"${hasImg?' style="display:none"':''}>
+                        <svg width="36" height="36" style="color:rgba(255,255,255,0.25)"><use href="#${icon(cat)}"/></svg>
+                      </div>`;
+
+    return `
+      <div class="lp-feat-card" onclick="window.location='directory.html?business=${encodeURIComponent(biz.slug||biz.id||'')}'" style="cursor:pointer">
+        <div class="lp-feat-card-img">
+          ${imgHtml}${iconHtml}
+          <div class="lp-feat-card-overlay"></div>
+          <div class="lp-feat-card-badge">
+            <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg>
+            Destacado
+          </div>
+        </div>
+        <div class="lp-feat-card-body">
+          <div class="lp-feat-card-name">${biz.businessName || ad.businessName || '—'}</div>
+          <div class="lp-feat-card-type">${biz.serviceType || cat}</div>
+          <div class="lp-feat-card-desc">${(biz.description||'').slice(0,90)}${(biz.description||'').length>90?'…':''}</div>
+          <div class="lp-feat-card-footer">
+            ${phone ? `<a class="lp-feat-card-phone" href="tel:${phone}" onclick="event.stopPropagation()">${phone}</a>` : ''}
+            <div class="lp-feat-card-actions">
+              ${wa ? `<a class="lp-feat-action-btn lp-feat-action-wa" href="https://wa.me/${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-whatsapp"/></svg></a>` : ''}
+              ${biz.website ? `<a class="lp-feat-action-btn lp-feat-action-web" href="${biz.website.startsWith('http')?biz.website:'https://'+biz.website}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-globe"/></svg></a>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+/* Load stats and featured businesses in background */
 window.addEventListener('load', () => {
   applyBranding(); setLang('es'); setActiveNav();
-  /* Load stats */
   Promise.all([
     api('getBusinesses',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatBiz'); if(el)el.textContent=(r.data||[]).length; } }),
     api('getRequests',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatReq'); if(el)el.textContent=(r.data||[]).length; } }),
     api('getOffers',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatOff'); if(el)el.textContent=(r.data||[]).length; } }),
-    api('getCategories').then(r=>{ if(r.success&&r.data) populateCategorySelects(r.data); })
+    api('getCategories').then(r=>{ if(r.success&&r.data) populateCategorySelects(r.data); }),
+    api('getActiveBannerAds').then(r=>{ renderFeatured(r.success ? (r.data||[]) : []); })
   ]);
 });
 function onLangChange(){ setActiveNav(); }

@@ -171,7 +171,8 @@ a{text-decoration:none;color:inherit}
 
 /* Each card: width = (100% / visible) - gap adjustment */
 .lp-feat-card{
-  flex:0 0 calc((100% - 3*14px) / 4); /* 4 visible default */
+  /* Width set by JS (featInitSlider) for precise slider math */
+  flex:0 0 auto;
   min-width:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
   border-radius:var(--r);overflow:hidden;transition:border-color var(--t),box-shadow var(--t),transform var(--t);
   display:flex;flex-direction:column;
@@ -230,16 +231,11 @@ a{text-decoration:none;color:inherit}
 .lp-feat-upsell-text{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,0.4);font-weight:400;flex:1;min-width:180px}
 .lp-feat-upsell-text strong{color:rgba(255,255,255,0.65);font-weight:600}
 
-/* Responsive: adjust card flex-basis so they fill viewport */
-@media(max-width:1200px){
-  .lp-feat-card{flex:0 0 calc((100% - 2*14px) / 3)}
-}
+/* Responsive layout — card widths are set by JS, only layout overrides here */
 @media(max-width:900px){
-  .lp-feat-card{flex:0 0 calc((100% - 1*14px) / 2)}
   .lp-featured-section{padding:56px 16px}
 }
 @media(max-width:600px){
-  .lp-feat-card{flex:0 0 100%}
   .lp-feat-header-right .lp-featured-cta{display:none}
   .lp-feat-upsell{flex-direction:column;text-align:center}
   .lp-feat-upsell .btn{width:100%;justify-content:center}
@@ -311,6 +307,11 @@ a{text-decoration:none;color:inherit}
 .about-team-photo img{width:100%;height:100%;object-fit:cover}
 .about-team-name{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--black);margin-bottom:3px}
 .about-team-role{font-size:12px;color:var(--gray)}
+.about-team-card--collab{transition:var(--t)}
+.about-team-card--collab:hover .about-team-photo{border-color:rgba(90,15,15,0.5)!important}
+.about-collab-btn{display:inline-flex;align-items:center;gap:7px;margin-top:12px;padding:9px 18px;background:var(--crimson);color:#fff;border-radius:6px;font-family:var(--fd);font-size:12px;font-weight:700;text-decoration:none;transition:var(--t);letter-spacing:0.3px}
+.about-collab-btn svg{color:#fff}
+.about-collab-btn:hover{background:var(--crimson2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(90,15,15,0.4)}
 .about-cta{background:linear-gradient(135deg,var(--crimson3),var(--crimson));padding:72px 24px;text-align:center;position:relative;overflow:hidden}
 .about-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
 .about-cta-inner{position:relative;z-index:1}

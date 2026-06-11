@@ -1,5 +1,3 @@
-# Write shared.js - common API, i18n, utilities used by all pages
-cat > /mnt/user-data/outputs/santafe/shared.js << 'JSEOF'
 /* ================================================================
    SANTA FE TIJUANA — Shared JS
    Used by: index.html, directory.html, about.html
@@ -565,5 +563,3 @@ function closeDetail() {
   if (ov) ov.classList.remove('open');
   document.body.style.overflow = '';
 }
-JSEOF
-echo "shared.js: $(wc -l < /mnt/user-data/outputs/santafe/shared.js) lines"

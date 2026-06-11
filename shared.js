@@ -26,7 +26,22 @@ async function api(action, payload) {
         .handleRequest(action, payload);
     });
   }
-  /* POST first (handles write ops + large image uploads) */
+
+  /* Read-only actions: use GET — avoids CORS preflight & redirect stripping */
+  const READ_ONLY = ['getBusinesses','getRequests','getOffers','getActiveBannerAds','getCategories','searchArchived','getBusinessById'];
+
+  if (READ_ONLY.includes(action)) {
+    try {
+      const p = new URLSearchParams({ action, payload: JSON.stringify(payload) });
+      const res = await fetch(SFT.GAS_URL + '?' + p, { redirect: 'follow' });
+      const text = await res.text();
+      return JSON.parse(text);
+    } catch (e) {
+      return { success: false, error: T('errNetwork') + ' (GET)' };
+    }
+  }
+
+  /* Write actions: POST with text/plain body */
   try {
     const res = await fetch(SFT.GAS_URL, {
       method: 'POST',
@@ -34,21 +49,12 @@ async function api(action, payload) {
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action, payload })
     });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    /* Do NOT check res.ok — GAS redirect chain can make status unreliable.
+       Always try to parse the text; GAS always returns valid JSON. */
     const text = await res.text();
     return JSON.parse(text);
   } catch (e) {
-    /* GET fallback for read-only calls */
-    const RO = ['getBusinesses','getRequests','getOffers','getActiveBannerAds','getCategories','searchArchived','getBusinessById'];
-    if (RO.includes(action)) {
-      try {
-        const p = new URLSearchParams({ action, payload: JSON.stringify(payload) });
-        const res2 = await fetch(SFT.GAS_URL + '?' + p, { redirect: 'follow' });
-        if (!res2.ok) throw new Error('HTTP ' + res2.status);
-        return JSON.parse(await res2.text());
-      } catch (e2) { /* fall through */ }
-    }
-    return { success: false, error: T('errNetwork') };
+    return { success: false, error: T('errNetwork') + ' (POST)' };
   }
 }
 

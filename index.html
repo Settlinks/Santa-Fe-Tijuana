@@ -24,6 +24,7 @@
   <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
   <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01"/></symbol>
   <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
   <symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
   <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
   <symbol id="ic-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></symbol>
@@ -165,6 +166,7 @@
 <!-- FEATURED BUSINESSES BANNER -->
 <div class="lp-featured-section">
   <div class="lp-featured-inner">
+
     <div class="lp-featured-header">
       <div class="lp-featured-left">
         <div class="lp-featured-eyebrow">
@@ -172,24 +174,38 @@
           <span>Negocios Destacados</span>
         </div>
         <h2 class="lp-featured-title">Apoyados por la comunidad</h2>
-        <p class="lp-featured-sub">Estos negocios invierten en visibilidad para servir mejor a Santa Fe Tijuana.</p>
+        <p class="lp-featured-sub">Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.</p>
       </div>
-      <a class="btn btn-ghost-dark btn-sm lp-featured-cta" href="directory.html">
-        Ver directorio completo
-        <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
-      </a>
+      <div class="lp-feat-header-right">
+        <!-- Prev / Next arrows -->
+        <button class="lp-feat-arrow" id="featPrev" aria-label="Anterior" onclick="featSlide(-1)">
+          <svg width="18" height="18"><use href="#ic-chevron-left"/></svg>
+        </button>
+        <button class="lp-feat-arrow" id="featNext" aria-label="Siguiente" onclick="featSlide(1)">
+          <svg width="18" height="18"><use href="#ic-chevron-right"/></svg>
+        </button>
+        <a class="btn btn-ghost-dark btn-sm lp-featured-cta" href="directory.html">
+          Ver directorio
+          <svg width="13" height="13"><use href="#ic-chevron-right"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Cards grid — filled by JS, dummy cards shown until data loads -->
-    <div class="lp-feat-grid" id="lpFeatGrid">
-      <!-- Dummy skeleton cards -->
-      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
-      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
-      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
-      <div class="lp-feat-dummy"><div class="lp-feat-dummy-img"></div><div class="lp-feat-dummy-lines"><div></div><div></div><div></div></div></div>
+    <!-- Slider viewport -->
+    <div class="lp-feat-viewport" id="featViewport">
+      <div class="lp-feat-track" id="featTrack">
+        <!-- Skeleton cards shown while loading -->
+        <div class="lp-feat-card lp-feat-dummy-card"><div class="lp-feat-card-img" style="background:rgba(255,255,255,0.04)"><div class="lp-feat-shimmer"></div></div><div class="lp-feat-card-body"><div class="lp-feat-shimline" style="width:60%"></div><div class="lp-feat-shimline" style="width:40%;margin-top:8px"></div><div class="lp-feat-shimline" style="width:80%;margin-top:12px"></div></div></div>
+        <div class="lp-feat-card lp-feat-dummy-card"><div class="lp-feat-card-img" style="background:rgba(255,255,255,0.04)"><div class="lp-feat-shimmer"></div></div><div class="lp-feat-card-body"><div class="lp-feat-shimline" style="width:55%"></div><div class="lp-feat-shimline" style="width:35%;margin-top:8px"></div><div class="lp-feat-shimline" style="width:75%;margin-top:12px"></div></div></div>
+        <div class="lp-feat-card lp-feat-dummy-card"><div class="lp-feat-card-img" style="background:rgba(255,255,255,0.04)"><div class="lp-feat-shimmer"></div></div><div class="lp-feat-card-body"><div class="lp-feat-shimline" style="width:65%"></div><div class="lp-feat-shimline" style="width:45%;margin-top:8px"></div><div class="lp-feat-shimline" style="width:70%;margin-top:12px"></div></div></div>
+        <div class="lp-feat-card lp-feat-dummy-card"><div class="lp-feat-card-img" style="background:rgba(255,255,255,0.04)"><div class="lp-feat-shimmer"></div></div><div class="lp-feat-card-body"><div class="lp-feat-shimline" style="width:50%"></div><div class="lp-feat-shimline" style="width:38%;margin-top:8px"></div><div class="lp-feat-shimline" style="width:85%;margin-top:12px"></div></div></div>
+      </div>
     </div>
 
-    <!-- Upsell strip for businesses not yet featured -->
+    <!-- Dot indicators -->
+    <div class="lp-feat-dots" id="featDots"></div>
+
+    <!-- Upsell strip -->
     <div class="lp-feat-upsell">
       <div class="lp-feat-upsell-text">
         <svg width="15" height="15" style="color:#c59a1a;flex-shrink:0"><use href="#ic-star"/></svg>
@@ -200,6 +216,7 @@
         Destacar mi negocio
       </button>
     </div>
+
   </div>
 </div>
 
@@ -378,99 +395,269 @@
 <script>
 'use strict';
 
-/* ── Featured businesses card renderer ── */
-function renderFeatured(ads) {
-  const grid = document.getElementById('lpFeatGrid');
-  if (!grid) return;
+/* ══════════════════════════════════════════════
+   FEATURED BUSINESSES SLIDER
+   - Shows ALL registered businesses
+   - Featured (paid) businesses first, gold badge
+   - Auto-slides every 3 seconds, pauses on hover
+   - 4 cards desktop · 2 tablet · 1 mobile
+   - Dots + prev/next arrows + touch swipe
+══════════════════════════════════════════════ */
+let featCards   = [];
+let featIdx     = 0;
+let featTimer   = null;
+let featVisible = 4;
+let featDragging   = false;
+let featDragStartX = 0;
+let featDragDelta  = 0;
 
-  const CAT_ICONS_MAP = {
-    'Food & Beverages':'ic-food','Beauty & Personal Care':'ic-scissors',
-    'Home Services':'ic-wrench','Auto Services':'ic-car',
-    'Health & Wellness':'ic-heart','Education & Tutoring':'ic-book',
-    'Technology & IT':'ic-monitor','Professional Services':'ic-briefcase',
-    'Arts & Crafts':'ic-star','Fashion & Clothing':'ic-tag',
-    'Entertainment':'ic-star','Retail & Shopping':'ic-tag',
-    'Construction & Repairs':'ic-wrench','Transportation':'ic-car',
-    'Pet Services':'ic-heart','Other':'ic-building'
-  };
-  function icon(cat){ return CAT_ICONS_MAP[cat] || 'ic-building'; }
+const CAT_ICONS_MAP = {
+  'Food & Beverages':'ic-food','Beauty & Personal Care':'ic-scissors',
+  'Home Services':'ic-wrench','Auto Services':'ic-car',
+  'Health & Wellness':'ic-heart','Education & Tutoring':'ic-book',
+  'Technology & IT':'ic-monitor','Professional Services':'ic-briefcase',
+  'Arts & Crafts':'ic-star','Fashion & Clothing':'ic-tag',
+  'Entertainment':'ic-star','Retail & Shopping':'ic-tag',
+  'Construction & Repairs':'ic-wrench','Transportation':'ic-car',
+  'Pet Services':'ic-heart','Other':'ic-building'
+};
+function featIcon(cat){ return CAT_ICONS_MAP[cat]||'ic-building'; }
+function featEsc(s){
+  if(!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
-  if (!ads || !ads.length) {
-    /* No featured businesses yet — show tasteful placeholder cards */
-    grid.innerHTML = Array(4).fill(0).map((_,i) => `
-      <div class="lp-feat-card lp-feat-placeholder" onclick="openModal('modalBusiness')">
-        <div class="lp-feat-card-img lp-feat-card-img--empty">
-          <svg width="28" height="28" style="color:rgba(255,255,255,0.2)"><use href="#ic-store"/></svg>
+function buildFeatCard(biz, isFeatured) {
+  const phone  = biz.phone || '';
+  const wa     = phone.replace(/\D/g,'');
+  const imgSrc = biz.imageUrl || '';
+  const cat    = biz.category || '';
+  const slug   = biz.slug || biz.id || '';
+  const raw    = biz.description || '';
+  const desc   = raw.slice(0,88) + (raw.length>88?'…':'');
+  const site   = biz.website || '';
+  const siteHref = site ? (site.startsWith('http') ? site : 'https://'+site) : '';
+
+  const badge = isFeatured
+    ? `<div class="lp-feat-card-badge"><svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> Destacado</div>`
+    : '';
+
+  const imgBlock = imgSrc
+    ? `<img src="${featEsc(imgSrc)}" alt="${featEsc(biz.businessName)}" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+       <div class="lp-feat-card-icon-fallback" style="display:none">
+         <svg width="36" height="36" style="color:rgba(255,255,255,0.2)"><use href="#${featIcon(cat)}"/></svg>
+       </div>`
+    : `<div class="lp-feat-card-icon-fallback">
+         <svg width="36" height="36" style="color:rgba(255,255,255,0.2)"><use href="#${featIcon(cat)}"/></svg>
+       </div>`;
+
+  return `<div class="lp-feat-card${isFeatured?' lp-feat-card--star':''}"
+               onclick="window.location='directory.html?business=${encodeURIComponent(slug)}'"
+               style="cursor:pointer">
+    <div class="lp-feat-card-img">${imgBlock}
+      <div class="lp-feat-card-overlay"></div>${badge}
+    </div>
+    <div class="lp-feat-card-body">
+      <div class="lp-feat-card-name">${featEsc(biz.businessName||'—')}</div>
+      <div class="lp-feat-card-type">${featEsc(biz.serviceType||cat)}</div>
+      <div class="lp-feat-card-desc">${featEsc(desc)}</div>
+      <div class="lp-feat-card-footer">
+        ${phone?`<a class="lp-feat-card-phone" href="tel:${featEsc(phone)}" onclick="event.stopPropagation()">${featEsc(phone)}</a>`:'<span></span>'}
+        <div class="lp-feat-card-actions">
+          ${wa?`<a class="lp-feat-action-btn lp-feat-action-wa" href="https://wa.me/${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-whatsapp"/></svg></a>`:''}
+          ${siteHref?`<a class="lp-feat-action-btn lp-feat-action-web" href="${featEsc(siteHref)}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-globe"/></svg></a>`:''}
         </div>
-        <div class="lp-feat-card-body">
-          <div class="lp-feat-card-badge">
-            <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg>
-            Destacado
-          </div>
-          <div class="lp-feat-card-name">Tu Negocio Aquí</div>
-          <div class="lp-feat-card-type">$29.99 USD · 30 días · PayPal</div>
-          <div class="lp-feat-card-desc">Sé el primero en aparecer en esta sección y llega a todos los visitantes de Santa Fe Tijuana.</div>
-          <div class="lp-feat-card-footer">
-            <span class="lp-feat-card-cta">Destacar ahora →</span>
-          </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildPlaceholderCards(count) {
+  return Array(count).fill(0).map(()=>`
+    <div class="lp-feat-card lp-feat-placeholder" onclick="openModal('modalBusiness')" style="cursor:pointer">
+      <div class="lp-feat-card-img lp-feat-card-img--empty">
+        <div class="lp-feat-card-icon-fallback">
+          <svg width="32" height="32" style="color:rgba(255,255,255,0.14)"><use href="#ic-store"/></svg>
         </div>
-      </div>`).join('');
+      </div>
+      <div class="lp-feat-card-body">
+        <div class="lp-feat-card-badge" style="position:static;display:inline-flex;margin-bottom:8px">
+          <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> Destacado
+        </div>
+        <div class="lp-feat-card-name">Tu Negocio Aquí</div>
+        <div class="lp-feat-card-type">$29.99 USD · 30 días · PayPal</div>
+        <div class="lp-feat-card-desc">Sé el primero en destacarse y llega a todos los visitantes de Santa Fe Tijuana.</div>
+        <div class="lp-feat-card-footer"><span class="lp-feat-card-cta">Destacar ahora →</span></div>
+      </div>
+    </div>`).join('');
+}
+
+function featGetVisible() {
+  const w = window.innerWidth;
+  return w < 600 ? 1 : w < 900 ? 2 : w < 1200 ? 3 : 4;
+}
+
+function featRender(businesses, featuredIds) {
+  const sorted = [...businesses].sort((a,b)=>{
+    const af = featuredIds.has(a.id) || featuredIds.has(a.slug);
+    const bf = featuredIds.has(b.id) || featuredIds.has(b.slug);
+    if(af&&!bf) return -1; if(!af&&bf) return 1;
+    return (a.businessName||'').localeCompare(b.businessName||'');
+  });
+
+  featCards = sorted.map(b => buildFeatCard(b, featuredIds.has(b.id)||featuredIds.has(b.slug)));
+
+  /* If no businesses yet, show placeholder cards */
+  if(!featCards.length) {
+    featVisible = featGetVisible();
+    const track = document.getElementById('featTrack');
+    if(track) track.innerHTML = buildPlaceholderCards(featVisible);
+    const dots = document.getElementById('featDots');
+    if(dots) dots.innerHTML = '';
     return;
   }
 
-  grid.innerHTML = ads.map(ad => {
-    const biz = ad.business || {};
-    const cat = biz.category || '';
-    const phone = biz.phone || '';
-    const wa = phone.replace(/\D/g, '');
-    const hasImg = !!(ad.imageUrl || biz.imageUrl);
-    const imgSrc = ad.imageUrl || biz.imageUrl || '';
-
-    const imgHtml = hasImg
-      ? `<img src="${imgSrc}" alt="${biz.businessName || ''}" loading="lazy"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-      : '';
-    const iconHtml = `<div class="lp-feat-card-icon-fallback"${hasImg?' style="display:none"':''}>
-                        <svg width="36" height="36" style="color:rgba(255,255,255,0.25)"><use href="#${icon(cat)}"/></svg>
-                      </div>`;
-
-    return `
-      <div class="lp-feat-card" onclick="window.location='directory.html?business=${encodeURIComponent(biz.slug||biz.id||'')}'" style="cursor:pointer">
-        <div class="lp-feat-card-img">
-          ${imgHtml}${iconHtml}
-          <div class="lp-feat-card-overlay"></div>
-          <div class="lp-feat-card-badge">
-            <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg>
-            Destacado
-          </div>
-        </div>
-        <div class="lp-feat-card-body">
-          <div class="lp-feat-card-name">${biz.businessName || ad.businessName || '—'}</div>
-          <div class="lp-feat-card-type">${biz.serviceType || cat}</div>
-          <div class="lp-feat-card-desc">${(biz.description||'').slice(0,90)}${(biz.description||'').length>90?'…':''}</div>
-          <div class="lp-feat-card-footer">
-            ${phone ? `<a class="lp-feat-card-phone" href="tel:${phone}" onclick="event.stopPropagation()">${phone}</a>` : ''}
-            <div class="lp-feat-card-actions">
-              ${wa ? `<a class="lp-feat-action-btn lp-feat-action-wa" href="https://wa.me/${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-whatsapp"/></svg></a>` : ''}
-              ${biz.website ? `<a class="lp-feat-action-btn lp-feat-action-web" href="${biz.website.startsWith('http')?biz.website:'https://'+biz.website}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="14" height="14"><use href="#ic-globe"/></svg></a>` : ''}
-            </div>
-          </div>
-        </div>
-      </div>`;
-  }).join('');
+  featIdx     = 0;
+  featVisible = featGetVisible();
+  featInitSlider();
 }
 
-/* Load stats and featured businesses in background */
-window.addEventListener('load', () => {
-  applyBranding(); setLang('es'); setActiveNav();
-  Promise.all([
-    api('getBusinesses',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatBiz'); if(el)el.textContent=(r.data||[]).length; } }),
-    api('getRequests',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatReq'); if(el)el.textContent=(r.data||[]).length; } }),
-    api('getOffers',{}).then(r=>{ if(r.success){ const el=document.getElementById('heroStatOff'); if(el)el.textContent=(r.data||[]).length; } }),
-    api('getCategories').then(r=>{ if(r.success&&r.data) populateCategorySelects(r.data); }),
-    api('getActiveBannerAds').then(r=>{ renderFeatured(r.success ? (r.data||[]) : []); })
-  ]);
+function featInitSlider() {
+  const track = document.getElementById('featTrack');
+  const dots  = document.getElementById('featDots');
+  if(!track||!dots) return;
+
+  featVisible  = featGetVisible();
+  const total  = featCards.length;
+  const pages  = Math.max(1, Math.ceil(total/featVisible));
+
+  track.innerHTML = featCards.join('');
+
+  dots.innerHTML = Array.from({length:pages},(_,i)=>
+    `<button class="lp-feat-dot${i===0?' active':''}"
+             onclick="featGoTo(${i*featVisible})"
+             aria-label="Página ${i+1}"></button>`
+  ).join('');
+
+  featGoTo(0);
+  featStartAuto();
+}
+
+function featGoTo(idx) {
+  const track = document.getElementById('featTrack');
+  const dots  = document.getElementById('featDots');
+  if(!track) return;
+
+  const total  = featCards.length;
+  const maxIdx = Math.max(0, total - featVisible);
+  featIdx = Math.max(0, Math.min(idx, maxIdx));
+
+  /* Translate: each card = 1/featVisible of track width */
+  const cardWidthPct = 100 / featVisible;
+  const offset = featIdx * cardWidthPct;
+  track.style.transform  = `translateX(-${offset}%)`;
+  track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+
+  /* Dots */
+  const activePage = Math.floor(featIdx / featVisible);
+  if(dots) dots.querySelectorAll('.lp-feat-dot').forEach((d,i)=>{
+    d.classList.toggle('active', i===activePage);
+  });
+
+  /* Arrows */
+  const prev = document.getElementById('featPrev');
+  const next = document.getElementById('featNext');
+  if(prev) prev.style.opacity = featIdx<=0 ? '0.3' : '1';
+  if(next) next.style.opacity = featIdx>=maxIdx ? '0.3' : '1';
+}
+
+function featSlide(dir) {
+  featStopAuto();
+  const maxIdx = Math.max(0, featCards.length - featVisible);
+  let next = featIdx + dir * featVisible;
+  /* Wrap around */
+  if(next > maxIdx) next = 0;
+  if(next < 0) next = maxIdx;
+  featGoTo(next);
+  featStartAuto();
+}
+
+function featStartAuto() {
+  featStopAuto();
+  if(featCards.length <= featVisible) return;
+  featTimer = setInterval(()=>{
+    const maxIdx = Math.max(0, featCards.length - featVisible);
+    const next   = featIdx >= maxIdx ? 0 : featIdx + featVisible;
+    featGoTo(next);
+  }, 3000);
+}
+
+function featStopAuto() {
+  if(featTimer){ clearInterval(featTimer); featTimer=null; }
+}
+
+/* Attach hover + touch events after DOM ready */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const vp = document.getElementById('featViewport');
+  if(!vp) return;
+  vp.addEventListener('mouseenter', featStopAuto);
+  vp.addEventListener('mouseleave', featStartAuto);
+  vp.addEventListener('touchstart', e=>{
+    featDragging=true; featDragStartX=e.touches[0].clientX; featDragDelta=0; featStopAuto();
+  },{passive:true});
+  vp.addEventListener('touchmove', e=>{
+    if(!featDragging) return; featDragDelta=e.touches[0].clientX-featDragStartX;
+  },{passive:true});
+  vp.addEventListener('touchend', ()=>{
+    if(!featDragging) return; featDragging=false;
+    if(Math.abs(featDragDelta)>50) featSlide(featDragDelta<0?1:-1);
+    else featStartAuto();
+  });
 });
+
+/* Rebuild on resize */
+let featResizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(featResizeTimer);
+  featResizeTimer = setTimeout(()=>{ if(featCards.length) featInitSlider(); }, 200);
+});
+
+/* ══════════════════════════════════════════════
+   BOOT
+══════════════════════════════════════════════ */
+window.addEventListener('load', ()=>{
+  applyBranding(); setLang('es'); setActiveNav();
+
+  Promise.all([
+    api('getBusinesses',{}).then(r=>{
+      if(!r.success) return [];
+      const el = document.getElementById('heroStatBiz');
+      if(el) el.textContent = (r.data||[]).length;
+      return r.data||[];
+    }),
+    api('getRequests',{}).then(r=>{
+      if(r.success){ const el=document.getElementById('heroStatReq'); if(el) el.textContent=(r.data||[]).length; }
+    }),
+    api('getOffers',{}).then(r=>{
+      if(r.success){ const el=document.getElementById('heroStatOff'); if(el) el.textContent=(r.data||[]).length; }
+    }),
+    api('getCategories').then(r=>{
+      if(r.success&&r.data) populateCategorySelects(r.data);
+    }),
+    api('getActiveBannerAds').then(r=> r.success?(r.data||[]):[])
+  ]).then(([businesses,,,, bannerAds])=>{
+    /* Build set of featured IDs */
+    const featuredIds = new Set();
+    (bannerAds||[]).forEach(ad=>{
+      if(ad.businessId) featuredIds.add(ad.businessId);
+      if(ad.business&&ad.business.id)   featuredIds.add(ad.business.id);
+      if(ad.business&&ad.business.slug) featuredIds.add(ad.business.slug);
+    });
+    featRender(businesses||[], featuredIds);
+  });
+});
+
 function onLangChange(){ setActiveNav(); }
 </script>
 </body>

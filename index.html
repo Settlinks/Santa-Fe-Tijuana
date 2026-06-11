@@ -528,48 +528,66 @@ function featInitSlider() {
   const dots  = document.getElementById('featDots');
   if(!track||!dots) return;
 
-  featVisible  = featGetVisible();
-  const total  = featCards.length;
-  const pages  = Math.max(1, Math.ceil(total/featVisible));
+  featVisible = featGetVisible();
+  const total = featCards.length;
+  const pages = Math.max(1, Math.ceil(total / featVisible));
 
   track.innerHTML = featCards.join('');
 
-  dots.innerHTML = Array.from({length:pages},(_,i)=>
-    `<button class="lp-feat-dot${i===0?' active':''}"
-             onclick="featGoTo(${i*featVisible})"
-             aria-label="Página ${i+1}"></button>`
+  /* Reset position instantly before animating */
+  track.style.transition = 'none';
+  track.style.transform  = 'translateX(0)';
+
+  dots.innerHTML = Array.from({length: pages}, (_, i) =>
+    `<button class="lp-feat-dot${i === 0 ? ' active' : ''}"
+             onclick="featGoTo(${i * featVisible})"
+             aria-label="Página ${i + 1}"></button>`
   ).join('');
 
-  featGoTo(0);
-  featStartAuto();
+  /* Small delay so the browser paints before we animate */
+  requestAnimationFrame(() => {
+    featGoTo(0);
+    featStartAuto();
+  });
 }
 
 function featGoTo(idx) {
-  const track = document.getElementById('featTrack');
-  const dots  = document.getElementById('featDots');
-  if(!track) return;
+  const track    = document.getElementById('featTrack');
+  const viewport = document.getElementById('featViewport');
+  const dots     = document.getElementById('featDots');
+  if (!track || !viewport) return;
 
   const total  = featCards.length;
   const maxIdx = Math.max(0, total - featVisible);
   featIdx = Math.max(0, Math.min(idx, maxIdx));
 
-  /* Translate: each card = 1/featVisible of track width */
-  const cardWidthPct = 100 / featVisible;
-  const offset = featIdx * cardWidthPct;
-  track.style.transform  = `translateX(-${offset}%)`;
+  /* ── PIXEL-BASED TRANSLATION ─────────────────────────────
+     translateX(%) is relative to the element's OWN width.
+     The track holds all cards so it is wider than the viewport
+     — percentage would massively overshoot.
+     Correct formula:
+       cardPx = (viewportPx - (visible-1) * gap) / visible
+       offsetPx = featIdx * (cardPx + gap)
+  ────────────────────────────────────────────────────────── */
+  const GAP     = 14; /* must match CSS gap on .lp-feat-track */
+  const vpW     = viewport.offsetWidth;
+  const cardPx  = (vpW - (featVisible - 1) * GAP) / featVisible;
+  const offsetPx = featIdx * (cardPx + GAP);
+
   track.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+  track.style.transform  = `translateX(-${offsetPx}px)`;
 
   /* Dots */
   const activePage = Math.floor(featIdx / featVisible);
-  if(dots) dots.querySelectorAll('.lp-feat-dot').forEach((d,i)=>{
-    d.classList.toggle('active', i===activePage);
+  if (dots) dots.querySelectorAll('.lp-feat-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === activePage);
   });
 
   /* Arrows */
   const prev = document.getElementById('featPrev');
   const next = document.getElementById('featNext');
-  if(prev) prev.style.opacity = featIdx<=0 ? '0.3' : '1';
-  if(next) next.style.opacity = featIdx>=maxIdx ? '0.3' : '1';
+  if (prev) prev.style.opacity = featIdx <= 0 ? '0.3' : '1';
+  if (next) next.style.opacity = featIdx >= maxIdx ? '0.3' : '1';
 }
 
 function featSlide(dir) {

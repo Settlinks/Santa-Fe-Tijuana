@@ -524,17 +524,35 @@ function featRender(businesses, featuredIds) {
 }
 
 function featInitSlider() {
-  const track = document.getElementById('featTrack');
-  const dots  = document.getElementById('featDots');
-  if(!track||!dots) return;
+  const track    = document.getElementById('featTrack');
+  const viewport = document.getElementById('featViewport');
+  const dots     = document.getElementById('featDots');
+  if(!track||!viewport||!dots) return;
 
-  featVisible = featGetVisible();
-  const total = featCards.length;
-  const pages = Math.max(1, Math.ceil(total / featVisible));
+  featVisible  = featGetVisible();
+  const total  = featCards.length;
+  const pages  = Math.max(1, Math.ceil(total / featVisible));
+  const GAP    = 14;
 
   track.innerHTML = featCards.join('');
 
-  /* Reset position instantly before animating */
+  /* ── SET CARD WIDTHS VIA JS ─────────────────────────────────
+     CSS calc(100% / N) on flex children is unreliable when the
+     track itself has no explicit width. Instead we compute the
+     exact card width from the viewport's rendered pixel width
+     and apply it directly to every card. This guarantees that
+     the JS translation offset matches the actual card positions.
+  ─────────────────────────────────────────────────────────── */
+  const vpW     = viewport.offsetWidth;
+  const cardW   = (vpW - (featVisible - 1) * GAP) / featVisible;
+
+  track.querySelectorAll('.lp-feat-card').forEach(card => {
+    card.style.flex    = '0 0 ' + cardW + 'px';
+    card.style.width   = cardW + 'px';
+    card.style.minWidth= cardW + 'px';
+  });
+
+  /* Reset position instantly */
   track.style.transition = 'none';
   track.style.transform  = 'translateX(0)';
 
@@ -544,10 +562,12 @@ function featInitSlider() {
              aria-label="Página ${i + 1}"></button>`
   ).join('');
 
-  /* Small delay so the browser paints before we animate */
+  /* Wait for browser to apply the new card sizes before first slide */
   requestAnimationFrame(() => {
-    featGoTo(0);
-    featStartAuto();
+    requestAnimationFrame(() => {
+      featGoTo(0);
+      featStartAuto();
+    });
   });
 }
 
@@ -638,7 +658,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 let featResizeTimer;
 window.addEventListener('resize', ()=>{
   clearTimeout(featResizeTimer);
-  featResizeTimer = setTimeout(()=>{ if(featCards.length) featInitSlider(); }, 200);
+  featResizeTimer = setTimeout(()=>{
+    if(featCards.length) {
+      featStopAuto();
+      featInitSlider(); /* recomputes card widths for new viewport size */
+    }
+  }, 200);
 });
 
 /* ══════════════════════════════════════════════

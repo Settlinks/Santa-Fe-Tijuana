@@ -121,7 +121,7 @@
     </div>
     <div class="filter-bar">
       <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="bizSearch" placeholder="Buscar negocios…" oninput="filterBiz()"></div>
-      <div class="filter-chips" id="bizChips"><span class="chip active" data-cat="all" onclick="setCat(this,'biz')"><span data-t="all">Todos</span></span></div>
+      <div class="filter-chips" id="bizChips"><span class="chip active" data-cat="all" onclick="setCat(this,'biz')" data-t="all">Todos</span></div>
     </div>
     <div class="biz-grid" id="bizList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
     <div class="pagination" id="bizPages"></div>
@@ -135,7 +135,7 @@
     </div>
     <div class="filter-bar">
       <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="reqSearch" placeholder="Buscar solicitudes…" oninput="filterReq()"></div>
-      <div class="filter-chips" id="reqChips"><span class="chip active" data-cat="all" onclick="setCat(this,'req')"><span data-t="all">Todos</span></span></div>
+      <div class="filter-chips" id="reqChips"><span class="chip active" data-cat="all" onclick="setCat(this,'req')" data-t="all">Todos</span></div>
     </div>
     <div class="market-grid" id="reqList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
   </section>
@@ -148,7 +148,7 @@
     </div>
     <div class="filter-bar">
       <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="offSearch" placeholder="Buscar ofertas…" oninput="filterOff()"></div>
-      <div class="filter-chips" id="offChips"><span class="chip active" data-cat="all" onclick="setCat(this,'off')"><span data-t="all">Todos</span></span></div>
+      <div class="filter-chips" id="offChips"><span class="chip active" data-cat="all" onclick="setCat(this,'off')" data-t="all">Todos</span></div>
     </div>
     <div class="market-grid" id="offList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
   </section>
@@ -290,9 +290,10 @@ window.addEventListener('load', async () => {
   if (sessionStorage.getItem('onboardDismissed')) {
     const ob = document.getElementById('onboardingBanner'); if(ob) ob.style.display='none';
   }
-  /* Handle hash for offers tab */
   if (window.location.hash === '#offers') showSection('offers');
-  await Promise.all([loadCats(), loadBiz(), loadBanners(), loadReq(), loadOff()]);
+  /* Load cats first so chips are ready, then load data in parallel */
+  await loadCats();
+  await Promise.all([loadBiz(), loadBanners(), loadReq(), loadOff()]);
   handleDeepLink();
 });
 
@@ -315,11 +316,13 @@ async function loadCats(){
     categories=r.data;
     populateCategorySelects(categories);
     buildChips('biz');buildChips('req');buildChips('off');
+    /* Re-render lists so category chips reflect loaded data */
+    renderBiz();renderReq();renderOff();
   }
 }
 function buildChips(prefix){
   const c=document.getElementById(prefix+'Chips');if(!c)return;
-  c.innerHTML='<span class="chip active" data-cat="all" onclick="setCat(this,\''+prefix+'\')"><span data-t="all">'+T('all')+'</span></span>';
+  c.innerHTML='<span class="chip active" data-cat="all" onclick="setCat(this,\''+prefix+'\')" data-t="all">'+T('all')+'</span>';
   categories.forEach(cat=>{
     const chip=document.createElement('span');chip.className='chip';chip.dataset.cat=cat;chip.textContent=cat;
     chip.onclick=()=>setCat(chip,prefix);c.appendChild(chip);
@@ -361,7 +364,7 @@ function bizCardHtml(b){
   const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
   const isFeat=b.isBannerSubscriber===true||String(b.isBannerSubscriber).toUpperCase()==='TRUE';
   const idx=allBiz.indexOf(b);
-  const avatarInner=b.imageUrl?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">`:`<svg width="20" height="20"><use href="#${catIcon(b.category)}"/></svg>`;
+  const avatarInner=b.imageUrl?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg width=\\'20\\' height=\\'20\\' style=\\'color:rgba(30,30,30,0.35)\\'><use href=\\'#${catIcon(b.category)}\\'/></svg>'">`:`<svg width="20" height="20" style="color:rgba(30,30,30,0.35)"><use href="#${catIcon(b.category)}"/></svg>`;
   return `<div class="biz-card${isFeat?' featured':''}" onclick="openDetail('biz',allBiz[${idx}],allBiz)">
     <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;Destacado</div>
     <div class="biz-avatar">${avatarInner}</div>
@@ -389,11 +392,11 @@ function renderBanner(ads){
   const real=ads.map(ad=>{
     const biz=ad.business||{};
     const imgSrc=ad.imageUrl||biz.imageUrl||'';
-    const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
+    const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
     return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
   });
   const dc=ads.length===0?ICONS.length:2;
-  const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></div>`);
+  const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star" style="color:#c59a1a"><use href="#ic-star"/></svg></div>`);
   const all=[...real,...dummy];
   track.innerHTML=all.join('')+all.join('');
 }
@@ -464,10 +467,13 @@ function filterBiz(){bizFilter.q=document.getElementById('bizSearch').value;bizP
 function filterReq(){reqFilter.q=document.getElementById('reqSearch').value;renderReq();}
 function filterOff(){offFilter.q=document.getElementById('offSearch').value;renderOff();}
 function setCat(el,prefix){
-  const container=el.closest('.filter-chips');
+  /* Always resolve to the .chip element even if a child was clicked */
+  const chip=el.classList.contains('chip')?el:el.closest('.chip');
+  if(!chip)return;
+  const container=chip.closest('.filter-chips');
   if(container)container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  const cat=el.dataset.cat||'all';
+  chip.classList.add('active');
+  const cat=chip.dataset.cat||'all';
   if(prefix==='biz'){bizFilter.cat=cat;bizPage=1;renderBiz();}
   if(prefix==='req'){reqFilter.cat=cat;renderReq();}
   if(prefix==='off'){offFilter.cat=cat;renderOff();}

@@ -167,7 +167,7 @@ a{text-decoration:none;color:inherit}
 .lp-feat-viewport{overflow:hidden;border-radius:var(--r);margin-bottom:18px}
 
 /* Track holds all cards side by side */
-.lp-feat-track{display:flex;gap:14px;width:100%;will-change:transform}
+.lp-feat-track{display:flex;gap:14px;will-change:transform}
 
 /* Each card: width = (100% / visible) - gap adjustment */
 .lp-feat-card{

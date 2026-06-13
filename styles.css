@@ -635,6 +635,51 @@ a{text-decoration:none;color:inherit}
 .load-more-btn:hover svg{color:#fff}
 .biz-count-label{text-align:center;margin-top:24px;font-size:11px;color:var(--gray);font-family:var(--fd);letter-spacing:0.3px}
 
+
+/* ── DETAIL CARD: QR CODE SECTION ─────────────────────────────── */
+.dt-qr{
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+}
+.dt-qr-inner{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:12px 14px;
+}
+.dt-qr-img{
+  width:80px;
+  height:80px;
+  border-radius:6px;
+  flex-shrink:0;
+  background:#fff;
+  border:1px solid var(--border);
+  /* Crisp rendering for QR codes */
+  image-rendering:pixelated;
+  image-rendering:-moz-crisp-edges;
+  image-rendering:crisp-edges;
+}
+.dt-qr-label{
+  flex:1;
+  min-width:0;
+}
+.dt-qr-title{
+  font-family:var(--fd);
+  font-size:12px;
+  font-weight:700;
+  color:var(--black);
+  margin-bottom:3px;
+}
+.dt-qr-sub{
+  font-size:11px;
+  color:var(--gray);
+  line-height:1.4;
+}
+
 .footer{background:var(--black2);padding:48px 24px 32px}
 .footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
 .footer-brand{}

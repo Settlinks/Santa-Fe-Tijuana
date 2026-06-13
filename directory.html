@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="Directorio de negocios Santa Fe Tijuana — Registra tu negocio, publica solicitudes y ofertas.">
+<link rel="icon" id="faviconTag" href="data:,">
+<title>Directorio — Santa Fe Tijuana</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;position:absolute;width:0;height:0">
+   <symbol id="ic-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
+  <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
+  <symbol id="ic-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="ic-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+  <symbol id="ic-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.32 9.81 19.79 19.79 0 01.26 1.18 2 2 0 012.24 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-.64a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
+  <symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="ic-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01"/></symbol>
+  <symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="ic-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="ic-food" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></symbol>
+  <symbol id="ic-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+  <symbol id="ic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="ic-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+  <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+  <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="ic-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></symbol>
+  <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></symbol>
+  <symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></symbol>
+  <symbol id="ic-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="ic-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+</svg>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <div class="logo-icon" id="logoIconWrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+      <div><div class="logo-wordmark">Santa Fe <span>Tijuana</span></div><div class="logo-sub" data-t="portalSub">Directorio Comunitario</div></div>
+    </a>
+    <nav class="header-nav">
+      <div class="nav-item">
+        <a class="nav-link nav-page-link active" href="directory.html">
+          <svg width="13" height="13"><use href="#ic-store"/></svg><span data-t="navDir">Directorio</span><svg class="nav-chevron"><use href="#ic-chevron-down"/></svg>
+        </a>
+        <div class="mega-menu" style="grid-template-columns:1fr 1fr;min-width:420px">
+          <div class="mega-col"><div class="mega-col-label">Negocios</div>
+            <button class="mega-link" onclick="showSection('directory')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-store"/></svg></div><div><div class="mega-link-title">Ver Directorio</div><div class="mega-link-sub">Todos los negocios</div></div></button>
+            <button class="mega-link" onclick="openModal('modalBusiness')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-plus"/></svg></div><div><div class="mega-link-title">Registrar Negocio</div><div class="mega-link-sub">Gratis — solo 2 minutos</div></div></button>
+          </div>
+          <div class="mega-col"><div class="mega-col-label">Más opciones</div>
+            <button class="mega-link" onclick="showSection('requests')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-clipboard"/></svg></div><div><div class="mega-link-title">Solicitudes</div><div class="mega-link-sub">Buscar servicios</div></div></button>
+            <button class="mega-link" onclick="showSection('offers')"><div class="mega-link-icon"><svg width="15" height="15"><use href="#ic-tag"/></svg></div><div><div class="mega-link-title">Ofertas y Productos</div><div class="mega-link-sub">Lo que ofrece la comunidad</div></div></button>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link nav-page-link" href="directory.html" onclick="event.preventDefault();showSection('requests')"><svg width="13" height="13"><use href="#ic-clipboard"/></svg><span data-t="navReq">Solicitudes</span></a>
+      <a class="nav-link nav-page-link" href="directory.html" onclick="event.preventDefault();showSection('offers')"><svg width="13" height="13"><use href="#ic-tag"/></svg><span data-t="navOff">Ofertas</span></a>
+      <a class="nav-link nav-page-link" href="about.html"><svg width="13" height="13"><use href="#ic-users"/></svg><span data-t="navAbout">Nosotros</span></a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-pill"><button class="lang-opt" id="langEN" onclick="setLang('en')">EN</button><button class="lang-opt active" id="langES" onclick="setLang('es')">ES</button></div>
+      <button class="btn btn-ghost-dark btn-sm" onclick="openModal('modalArchive')"><svg width="12" height="12"><use href="#ic-archive"/></svg></button>
+      <button class="btn btn-ghost-dark btn-sm" id="adminBtn" onclick="openModal('modalAdmin')" title="Panel Admin" style="display:none;position:relative">
+        <svg width="12" height="12"><use href="#ic-shield"/></svg>
+        <span class="admin-badge" id="adminBadge" style="display:none"></span>
+      </button>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnRegister">Registrar Negocio</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- BANNER STRIP -->
+<div class="banner-section">
+  <div class="banner-header">
+    <svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg>
+    <span class="banner-header-label" data-t="featuredBiz">Negocios Destacados</span>
+    <div class="banner-sep"></div>
+    <button class="btn btn-ghost-dark btn-sm" onclick="openModal('modalBusiness')" style="font-size:10px;padding:4px 10px;flex-shrink:0">+ Banner</button>
+  </div>
+  <div class="banner-track-wrap"><div class="banner-track" id="bannerTrack"></div></div>
+</div>
+
+<!-- SECTION TABS -->
+<div class="section-nav">
+  <div class="section-nav-inner">
+    <button class="sec-tab active" onclick="showSection('directory')" id="sectab-directory"><svg width="14" height="14"><use href="#ic-store"/></svg><span data-t="tabDir">Directorio</span><span class="sec-tab-count" id="cnt-directory">—</span></button>
+    <button class="sec-tab" onclick="showSection('requests')" id="sectab-requests"><svg width="14" height="14"><use href="#ic-clipboard"/></svg><span data-t="tabReq">Solicitudes</span><span class="sec-tab-count" id="cnt-requests">—</span></button>
+    <button class="sec-tab" onclick="showSection('offers')" id="sectab-offers"><svg width="14" height="14"><use href="#ic-tag"/></svg><span data-t="tabOff">Ofertas y Productos</span><span class="sec-tab-count" id="cnt-offers">—</span></button>
+  </div>
+</div>
+
+<main class="main-content">
+  <!-- ONBOARDING -->
+  <div class="onboarding-banner" id="onboardingBanner">
+    <div class="onboarding-banner-icon"><svg width="24" height="24"><use href="#ic-store"/></svg></div>
+    <div class="onboarding-banner-text">
+      <div class="onboarding-banner-title" data-t="onboardTitle">¿Tienes un negocio en Santa Fe Tijuana?</div>
+      <div class="onboarding-banner-sub" data-t="onboardSub">Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.</div>
+    </div>
+    <button class="btn btn-light" onclick="openModal('modalBusiness')"><svg width="13" height="13"><use href="#ic-plus"/></svg><span data-t="onboardCta">Registrar gratis</span></button>
+    <button class="onboarding-close" onclick="dismissOnboarding()"><svg width="13" height="13"><use href="#ic-close"/></svg></button>
+  </div>
+
+  <!-- DIRECTORY SECTION -->
+  <section id="sec-directory">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="dirTitle">Directorio de Negocios</span><span class="dot">.</span></h2><p class="section-desc" data-t="dirDesc">Los más recientes primero · Actualizado hoy</p></div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnAddBiz">Agregar Negocio</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="bizSearch" placeholder="Nombre, categoría, tipo de servicio…" oninput="filterBiz()"></div>
+      <div class="filter-chips" id="bizChips"><span class="chip active" data-cat="all" onclick="setCat(this,'biz')" data-t="all">Todos</span></div>
+    </div>
+    <div class="biz-grid" id="bizList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+    <div class="pagination" id="bizPages"></div>
+  </section>
+
+  <!-- REQUESTS SECTION -->
+  <section id="sec-requests" style="display:none">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="reqTitle">Solicitudes de Servicio</span><span class="dot">.</span></h2><p class="section-desc" data-t="reqDesc">Personas buscando servicios · Expira en 60 días</p></div>
+      <button class="btn btn-dark btn-sm" onclick="openModal('modalRequest')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnPostReq">Publicar Solicitud</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="reqSearch" placeholder="Buscar solicitudes…" oninput="filterReq()"></div>
+      <div class="filter-chips" id="reqChips"><span class="chip active" data-cat="all" onclick="setCat(this,'req')" data-t="all">Todos</span></div>
+    </div>
+    <div class="market-grid" id="reqList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+  </section>
+
+  <!-- OFFERS SECTION -->
+  <section id="sec-offers" style="display:none" id="offers">
+    <div class="section-header">
+      <div><h2 class="section-title"><span data-t="offTitle">Ofertas y Productos</span><span class="dot">.</span></h2><p class="section-desc" data-t="offDesc">Servicios y productos de la comunidad</p></div>
+      <button class="btn btn-crimson btn-sm" onclick="openModal('modalOffer')"><svg width="12" height="12"><use href="#ic-plus"/></svg><span data-t="btnPostOff">Publicar Oferta</span></button>
+    </div>
+    <div class="filter-bar">
+      <div class="search-wrap"><span class="search-icon"><svg width="14" height="14"><use href="#ic-search"/></svg></span><input class="search-input" id="offSearch" placeholder="Buscar ofertas…" oninput="filterOff()"></div>
+      <div class="filter-chips" id="offChips"><span class="chip active" data-cat="all" onclick="setCat(this,'off')" data-t="all">Todos</span></div>
+    </div>
+    <div class="market-grid" id="offList"><div class="loading"><div class="spinner"></div><span data-t="loading">Cargando…</span></div></div>
+  </section>
+</main>
+
+<!-- FAB -->
+<button class="fab" onclick="openModal('modalBusiness')"><svg width="18" height="18"><use href="#ic-store"/></svg><span class="fab-label" data-t="fabLabel">Registra tu Negocio</span></button>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(193,48,48,0.8)"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Santa Fe <span>Tijuana</span></div>
+      <p class="footer-tagline" data-t="footerTagline">El directorio oficial de negocios y mercado de la comunidad Santa Fe Tijuana.</p>
+    </div>
+    <div><div class="footer-col-title">Secciones</div>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="#" onclick="event.preventDefault();showSection('directory')" data-t="tabDir">Directorio</a>
+        <a href="#" onclick="event.preventDefault();showSection('requests')" data-t="tabReq">Solicitudes</a>
+        <a href="#" onclick="event.preventDefault();showSection('offers')" data-t="tabOff">Ofertas</a>
+        <a href="about.html" data-t="navAbout">Nosotros</a>
+      </div>
+    </div>
+    <div><div class="footer-col-title">Publicar</div>
+      <div class="footer-links">
+        <a href="#" onclick="event.preventDefault();openModal('modalBusiness')" data-t="btnRegister">Registrar Negocio</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalRequest')" data-t="btnPostReq">Publicar Solicitud</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalOffer')" data-t="btnPostOff">Publicar Oferta</a>
+        <a href="#" onclick="event.preventDefault();openModal('modalArchive')">Archivados</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 <a href="https://santafetijuana.com" style="color:rgba(255,255,255,0.35)">santafetijuana.com</a> · <span data-t="footerRights">Todos los derechos reservados.</span></span>
+    <span class="footer-by" data-t="footerBy">Diseñado por YATELASA</span>
+  </div>
+</footer>
+<div class="share-toast" id="shareToast"></div>
+
+<!-- MODALS: BUSINESS -->
+<div class="modal-overlay" id="modalBusiness">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-store"/></svg></div><span data-t="modalBizTitle">Registra Tu Negocio</span></div><button class="modal-close" onclick="closeModal('modalBusiness')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBizName">Nombre del Negocio <span class="req">*</span></label><input class="form-input" id="biz_name" type="text" placeholder="Ej. Mi Tienda Favorita"></div><div class="form-group"><label class="form-label" data-t="fOwner">Nombre del Dueño <span class="req">*</span></label><input class="form-input" id="biz_owner" type="text" placeholder="Nombre completo"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="biz_category"></select></div><div class="form-group"><label class="form-label" data-t="fServiceType">Tipo de Servicio <span class="req">*</span></label><input class="form-input" id="biz_service" type="text" placeholder="Ej. Cortes, Entrega"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="biz_desc" placeholder="Describe tu negocio y servicios…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="biz_phone" type="tel" placeholder="+52 664 000 0000"></div><div class="form-group"><label class="form-label" data-t="fEmail">Correo <span class="req">*</span></label><input class="form-input" id="biz_email" type="email" placeholder="negocio@correo.com"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fAddress">Dirección</label><input class="form-input" id="biz_address" type="text" placeholder="Calle, Colonia"></div><div class="form-group"><label class="form-label" data-t="fWebsite">Sitio Web / Redes</label><input class="form-input" id="biz_website" type="text" placeholder="https://..."></div></div>
+      <div class="form-group"><label class="form-label" data-t="fPhoto">Foto del Negocio / Logo</label>
+        <div class="upload-zone" id="biz_zone" onclick="document.getElementById('biz_img').click()"><button class="upload-del" id="biz_del" type="button" onclick="event.stopPropagation();clearImg('biz')"><svg width="11" height="11"><use href="#ic-close"/></svg></button><div class="upload-icon-wrap"><svg width="20" height="20"><use href="#ic-upload"/></svg></div><p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p><input type="file" id="biz_img" accept="image/*" style="display:none" onchange="previewImg(this,'biz_prev','biz_del')"><img id="biz_prev" class="img-preview" alt=""></div>
+        <div class="upload-progress" id="biz_progress"><div class="upload-progress-bar" id="biz_bar" style="width:0%"></div></div>
+      </div>
+      <div class="banner-upsell"><div class="banner-upsell-title"><svg width="13" height="13"><use href="#ic-star"/></svg><span data-t="bannerTitle">¡Destaca tu Negocio en el Banner!</span></div><p data-t="bannerDesc">Promociona tu negocio por <strong>30 días</strong> — $29.99 USD vía PayPal.</p><div class="check-row"><input type="checkbox" id="biz_banner" onchange="toggleBannerNote()"><label for="biz_banner" data-t="bannerCheck">Sí, destacar mi negocio — <strong>$29.99 USD</strong> / 30 días</label></div><div class="banner-note" id="bannerNote" data-t="bannerNote">Al registrarte serás redirigido a PayPal. Tu banner se activa en 24 horas.</div></div>
+      <button class="btn btn-crimson btn-lg" id="btnSubmitBiz" style="width:100%;justify-content:center;margin-top:18px" onclick="submitBusiness(this)"><svg width="16" height="16"><use href="#ic-store"/></svg><span data-t="btnSubmitBiz">Registrar Negocio</span></button>
+      <div id="bizResult" class="submit-result"></div>
+      <a id="paypalBtn" href="#" target="_blank" rel="noopener" class="paypal-btn"><svg width="18" height="18"><use href="#ic-globe"/></svg> Pagar $29.99 en PayPal</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: REQUEST -->
+<div class="modal-overlay" id="modalRequest">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-clipboard"/></svg></div><span data-t="modalReqTitle">Publicar Solicitud</span></div><button class="modal-close" onclick="closeModal('modalRequest')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="reqHint">Dile a la comunidad qué necesitas. La publicación expira en 60 días.</p>
+      <div class="form-group"><label class="form-label" data-t="fReqTitle">Título de la Solicitud <span class="req">*</span></label><input class="form-input" id="req_title" type="text" placeholder="Ej. Necesito plomero para fuga en baño"></div>
+      <div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="req_category"></select></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="req_desc" placeholder="Describe qué necesitas, ubicación, disponibilidad…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBudgetMin">Presupuesto Mín (MXN)</label><input class="form-input" id="req_min" type="number" placeholder="500" min="0"></div><div class="form-group"><label class="form-label" data-t="fBudgetMax">Presupuesto Máx (MXN)</label><input class="form-input" id="req_max" type="number" placeholder="1500" min="0"></div></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fYourName">Tu Nombre <span class="req">*</span></label><input class="form-input" id="req_name" type="text" placeholder="Tu primer nombre"></div><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="req_phone" type="tel" placeholder="+52 664 000 0000"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="req_email" type="email" placeholder="tu@correo.com"></div>
+      <button class="btn btn-dark btn-lg" id="btnSubmitReq" style="width:100%;justify-content:center;margin-top:8px" onclick="submitRequest(this)"><svg width="16" height="16"><use href="#ic-clipboard"/></svg><span data-t="btnPostReqSubmit">Publicar Solicitud</span></button>
+      <div id="reqResult" class="submit-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: OFFER -->
+<div class="modal-overlay" id="modalOffer">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-tag"/></svg></div><span data-t="modalOffTitle">Publicar Oferta</span></div><button class="modal-close" onclick="closeModal('modalOffer')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="offHint">Ofrece tus servicios o productos a la comunidad. Expira en 60 días.</p>
+      <div class="form-group"><label class="form-label" data-t="fOffTitle">Título de la Oferta <span class="req">*</span></label><input class="form-input" id="off_title" type="text" placeholder="Ej. Tamales caseros, paquete de 12"></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fCategory">Categoría <span class="req">*</span></label><select class="form-select" id="off_category"></select></div><div class="form-group"><label class="form-label" data-t="fPrice">Precio (MXN)</label><input class="form-input" id="off_price" type="number" placeholder="250" min="0"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fDesc">Descripción <span class="req">*</span></label><textarea class="form-textarea" id="off_desc" placeholder="Describe tu oferta, disponibilidad, condiciones…"></textarea></div>
+      <div class="form-row"><div class="form-group"><label class="form-label" data-t="fBizYourName">Negocio / Tu Nombre <span class="req">*</span></label><input class="form-input" id="off_biz" type="text" placeholder="Nombre de negocio o personal"></div><div class="form-group"><label class="form-label" data-t="fPhone">Teléfono <span class="req">*</span></label><input class="form-input" id="off_phone" type="tel" placeholder="+52 664 000 0000"></div></div>
+      <div class="form-group"><label class="form-label" data-t="fEmailOpt">Correo (opcional)</label><input class="form-input" id="off_email" type="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label class="form-label" data-t="fPhotoOpt">Foto (opcional)</label>
+        <div class="upload-zone" id="off_zone" onclick="document.getElementById('off_img').click()"><button class="upload-del" id="off_del" type="button" onclick="event.stopPropagation();clearImg('off')"><svg width="11" height="11"><use href="#ic-close"/></svg></button><div class="upload-icon-wrap"><svg width="20" height="20"><use href="#ic-upload"/></svg></div><p data-t="uploadHint">Haz clic para subir · JPG/PNG · máx 5 MB</p><input type="file" id="off_img" accept="image/*" style="display:none" onchange="previewImg(this,'off_prev','off_del')"><img id="off_prev" class="img-preview" alt=""></div>
+        <div class="upload-progress" id="off_progress"><div class="upload-progress-bar" id="off_bar" style="width:0%"></div></div>
+      </div>
+      <button class="btn btn-crimson btn-lg" id="btnSubmitOff" style="width:100%;justify-content:center;margin-top:8px" onclick="submitOffer(this)"><svg width="16" height="16"><use href="#ic-tag"/></svg><span data-t="btnPostOffSubmit">Publicar Oferta</span></button>
+      <div id="offResult" class="submit-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ARCHIVE -->
+<div class="modal-overlay" id="modalArchive">
+  <div class="modal" style="max-width:620px">
+    <div class="modal-header"><div class="modal-title"><div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-archive"/></svg></div><span data-t="modalArchTitle">Publicaciones Archivadas</span></div><button class="modal-close" onclick="closeModal('modalArchive')"><svg width="15" height="15"><use href="#ic-close"/></svg></button></div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:14px;line-height:1.55" data-t="archHint">Busca publicaciones expiradas conservadas 60 días adicionales.</p>
+      <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <input class="form-input" id="arch_query" type="text" placeholder="Buscar en archivados…" style="flex:1;min-width:140px">
+        <select class="form-select" id="arch_type" style="width:140px"><option value="all">Todo</option><option value="requests">Solicitudes</option><option value="offers">Ofertas</option></select>
+        <button class="btn btn-crimson btn-sm" onclick="searchArchive()"><svg width="12" height="12"><use href="#ic-search"/></svg><span data-t="btnSearch">Buscar</span></button>
+      </div>
+      <div id="archResults"><div class="empty-state"><div class="empty-state-icon"><svg width="22" height="22"><use href="#ic-search"/></svg></div><h3 data-t="archEmpty">Ingresa un término</h3><p data-t="archEmptySub">Busca entre publicaciones archivadas</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL OVERLAY -->
+<div id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-card"><div class="detail-hero" id="dtHero"><button class="detail-close-btn" onclick="closeDetail()"><svg width="13" height="13"><use href="#ic-close"/></svg></button><div class="detail-hero-icon" id="dtIcon"></div></div>
+  <div class="detail-body"><div class="detail-name" id="dtName"></div><div class="detail-sub" id="dtSub"></div><div class="detail-desc" id="dtDesc"></div><div class="detail-meta" id="dtMeta"></div><div class="detail-actions" id="dtActions"></div></div></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+'use strict';
+let allBiz=[], allReq=[], allOff=[], categories=[];
+let bizFilter={cat:'all',q:''}, reqFilter={cat:'all',q:''}, offFilter={cat:'all',q:''};
+let bizPage=1;
+
+function onLangChange(){
+  populateCategorySelects(categories);
+  buildChips('biz'); buildChips('req'); buildChips('off');
+  renderBiz(); renderReq(); renderOff();
+}
+
+window.addEventListener('load', async () => {
+  applyBranding(); setLang('es');
+  if (sessionStorage.getItem('onboardDismissed')) {
+    const ob = document.getElementById('onboardingBanner'); if(ob) ob.style.display='none';
+  }
+  if (window.location.hash === '#offers') showSection('offers');
+  /* Load cats first so chips are ready, then load data in parallel */
+  await loadCats();
+  await Promise.all([loadBiz(), loadBanners(), loadReq(), loadOff()]);
+  handleDeepLink();
+});
+
+function dismissOnboarding(){
+  sessionStorage.setItem('onboardDismissed','1');
+  const ob=document.getElementById('onboardingBanner');
+  if(ob){ob.style.opacity='0';ob.style.transition='opacity 0.3s';setTimeout(()=>ob.style.display='none',300);}
+}
+function handleDeepLink(){
+  const p=new URLSearchParams(window.location.search);
+  const biz=p.get('business'),req=p.get('request'),off=p.get('offer');
+  if(biz){const item=allBiz.find(b=>b.slug===biz||b.id===biz);if(item)openDetail('biz',item,allBiz);}
+  else if(req){const item=allReq.find(r=>r.slug===req||r.id===req);if(item){showSection('requests');openDetail('req',item,allReq);}}
+  else if(off){const item=allOff.find(o=>o.slug===off||o.id===off);if(item){showSection('offers');openDetail('off',item,allOff);}}
+}
+
+async function loadCats(){
+  const r=await api('getCategories');
+  if(r.success&&r.data&&r.data.length){
+    categories=r.data;
+    populateCategorySelects(categories);
+    buildChips('biz');buildChips('req');buildChips('off');
+    /* NOTE: do NOT call renderBiz/Req/Off here — allBiz is not yet populated.
+       loadBiz/loadReq/loadOff each call their own render after data arrives. */
+  }
+}
+function buildChips(prefix){
+  const c=document.getElementById(prefix+'Chips');
+  if(!c) return;
+  /* Remove all existing chips */
+  c.innerHTML='';
+  /* Build Todos chip via createElement — same method as category chips,
+     no HTML-attribute string parsing, guaranteed correct onclick binding */
+  const allChip=document.createElement('span');
+  allChip.className='chip active';
+  allChip.dataset.cat='all';
+  allChip.setAttribute('data-t','all');
+  allChip.textContent=T('all');
+  allChip.addEventListener('click',()=>setCat(allChip,prefix));
+  c.appendChild(allChip);
+  /* Build one chip per category */
+  categories.forEach(cat=>{
+    const chip=document.createElement('span');
+    chip.className='chip';
+    chip.dataset.cat=cat;
+    chip.textContent=cat;
+    chip.addEventListener('click',()=>setCat(chip,prefix));
+    c.appendChild(chip);
+  });
+}
+
+/* BUSINESSES */
+async function loadBiz(){
+  document.getElementById('bizList').innerHTML='<div class="loading"><div class="spinner"></div><span>'+T('loading')+'</span></div>';
+  const r=await api('getBusinesses',{});
+  /* Only show error on actual failure, not on empty results */
+  if(!r.success){showBizError(r.error);return;}
+  allBiz=r.data||[];
+  /* cnt-directory updated inside renderBiz */
+  bizPage=1;renderBiz();
+}
+function showBizError(errMsg){
+  document.getElementById('bizList').innerHTML=`
+    <div class="error-state">
+      <div class="error-state-icon"><svg width="22" height="22"><use href="#ic-alert"/></svg></div>
+      <h3>${T('errLoadBiz')}</h3>
+      <p style="margin-bottom:8px;font-size:12px;color:var(--gray)">${errMsg||''}</p>
+      <p style="margin-bottom:16px;font-size:11px;color:var(--gray);line-height:1.6">
+        Si acabas de desplegar GAS, espera 1 minuto y reintenta.<br>
+        Asegúrate que el despliegue sea <strong>Ejecutar como: Yo</strong> y <strong>Quién tiene acceso: Cualquier persona</strong>.
+      </p>
+      <button class="btn btn-dark btn-sm" onclick="loadBiz()"><svg width="13" height="13"><use href="#ic-refresh"/></svg> ${T('retryBtn')}</button>
+    </div>`;
+}
+function renderBiz(){
+  const cat=bizFilter.cat, q=bizFilter.q.trim().toLowerCase();
+  const filtered=allBiz.filter(b=>
+    (cat==='all' || String(b.category||'').trim()===cat) &&
+    (!q || (String(b.businessName||'')+' '+String(b.serviceType||'')+' '+String(b.category||'')+' '+String(b.description||'')).toLowerCase().includes(q))
+  );
+  const total=filtered.length;
+  const el=document.getElementById('bizList');
+  const pages_el=document.getElementById('bizPages');
+
+  /* Update "Showing X of Y" counter */
+  /* Update tab counter: show total allBiz when "all", filtered count when specific cat */
+  const cntEl=document.getElementById('cnt-directory');
+  if(cntEl) cntEl.textContent=(cat==='all'&&!q) ? allBiz.length : total;
+
+  if(!total){
+    el.innerHTML=emptyHtml('ic-store',T('noBizFound'),T('noBizFoundSub'));
+    if(pages_el) pages_el.innerHTML='';
+    return;
+  }
+
+  /* Show ALL matching businesses — no pagination on business directory.
+     Pagination is confusing and hides results. Use "load more" if needed. */
+  const BIZ_PAGE_SIZE=24;
+  const pages=Math.max(1,Math.ceil(total/BIZ_PAGE_SIZE));
+  if(bizPage>pages) bizPage=pages;
+  if(bizPage<1) bizPage=1;
+  const slice=filtered.slice(0, bizPage*BIZ_PAGE_SIZE); /* show all up to current page */
+
+  el.innerHTML=slice.map(b=>bizCardHtml(b)).join('');
+
+  /* Render "Load More" button instead of numbered pagination */
+  if(pages_el){
+    if(bizPage<pages){
+      pages_el.innerHTML=`<button class="load-more-btn" onclick="bizLoadMore()">
+        <svg width="14" height="14"><use href="#ic-refresh"/></svg>
+        Ver más negocios (${total - slice.length} restantes)
+      </button>`;
+    } else {
+      /* All loaded — show total count */
+      pages_el.innerHTML=total>BIZ_PAGE_SIZE
+        ? `<div class="biz-count-label">Mostrando todos los ${total} negocios</div>`
+        : '';
+    }
+  }
+}
+function bizLoadMore(){
+  bizPage++;
+  renderBiz();
+  /* Smooth scroll to new cards */
+  const list=document.getElementById('bizList');
+  if(list) setTimeout(()=>list.lastElementChild&&list.lastElementChild.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+function bizCardHtml(b){
+  const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
+  const isFeat=b.isBannerSubscriber===true||String(b.isBannerSubscriber).toUpperCase()==='TRUE';
+  const idx=allBiz.indexOf(b);
+  const avatarInner=b.imageUrl?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg width=\\'20\\' height=\\'20\\' style=\\'color:rgba(30,30,30,0.35)\\'><use href=\\'#${catIcon(b.category)}\\'/></svg>'">`:`<svg width="20" height="20" style="color:rgba(30,30,30,0.35)"><use href="#${catIcon(b.category)}"/></svg>`;
+  return `<div class="biz-card${isFeat?' featured':''}" onclick="openDetail('biz',allBiz[${idx}],allBiz)">
+    <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;Destacado</div>
+    <div class="biz-avatar">${avatarInner}</div>
+    <div class="biz-info"><div class="biz-name">${esc(b.businessName)}</div><div class="biz-type">${esc(b.serviceType||b.category)}</div>
+      <div class="biz-tags"><span class="tag tag-cat">${esc(b.category)}</span>${isNew?`<span class="tag tag-new">NUEVO</span>`:''}</div></div>
+    <div class="biz-right">
+      ${b.phone?`<a class="biz-phone" href="tel:${esc(b.phone)}" onclick="event.stopPropagation()">${esc(b.phone)}</a>`:''}
+      <div class="biz-time">${timeAgo(b.registeredDate)}</div>
+      <div class="biz-actions">
+        <button class="icon-btn" onclick="event.stopPropagation();shareItem('business','${esc(b.slug||b.id)}','${esc(b.businessName)}')"><svg width="12" height="12"><use href="#ic-share"/></svg></button>
+        ${b.phone?`<a class="icon-btn" href="https://wa.me/${(b.phone||'').replace(/\D/g,'')}" target="_blank" onclick="event.stopPropagation()" style="text-decoration:none"><svg width="12" height="12"><use href="#ic-whatsapp"/></svg></a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* BANNER */
+async function loadBanners(){
+  const r=await api('getActiveBannerAds');
+  renderBanner((r.success&&r.data)?r.data:[]);
+}
+function renderBanner(ads){
+  const track=document.getElementById('bannerTrack');if(!track)return;
+  const ICONS=['ic-food','ic-scissors','ic-wrench','ic-car','ic-heart','ic-book','ic-monitor','ic-briefcase'];
+  const real=ads.map(ad=>{
+    const biz=ad.business||{};
+    const imgSrc=ad.imageUrl||biz.imageUrl||'';
+    const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
+    return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
+  });
+  const dc=ads.length===0?ICONS.length:2;
+  const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star" style="color:#c59a1a"><use href="#ic-star"/></svg></div>`);
+  const all=[...real,...dummy];
+  track.innerHTML=all.join('')+all.join('');
+}
+
+/* REQUESTS */
+async function loadReq(){
+  const r=await api('getRequests',{});
+  allReq=r.success?(r.data||[]):[];
+  const cnt=document.getElementById('cnt-requests');if(cnt)cnt.textContent=allReq.length;
+  renderReq();
+}
+function renderReq(){
+  const cat=reqFilter.cat,q=reqFilter.q.trim().toLowerCase();
+  const filtered=allReq.filter(r=>(cat==='all'||String(r.category||'').trim()===cat)&&(!q||(String(r.title||'')+' '+String(r.description||'')).toLowerCase().includes(q)));
+  const el=document.getElementById('reqList');
+  if(!filtered.length){el.innerHTML=emptyHtml('ic-clipboard',T('noReq'),T('noReqSub'));return;}
+  el.innerHTML=filtered.map((r,i)=>reqCardHtml(r,i)).join('');
+}
+function reqCardHtml(r,idx){
+  const days=Math.ceil((new Date(r.expiryDate)-Date.now())/86400000);
+  const budget=(r.budgetMin||r.budgetMax)?`$${r.budgetMin||0}${r.budgetMax&&r.budgetMax!=r.budgetMin?' – $'+r.budgetMax:''} MXN`:T('negotiable');
+  return`<div class="market-card req-card" onclick="openDetail('req',allReq[${idx}],allReq)">
+    <div class="mc-header"><span class="mc-type req-type"><svg width="9" height="9"><use href="#ic-clipboard"/></svg> ${T('REQUEST')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
+    <div class="mc-title">${esc(r.title)}</div><div class="mc-desc">${esc(r.description)}</div>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(r.category)}</span>
+    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-user"/></svg> ${esc(r.contactName)} · <svg width="10" height="10"><use href="#ic-phone"/></svg> ${esc(r.contactPhone)}</div>
+    <div class="mc-footer"><div><div class="price-label">${T('budget')}</div><div class="price-badge req">${budget}</div></div>
+    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('request','${esc(r.slug||r.id)}','${esc(r.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
+  </div>`;
+}
+
+/* OFFERS */
+async function loadOff(){
+  const r=await api('getOffers',{});
+  allOff=r.success?(r.data||[]):[];
+  const cnt=document.getElementById('cnt-offers');if(cnt)cnt.textContent=allOff.length;
+  renderOff();
+}
+function renderOff(){
+  const cat=offFilter.cat,q=offFilter.q.trim().toLowerCase();
+  const filtered=allOff.filter(o=>(cat==='all'||String(o.category||'').trim()===cat)&&(!q||(String(o.title||'')+' '+String(o.description||'')).toLowerCase().includes(q)));
+  const el=document.getElementById('offList');
+  if(!filtered.length){el.innerHTML=emptyHtml('ic-tag',T('noOff'),T('noOffSub'));return;}
+  el.innerHTML=filtered.map((o,i)=>offCardHtml(o,i)).join('');
+}
+function offCardHtml(o,idx){
+  const days=Math.ceil((new Date(o.expiryDate)-Date.now())/86400000);
+  const price=o.price?`$${Number(o.price).toLocaleString()} MXN`:T('priceOnRequest');
+  return`<div class="market-card off-card" onclick="openDetail('off',allOff[${idx}],allOff)">
+    ${o.imageUrl?`<div class="offer-img"><img src="${esc(o.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`:''}
+    <div class="mc-header"><span class="mc-type off-type"><svg width="9" height="9"><use href="#ic-tag"/></svg> ${T('OFFER')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
+    <div class="mc-title">${esc(o.title)}</div><div class="mc-desc">${esc(o.description)}</div>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(o.category)}</span>
+    <div class="mc-contact"><svg width="10" height="10"><use href="#ic-building"/></svg> ${esc(o.businessName||'—')} · <a href="tel:${esc(o.contactPhone)}" style="color:var(--crimson)" onclick="event.stopPropagation()">${esc(o.contactPhone)}</a></div>
+    <div class="mc-footer"><div><div class="price-label">${T('price')}</div><div class="price-badge off">${price}</div></div>
+    <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('offer','${esc(o.slug||o.id)}','${esc(o.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
+  </div>`;
+}
+
+/* UI */
+function showSection(name){
+  ['directory','requests','offers'].forEach(s=>{
+    const sec=document.getElementById('sec-'+s);if(sec)sec.style.display=s===name?'block':'none';
+    const tab=document.getElementById('sectab-'+s);if(tab)tab.classList.toggle('active',s===name);
+  });
+}
+function filterBiz(){bizFilter.q=document.getElementById('bizSearch').value;bizPage=1;renderBiz();}
+function filterReq(){reqFilter.q=document.getElementById('reqSearch').value;renderReq();}
+function filterOff(){offFilter.q=document.getElementById('offSearch').value;renderOff();}
+function setCat(el,prefix){
+  /* Resolve to the .chip element — handles click on child elements too */
+  const chip=el.classList&&el.classList.contains('chip') ? el : el.closest&&el.closest('.chip');
+  if(!chip) return;
+  /* Deactivate all chips in the same container */
+  const container=chip.closest('.filter-chips');
+  if(container) container.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  const cat=chip.dataset.cat||'all';
+  /* Apply filter and reset to page 1 */
+  if(prefix==='biz'){ bizFilter.cat=cat; bizPage=1; renderBiz(); }
+  if(prefix==='req'){ reqFilter.cat=cat; renderReq(); }
+  if(prefix==='off'){ offFilter.cat=cat; renderOff(); }
+}
+/* renderPages replaced by load-more approach in renderBiz */
+function bizGoPage(p){bizPage=p;renderBiz();}
+
+/* ── ADMIN ── */
+const ADMIN_SECRET = 'admin'; /* Type "admin" in search and press Shift+Enter to reveal admin panel */
+document.addEventListener('keydown', e => {
+  if(e.shiftKey && e.key==='Enter') {
+    const q = document.getElementById('bizSearch');
+    if(q && q.value.trim().toLowerCase() === ADMIN_SECRET) {
+      q.value = '';
+      const btn = document.getElementById('adminBtn');
+      if(btn) btn.style.display = 'flex';
+      openModal('modalAdmin');
+      loadAdminData();
+    }
+  }
+});
+
+async function loadAdminData() {
+  document.getElementById('pendingBannersList').innerHTML = '<div class="loading"><div class="spinner"></div><span>Cargando…</span></div>';
+
+  const [summary, pending] = await Promise.all([
+    api('getAdminSummary'),
+    api('getPendingBanners')
+  ]);
+
+  /* Stats */
+  if(summary.success && summary.data) {
+    const d = summary.data;
+    ['biz','req','off'].forEach(k => {
+      const el = document.getElementById('adm-'+k);
+      if(el) el.textContent = d[k==='biz'?'businesses':k==='req'?'requests':'offers'] ?? '—';
+    });
+  }
+
+  /* Pending banners */
+  const container = document.getElementById('pendingBannersList');
+  if(!pending.success || !pending.data || !pending.data.length) {
+    container.innerHTML = '<div style="text-align:center;padding:24px;color:var(--gray);font-size:13px">No hay banners pendientes ✓</div>';
+
+    /* Update badge */
+    const badge = document.getElementById('adminBadge');
+    if(badge) badge.style.display = 'none';
+    return;
+  }
+
+  /* Update badge count */
+  const badge = document.getElementById('adminBadge');
+  if(badge) { badge.textContent = pending.data.length; badge.style.display = 'flex'; }
+
+  container.innerHTML = pending.data.map(ad => {
+    const biz = ad.business || {};
+    const postedDate = ad.startDate ? new Date(ad.startDate).toLocaleDateString() : '—';
+    return `<div class="admin-banner-card">
+      <div class="admin-banner-card-top">
+        <div>
+          <div style="font-family:var(--fd);font-size:14px;font-weight:700;color:var(--black)">${esc(ad.businessName||biz.businessName||'—')}</div>
+          <div style="font-size:11px;color:var(--gray);margin-top:2px">${esc(biz.category||'')} · Solicitado: ${postedDate}</div>
+          <div style="font-size:11px;color:var(--gray);margin-top:2px">📧 ${esc(biz.email||'—')} · 📞 ${esc(biz.phone||'—')}</div>
+          <div style="font-family:var(--fd);font-size:10px;color:var(--gray);margin-top:6px;background:var(--surface);padding:4px 8px;border-radius:4px;display:inline-block">
+            ID: <strong>${esc(ad.id||'—')}</strong>
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:12px;font-weight:700;color:var(--crimson);font-family:var(--fd)">$${parseFloat(29.99).toFixed(2)} USD</div>
+          <div style="font-size:10px;color:var(--gray);margin-top:2px">30 días</div>
+          <a href="https://www.paypal.com/activity/payment" target="_blank" rel="noopener" 
+             class="btn btn-dark btn-sm" style="margin-top:8px;font-size:10px;padding:5px 10px;text-decoration:none">
+            <svg width="10" height="10"><use href="#ic-globe"/></svg> PayPal
+          </a>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding:10px;background:var(--surface);border-radius:6px;font-size:11px;color:var(--gray);line-height:1.6">
+        Para aprobar, en Apps Script ejecuta:<br>
+        <code style="font-family:monospace;color:var(--crimson);font-size:12px">approveBannerAd("${esc(ad.id||'')}")</code>
+      </div>
+    </div>`;
+  }).join('');
+}
+</script>
+
+<!-- MODAL: ADMIN PANEL -->
+<div class="modal-overlay" id="modalAdmin">
+  <div class="modal" style="max-width:680px">
+    <div class="modal-header">
+      <div class="modal-title">
+        <div class="modal-title-icon"><svg width="17" height="17"><use href="#ic-shield"/></svg></div>
+        Panel de Administración
+      </div>
+      <button class="modal-close" onclick="closeModal('modalAdmin')"><svg width="15" height="15"><use href="#ic-close"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <!-- Summary stats -->
+      <div id="adminSummary" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+        <div class="admin-stat-card"><div class="admin-stat-num" id="adm-biz">—</div><div class="admin-stat-label">Negocios</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" id="adm-req">—</div><div class="admin-stat-label">Solicitudes</div></div>
+        <div class="admin-stat-card"><div class="admin-stat-num" id="adm-off">—</div><div class="admin-stat-label">Ofertas</div></div>
+      </div>
+
+      <!-- Pending banners -->
+      <div style="font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px">
+        Banners Pendientes de Aprobación
+      </div>
+      <div id="pendingBannersList">
+        <div class="loading"><div class="spinner"></div><span>Cargando…</span></div>
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+        <p style="font-size:11px;color:var(--gray);line-height:1.6;margin-bottom:8px">
+          Para aprobar un banner: verifica el pago en PayPal, luego copia el ID del banner
+          y ejecuta <code style="background:var(--surface);padding:2px 6px;border-radius:4px">approveBannerAd('ID')</code> desde el editor de Apps Script.
+        </p>
+        <button class="btn btn-dark btn-sm" onclick="loadAdminData()">
+          <svg width="12" height="12"><use href="#ic-refresh"/></svg> Actualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbyrHlCRBnoIDAN1chzPfsjY-8kM9UPex5QLO854sCknDz3wNJPwirKiZ5NWc4pUG5pS/exec';
+SFT.GAS_URL    = 'https://tinyurl.com/26af2o8a';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -41,21 +41,28 @@ async function api(action, payload) {
     }
   }
 
-  /* Write actions: POST with text/plain body */
-  try {
-    const res = await fetch(SFT.GAS_URL, {
-      method: 'POST',
-      redirect: 'follow',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ action, payload })
-    });
-    /* Do NOT check res.ok — GAS redirect chain can make status unreliable.
-       Always try to parse the text; GAS always returns valid JSON. */
-    const text = await res.text();
-    return JSON.parse(text);
-  } catch (e) {
-    return { success: false, error: T('errNetwork') + ' (POST)' };
-  }
+  /* Write actions: POST via XMLHttpRequest
+     GAS web apps redirect POST → GET when using fetch(redirect:'follow').
+     XHR follows the 302 and re-sends the body, making it the reliable
+     method for large payloads (image base64, registration data, etc.).
+  */
+  return new Promise(resolve => {
+    try {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', SFT.GAS_URL, true);
+      xhr.setRequestHeader('Content-Type', 'text/plain');
+      xhr.timeout = 60000; // 60s for image uploads
+      xhr.onload = () => {
+        try { resolve(JSON.parse(xhr.responseText)); }
+        catch(e) { resolve({ success: false, error: 'Invalid response from server.' }); }
+      };
+      xhr.onerror   = () => resolve({ success: false, error: T('errNetwork') + ' (POST)' });
+      xhr.ontimeout = () => resolve({ success: false, error: 'Request timed out. Try again.' });
+      xhr.send(JSON.stringify({ action, payload }));
+    } catch(e) {
+      resolve({ success: false, error: T('errNetwork') + ' (POST)' });
+    }
+  });
 }
 
 /* ════ i18n ════ */
@@ -83,7 +90,7 @@ const STRINGS = {
     trustBiz1:'Tamales La Esperanza', trustBiz2:'Santa Fe Resident', trustBiz3:'Studio Belleza AR',
     ctaBannerTitle:'Ready to grow?',
     ctaBannerSub:'Join hundreds of businesses already part of the most complete directory in Santa Fe Tijuana.',
-    featuredBiz:'Featured Businesses', tabDir:'Directory', tabReq:'Requests', tabOff:'Offers & Products',
+    featuredBiz:'Featured Businesses', featuredTitle:'Supported by the community', featuredSub:'Businesses that invest in visibility to better serve Santa Fe Tijuana.', featuredUpsell:'Want to appear here? Feature your business for just', featuredUpsellBtn:'Feature my business', tabDir:'Directory', tabReq:'Requests', tabOff:'Offers & Products',
     navDir:'Directory', navReq:'Requests', navOff:'Offers', navAbout:'About', navRegister:'Register Business',
     onboardTitle:'Do you have a business in Santa Fe Tijuana?',
     onboardSub:'Register it for free and reach the whole community. Takes just 2 minutes.', onboardCta:'Register free',
@@ -136,6 +143,32 @@ const STRINGS = {
     dtYourBiz:'Your Business Here', dtYourBizCat:'$29.99/mo · Click to feature',
     errLoadBiz:'Could not load businesses.', retryBtn:'Try again',
     aboutHero:'About Santa Fe Tijuana', aboutSub:'The story behind the community',
+    aHeroTitle:'Connecting our <span class=\"accent\">community</span>',
+    aHeroSub:'We are the community directory that connects local businesses with Santa Fe Tijuana residents — free, easy, and built to grow with you.',
+    aMissionLabel:'Our Mission', aMissionTitle:'Making visible what already exists in Santa Fe',
+    aMissionBody1:'Santa Fe Tijuana has incredible businesses, real talent, and a community that wants to support each other. The problem was always visibility: residents did not know what was available, and businesses had no place to advertise without spending on social media or flyers.',
+    aMissionBody2:'We created this directory to solve exactly that — a free, clean, easy-to-use space where any business can be listed and any resident can find what they need.',
+    aStatBiz:'Registered Businesses', aStatReq:'Active Requests', aStatOff:'Published Offers', aStatCats:'Categories',
+    aValuesLabel:'Our Values', aValuesTitle:'What guides us every day',
+    aValuesSub:'We built this platform with clear principles that go beyond technology.',
+    aVal1Title:'Community First', aVal1Desc:'We are from Santa Fe Tijuana. Every decision we make is designed to benefit local residents and businesses — not outside investors.',
+    aVal2Title:'Free Access', aVal2Desc:'Registering your business, posting requests, and creating offers is completely free. It always will be. Our model is sustainable through optional banners.',
+    aVal3Title:'Quality & Trust', aVal3Desc:'We review every registration to maintain directory quality. Verified businesses generate more trust and more customers for the whole community.',
+    aVal4Title:'Local Growth', aVal4Desc:'Every business that registers helps the entire local economy. More visibility means more customers, more jobs, and a more prosperous community.',
+    aVal5Title:'Bilingual', aVal5Desc:'Santa Fe Tijuana is a diverse community. That is why our platform works equally well in Spanish and English — no language barriers.',
+    aVal6Title:'Easy to Share', aVal6Desc:'Every business, request, and offer has its own direct link. Share via WhatsApp, Instagram, or wherever you want with one click.',
+    aOriginLabel:'The Origin', aOriginTitle:'Born from a real need',
+    aOriginBody1:'It all started when a Santa Fe resident needed a plumber and did not know who to call. There was no local directory, no organized group, no easy way to find services in the neighborhood.',
+    aOriginBody2:'At the same time, there were plumbers, electricians, seamstresses, and cooks in Santa Fe with no way to advertise beyond posting flyers on poles.',
+    aOriginBody3:'The solution was simple: create the space Santa Fe Tijuana deserved. A place where both sides — the seeker and the provider — could easily find each other.',
+    aOriginQuote:'"The best directory of Santa Fe Tijuana is not the largest, but the most useful for the community."',
+    aTeamLabel:'The Team', aTeamTitle:'Made by neighbors, for neighbors',
+    aTeamSub:'We are a small team committed to making Santa Fe Tijuana a more connected and prosperous community.',
+    aTeam1Name:'Yusef Eedr', aTeam1Role:'Founder & Development',
+    aTeam2Name:'SFT Community', aTeam2Role:'Businesses & Residents',
+    aTeam3Name:'Your spot here', aTeam3Role:'Join the team',
+    aFaqLabel:'Frequently Asked Questions', aFaqTitle:'Everything you need to know',
+    aCtaTitle:'Do you have a business in Santa Fe?', aCtaSub:'Register it for free today and start connecting with your community.',
   },
   es: {
     portalSub:'Directorio Comunitario', heroBadge:'SANTA FE TIJUANA · DIRECTORIO OFICIAL',
@@ -159,7 +192,7 @@ const STRINGS = {
     trustBiz1:'Tamales La Esperanza', trustBiz2:'Residente Santa Fe', trustBiz3:'Studio Belleza AR',
     ctaBannerTitle:'¿Listo para crecer?',
     ctaBannerSub:'Únete a cientos de negocios que ya forman parte del directorio más completo de Santa Fe Tijuana.',
-    featuredBiz:'Negocios Destacados', tabDir:'Directorio', tabReq:'Solicitudes', tabOff:'Ofertas y Productos',
+    featuredBiz:'Negocios Destacados', featuredTitle:'Apoyados por la comunidad', featuredSub:'Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.', featuredUpsell:'¿Quieres aparecer aquí? Destaca tu negocio por solo', featuredUpsellBtn:'Destacar mi negocio', tabDir:'Directorio', tabReq:'Solicitudes', tabOff:'Ofertas y Productos',
     navDir:'Directorio', navReq:'Solicitudes', navOff:'Ofertas', navAbout:'Nosotros', navRegister:'Registrar Negocio',
     onboardTitle:'¿Tienes un negocio en Santa Fe Tijuana?',
     onboardSub:'Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.', onboardCta:'Registrar gratis',
@@ -212,6 +245,32 @@ const STRINGS = {
     dtYourBiz:'Tu Negocio Aquí', dtYourBizCat:'$29.99/mes · Clic para destacar',
     errLoadBiz:'No se pudieron cargar los negocios.', retryBtn:'Reintentar',
     aboutHero:'Acerca de Santa Fe Tijuana', aboutSub:'La historia detrás de la comunidad',
+    aHeroTitle:'Conectando a <span class=\"accent\">nuestra comunidad</span>',
+    aHeroSub:'Somos el directorio comunitario que une a los negocios locales con los vecinos de Santa Fe Tijuana — gratis, fácil y construido para crecer contigo.',
+    aMissionLabel:'Nuestra Misión', aMissionTitle:'Hacer visible lo que ya existe en Santa Fe',
+    aMissionBody1:'Santa Fe Tijuana tiene negocios increíbles, talento real y una comunidad que quiere apoyarse. El problema siempre fue la visibilidad: los vecinos no sabían qué había disponible, y los negocios no tenían dónde anunciarse sin gastar en redes sociales o volantes.',
+    aMissionBody2:'Creamos este directorio para resolver exactamente eso — un espacio gratuito, limpio y fácil de usar donde cualquier negocio puede publicarse y cualquier vecino puede encontrar lo que necesita.',
+    aStatBiz:'Negocios Registrados', aStatReq:'Solicitudes Activas', aStatOff:'Ofertas Publicadas', aStatCats:'Categorías',
+    aValuesLabel:'Nuestros Valores', aValuesTitle:'Lo que nos guía cada día',
+    aValuesSub:'Construimos esta plataforma con principios claros que van más allá de la tecnología.',
+    aVal1Title:'Comunidad Primero', aVal1Desc:'Somos de Santa Fe Tijuana. Cada decisión que tomamos está pensada para beneficiar a los vecinos y negocios locales — no a inversionistas externos.',
+    aVal2Title:'Acceso Gratuito', aVal2Desc:'Registrar tu negocio, publicar solicitudes y crear ofertas es completamente gratis. Siempre lo será. Nuestro modelo es sostenible a través de banners opcionales.',
+    aVal3Title:'Calidad y Confianza', aVal3Desc:'Revisamos cada registro para mantener la calidad del directorio. Los negocios verificados generan más confianza y más clientes para toda la comunidad.',
+    aVal4Title:'Crecimiento Local', aVal4Desc:'Cada negocio que se registra ayuda a toda la economía local. Más visibilidad significa más clientes, más empleos y una comunidad más próspera.',
+    aVal5Title:'Bilingüe', aVal5Desc:'Santa Fe Tijuana es una comunidad diversa. Por eso nuestra plataforma funciona igual de bien en español que en inglés — sin barreras de idioma.',
+    aVal6Title:'Fácil de Compartir', aVal6Desc:'Cada negocio, solicitud y oferta tiene su propio enlace directo. Comparte por WhatsApp, Instagram o donde quieras con un solo clic.',
+    aOriginLabel:'El Origen', aOriginTitle:'Nació de una necesidad real',
+    aOriginBody1:'Todo empezó cuando un vecino de Santa Fe necesitaba un plomero y no sabía a quién llamar. No había ningún directorio local, ningún grupo organizado, ninguna forma fácil de encontrar servicios en la colonia.',
+    aOriginBody2:'Al mismo tiempo, había plomeros, electricistas, costureras y cocineras en Santa Fe sin manera de anunciarse más allá de pegar carteles en postes.',
+    aOriginBody3:'La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.',
+    aOriginQuote:'"El mejor directorio de Santa Fe Tijuana no es el más grande, sino el más útil para la comunidad."',
+    aTeamLabel:'El Equipo', aTeamTitle:'Hecho por vecinos, para vecinos',
+    aTeamSub:'Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.',
+    aTeam1Name:'Yusef Eedr', aTeam1Role:'Fundador y Desarrollo',
+    aTeam2Name:'Comunidad SFT', aTeam2Role:'Negocios y Vecinos',
+    aTeam3Name:'Tu lugar aquí', aTeam3Role:'Únete al equipo',
+    aFaqLabel:'Preguntas Frecuentes', aFaqTitle:'Todo lo que necesitas saber',
+    aCtaTitle:'¿Tienes un negocio en Santa Fe?', aCtaSub:'Regístralo gratis hoy y empieza a conectar con tu comunidad.',
   }
 };
 

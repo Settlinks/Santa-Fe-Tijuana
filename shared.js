@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbznrvFAGaXYZ-T_O35ZtJ4GYE192U2b0IxzYs8pQs1vxTaAPgFVfsvthePRchXilD6tJQ/exec';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbyW7ZUHOKW7_niDV09afvI6DxwHo9LztSrN3FmzoKmENB6TPBmKJfiJdHQbM4Ri3Gsq7Q/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -491,32 +491,15 @@ async function submitBusiness(btn) {
   const name=gv('biz_name'),owner=gv('biz_owner'),cat=gv('biz_category'),service=gv('biz_service'),desc=gv('biz_desc'),phone=gv('biz_phone'),email=gv('biz_email');
   if (!name||!owner||!cat||!service||!desc||!phone||!email) { showResult('bizResult','error',T('errRequired')); return; }
   setBtnState(btn,true,T('submitting'));
+  showProgress('biz', 20);
 
-  /* ── STEP 1: Upload image first as a separate request ─────────────────────────
-     Sending base64 (50-200 KB) inside the same JSON body as registration data
-     can be silently dropped by GAS during its 302 redirect chain (RFC 9110).
-     Instead we POST the image alone first, get back a Drive URL string, then
-     send only that short URL with the registration payload.
-  ───────────────────────────────────────────────────────────────────────────── */
-  let imageUrl = '';
+  /* Read image as base64 (resized to max 1400px, JPEG 82% quality by getBase64) */
   const img64 = await getBase64('biz_img');
-  showProgress('biz', 25);
+  showProgress('biz', 50);
 
-  if (img64) {
-    const uploadRes = await api('uploadBusinessImage', {
-      imageBase64: img64,
-      filename: 'biz_' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '_' + Date.now() + '.jpg'
-    });
-    if (uploadRes.success && uploadRes.imageUrl) {
-      imageUrl = uploadRes.imageUrl;
-    } else {
-      // Image upload failed — log but continue registration without photo
-      console.warn('Image upload failed:', uploadRes.error || 'unknown error');
-    }
-  }
-  showProgress('biz', 60);
-
-  /* ── STEP 2: Register the business with the already-uploaded image URL ───── */
+  /* Single POST via XHR — sends imageBase64 + all fields together.
+     XHR re-sends the body through GAS redirect chains; fetch does not.
+     GAS registerBusiness calls uploadImage() internally and stores the lh3 URL. */
   const res = await api('registerBusiness', {
     businessName: name,
     ownerName:    owner,
@@ -527,7 +510,7 @@ async function submitBusiness(btn) {
     email,
     website:      gv('biz_website'),
     address:      gv('biz_address'),
-    imageUrl:     imageUrl,          // URL string, NOT base64
+    imageBase64:  img64 || null,
     wantsBanner:  document.getElementById('biz_banner')?.checked
   });
   showProgress('biz', 100);

@@ -499,16 +499,22 @@ function featGetVisible() {
 }
 
 function featRender(businesses, featuredIds) {
-  const sorted = [...businesses].sort((a,b)=>{
-    const af = featuredIds.has(a.id) || featuredIds.has(a.slug);
-    const bf = featuredIds.has(b.id) || featuredIds.has(b.slug);
-    if(af&&!bf) return -1; if(!af&&bf) return 1;
-    return (a.businessName||'').localeCompare(b.businessName||'');
-  });
+  /* ── ONLY show businesses with an approved, active banner subscription ──────
+     The featured section on the landing page is the paid promotion space.
+     Businesses registered for free appear in directory.html — NOT here.
+     featuredIds contains the IDs/slugs of banner-approved businesses.
+     If no one has paid yet → show placeholder cards that invite sign-up.
+  ─────────────────────────────────────────────────────────────────────────── */
+  const approvedOnly = businesses.filter(b =>
+    featuredIds.has(b.id) || featuredIds.has(b.slug)
+  );
 
-  featCards = sorted.map(b => buildFeatCard(b, featuredIds.has(b.id)||featuredIds.has(b.slug)));
+  /* Sort approved businesses alphabetically (already at top by definition) */
+  approvedOnly.sort((a,b) => (a.businessName||'').localeCompare(b.businessName||''));
 
-  /* If no businesses yet, show placeholder cards */
+  featCards = approvedOnly.map(b => buildFeatCard(b, true)); /* all shown here are featured */
+
+  /* No approved banners yet → show invite-to-feature placeholder cards */
   if(!featCards.length) {
     featVisible = featGetVisible();
     const track = document.getElementById('featTrack');
@@ -690,14 +696,49 @@ window.addEventListener('load', ()=>{
     }),
     api('getActiveBannerAds').then(r=> r.success?(r.data||[]):[])
   ]).then(([businesses,,,, bannerAds])=>{
-    /* Build set of featured IDs */
+    /* ── Featured slider: ONLY approved banner businesses ───────────────────
+       Extract the enriched business objects directly from the approved
+       banner ads. These are guaranteed to have paid + admin-approved status.
+       Build featuredIds for identity checks inside buildFeatCard.
+    ─────────────────────────────────────────────────────────────────────── */
     const featuredIds = new Set();
+    const approvedBusinesses = [];
+
     (bannerAds||[]).forEach(ad=>{
+      /* Collect IDs for the featuredIds set */
       if(ad.businessId) featuredIds.add(ad.businessId);
       if(ad.business&&ad.business.id)   featuredIds.add(ad.business.id);
       if(ad.business&&ad.business.slug) featuredIds.add(ad.business.slug);
+
+      /* Build the business object for the slider from the enriched ad data */
+      const biz = ad.business || {};
+      if(biz.id || biz.businessName) {
+        approvedBusinesses.push({
+          id:                 biz.id           || ad.businessId || '',
+          businessName:       biz.businessName || ad.businessName || '',
+          serviceType:        biz.serviceType  || '',
+          category:           biz.category     || '',
+          description:        biz.description  || '',
+          phone:              biz.phone        || '',
+          email:              biz.email        || '',
+          website:            biz.website      || ad.website || '',
+          imageUrl:           ad.imageUrl      || biz.imageUrl || '',
+          slug:               biz.slug         || '',
+          isBannerSubscriber: true
+        });
+      }
     });
-    featRender(businesses||[], featuredIds);
+
+    /* Deduplicate in case a business has multiple banner rows */
+    const seen = new Set();
+    const unique = approvedBusinesses.filter(b => {
+      const key = b.id || b.businessName;
+      if(seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    featRender(unique, featuredIds);
   });
 });
 

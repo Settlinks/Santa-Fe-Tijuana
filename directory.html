@@ -353,9 +353,7 @@ async function loadBiz(){
   /* Only show error on actual failure, not on empty results */
   if(!r.success){showBizError(r.error);return;}
   allBiz=r.data||[];
-  const cnt=document.getElementById('cnt-directory');if(cnt)cnt.textContent=allBiz.length;
-  /* Rebuild biz chips now that we have data (cats may have loaded by now) */
-  if(categories.length) buildChips('biz');
+  /* cnt-directory updated inside renderBiz */
   bizPage=1;renderBiz();
 }
 function showBizError(errMsg){
@@ -372,16 +370,56 @@ function showBizError(errMsg){
     </div>`;
 }
 function renderBiz(){
-  const cat=bizFilter.cat,q=bizFilter.q.trim().toLowerCase();
-  const filtered=allBiz.filter(b=>(cat==='all'||String(b.category||'').trim()===cat)&&(!q||(String(b.businessName||'')+' '+String(b.serviceType||'')+' '+String(b.category||'')).toLowerCase().includes(q)));
+  const cat=bizFilter.cat, q=bizFilter.q.trim().toLowerCase();
+  const filtered=allBiz.filter(b=>
+    (cat==='all' || String(b.category||'').trim()===cat) &&
+    (!q || (String(b.businessName||'')+' '+String(b.serviceType||'')+' '+String(b.category||'')).toLowerCase().includes(q))
+  );
   const total=filtered.length;
-  const pages=Math.max(1,Math.ceil(total/SFT.PAGE_SIZE));
-  if(bizPage>pages)bizPage=pages;if(bizPage<1)bizPage=1;
-  const slice=filtered.slice((bizPage-1)*SFT.PAGE_SIZE,bizPage*SFT.PAGE_SIZE);
   const el=document.getElementById('bizList');
-  if(!slice.length){el.innerHTML=emptyHtml('ic-store',T('noBizFound'),T('noBizFoundSub'));document.getElementById('bizPages').innerHTML='';return;}
+  const pages_el=document.getElementById('bizPages');
+
+  /* Update "Showing X of Y" counter */
+  const cntEl=document.getElementById('cnt-directory');
+  if(cntEl) cntEl.textContent=total;
+
+  if(!total){
+    el.innerHTML=emptyHtml('ic-store',T('noBizFound'),T('noBizFoundSub'));
+    if(pages_el) pages_el.innerHTML='';
+    return;
+  }
+
+  /* Show ALL matching businesses — no pagination on business directory.
+     Pagination is confusing and hides results. Use "load more" if needed. */
+  const BIZ_PAGE_SIZE=24;
+  const pages=Math.max(1,Math.ceil(total/BIZ_PAGE_SIZE));
+  if(bizPage>pages) bizPage=pages;
+  if(bizPage<1) bizPage=1;
+  const slice=filtered.slice(0, bizPage*BIZ_PAGE_SIZE); /* show all up to current page */
+
   el.innerHTML=slice.map(b=>bizCardHtml(b)).join('');
-  renderPages(total,bizPage,'biz');
+
+  /* Render "Load More" button instead of numbered pagination */
+  if(pages_el){
+    if(bizPage<pages){
+      pages_el.innerHTML=`<button class="load-more-btn" onclick="bizLoadMore()">
+        <svg width="14" height="14"><use href="#ic-refresh"/></svg>
+        Ver más negocios (${total - slice.length} restantes)
+      </button>`;
+    } else {
+      /* All loaded — show total count */
+      pages_el.innerHTML=total>BIZ_PAGE_SIZE
+        ? `<div class="biz-count-label">Mostrando todos los ${total} negocios</div>`
+        : '';
+    }
+  }
+}
+function bizLoadMore(){
+  bizPage++;
+  renderBiz();
+  /* Smooth scroll to new cards */
+  const list=document.getElementById('bizList');
+  if(list) setTimeout(()=>list.lastElementChild&&list.lastElementChild.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
 }
 function bizCardHtml(b){
   const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
@@ -429,7 +467,6 @@ async function loadReq(){
   const r=await api('getRequests',{});
   allReq=r.success?(r.data||[]):[];
   const cnt=document.getElementById('cnt-requests');if(cnt)cnt.textContent=allReq.length;
-  if(categories.length) buildChips('req');
   renderReq();
 }
 function renderReq(){
@@ -457,7 +494,6 @@ async function loadOff(){
   const r=await api('getOffers',{});
   allOff=r.success?(r.data||[]):[];
   const cnt=document.getElementById('cnt-offers');if(cnt)cnt.textContent=allOff.length;
-  if(categories.length) buildChips('off');
   renderOff();
 }
 function renderOff(){
@@ -505,13 +541,8 @@ function setCat(el,prefix){
   if(prefix==='req'){ reqFilter.cat=cat; renderReq(); }
   if(prefix==='off'){ offFilter.cat=cat; renderOff(); }
 }
-function renderPages(total,cur,prefix){
-  const pages=Math.ceil(total/SFT.PAGE_SIZE);
-  const el=document.getElementById(prefix+'Pages');
-  if(!el||pages<=1){if(el)el.innerHTML='';return;}
-  el.innerHTML=Array.from({length:pages},(_,i)=>`<button class="page-btn${i+1===cur?' active':''}" onclick="${prefix}GoPage(${i+1})">${i+1}</button>`).join('');
-}
-function bizGoPage(p){bizPage=p;renderBiz();document.getElementById('sec-directory').scrollIntoView({behavior:'smooth',block:'start'});}
+/* renderPages replaced by load-more approach in renderBiz */
+function bizGoPage(p){bizPage=p;renderBiz();}
 </script>
 </body>
 </html>

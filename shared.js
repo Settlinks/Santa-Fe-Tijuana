@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbz35ADmoo9PBSHki_hDiF0KXN3ax6YpGDNxVAU9vKIUv_3Mbrfel25WrzFJBwm0U_aCug/exec';
+SFT.GAS_URL    = 'https://tinyurl.com/24yy3omk';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -432,12 +432,48 @@ async function submitBusiness(btn) {
   const name=gv('biz_name'),owner=gv('biz_owner'),cat=gv('biz_category'),service=gv('biz_service'),desc=gv('biz_desc'),phone=gv('biz_phone'),email=gv('biz_email');
   if (!name||!owner||!cat||!service||!desc||!phone||!email) { showResult('bizResult','error',T('errRequired')); return; }
   setBtnState(btn,true,T('submitting'));
-  showProgress('biz',30);
+
+  /* ── STEP 1: Upload image first as a separate request ─────────────────────────
+     Sending base64 (50-200 KB) inside the same JSON body as registration data
+     can be silently dropped by GAS during its 302 redirect chain (RFC 9110).
+     Instead we POST the image alone first, get back a Drive URL string, then
+     send only that short URL with the registration payload.
+  ───────────────────────────────────────────────────────────────────────────── */
+  let imageUrl = '';
   const img64 = await getBase64('biz_img');
-  showProgress('biz',70);
-  const res = await api('registerBusiness',{businessName:name,ownerName:owner,category:cat,serviceType:service,description:desc,phone,email,website:gv('biz_website'),address:gv('biz_address'),imageBase64:img64,wantsBanner:document.getElementById('biz_banner')?.checked});
-  showProgress('biz',100);
-  setBtnState(btn,false,null);
+  showProgress('biz', 25);
+
+  if (img64) {
+    const uploadRes = await api('uploadBusinessImage', {
+      imageBase64: img64,
+      filename: 'biz_' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '_' + Date.now() + '.jpg'
+    });
+    if (uploadRes.success && uploadRes.imageUrl) {
+      imageUrl = uploadRes.imageUrl;
+    } else {
+      // Image upload failed — log but continue registration without photo
+      console.warn('Image upload failed:', uploadRes.error || 'unknown error');
+    }
+  }
+  showProgress('biz', 60);
+
+  /* ── STEP 2: Register the business with the already-uploaded image URL ───── */
+  const res = await api('registerBusiness', {
+    businessName: name,
+    ownerName:    owner,
+    category:     cat,
+    serviceType:  service,
+    description:  desc,
+    phone,
+    email,
+    website:      gv('biz_website'),
+    address:      gv('biz_address'),
+    imageUrl:     imageUrl,          // URL string, NOT base64
+    wantsBanner:  document.getElementById('biz_banner')?.checked
+  });
+  showProgress('biz', 100);
+  setBtnState(btn, false, null);
+
   if (res.success) {
     if (res.redirectToBanner && res.paypalUrl) {
       showResult('bizResult','success',T('submitBizBannerOk'));

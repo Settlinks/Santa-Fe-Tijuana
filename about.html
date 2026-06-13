@@ -71,8 +71,8 @@
   <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1563609814792-9efc6f4a36a4?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
   <div class="about-hero-inner">
     <div class="about-hero-eyebrow"><span class="lp-eyebrow-dot"></span> Santa Fe Tijuana · 2024</div>
-    <h1 class="about-hero-title">Conectando a <span class="accent">nuestra comunidad</span></h1>
-    <p class="about-hero-sub">Somos el directorio comunitario que une a los negocios locales con los vecinos de Santa Fe Tijuana — gratis, fácil y construido para crecer contigo.</p>
+    <h1 class="about-hero-title" id="aHeroTitle" data-t="aHeroTitle">Conectando a <span class="accent">nuestra comunidad</span></h1>
+    <p class="about-hero-sub" data-t="aHeroSub">Somos el directorio comunitario que une a los negocios locales con los vecinos de Santa Fe Tijuana — gratis, fácil y construido para crecer contigo.</p>
   </div>
 </div>
 
@@ -81,10 +81,10 @@
   <div class="about-inner">
     <div class="about-grid-2">
       <div>
-        <div class="about-label">Nuestra Misión</div>
-        <h2 class="about-title">Hacer visible lo que ya existe en Santa Fe</h2>
-        <p class="about-body">Santa Fe Tijuana tiene negocios increíbles, talento real y una comunidad que quiere apoyarse. El problema siempre fue la visibilidad: los vecinos no sabían qué había disponible, y los negocios no tenían dónde anunciarse sin gastar en redes sociales o volantes.</p>
-        <p class="about-body">Creamos este directorio para resolver exactamente eso — un espacio gratuito, limpio y fácil de usar donde cualquier negocio puede publicarse y cualquier vecino puede encontrar lo que necesita.</p>
+        <div class="about-label" data-t="aMissionLabel">Nuestra Misión</div>
+        <h2 class="about-title" data-t="aMissionTitle">Hacer visible lo que ya existe en Santa Fe</h2>
+        <p class="about-body" data-t="aMissionBody1">Santa Fe Tijuana tiene negocios increíbles, talento real y una comunidad que quiere apoyarse. El problema siempre fue la visibilidad: los vecinos no sabían qué había disponible, y los negocios no tenían dónde anunciarse sin gastar en redes sociales o volantes.</p>
+        <p class="about-body" data-t="aMissionBody2">Creamos este directorio para resolver exactamente eso — un espacio gratuito, limpio y fácil de usar donde cualquier negocio puede publicarse y cualquier vecino puede encontrar lo que necesita.</p>
         <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
           <a class="btn btn-crimson" href="directory.html"><svg width="14" height="14"><use href="#ic-store"/></svg><span data-t="ctaDir">Ver Directorio</span></a>
           <button class="btn btn-light" onclick="openModal('modalBusiness')"><svg width="14" height="14"><use href="#ic-plus"/></svg><span data-t="ctaRegister">Registrar Negocio</span></button>
@@ -101,10 +101,10 @@
 <div class="about-section" style="background:var(--black);padding-top:0;padding-bottom:60px">
   <div class="about-inner">
     <div class="about-stat-grid">
-      <div class="about-stat"><div class="about-stat-num" id="aStatBiz">—</div><div class="about-stat-label">Negocios Registrados</div></div>
-      <div class="about-stat"><div class="about-stat-num" id="aStatReq">—</div><div class="about-stat-label">Solicitudes Activas</div></div>
-      <div class="about-stat"><div class="about-stat-num" id="aStatOff">—</div><div class="about-stat-label">Ofertas Publicadas</div></div>
-      <div class="about-stat"><div class="about-stat-num">16</div><div class="about-stat-label">Categorías</div></div>
+      <div class="about-stat"><div class="about-stat-num" id="aStatBiz">—</div><div class="about-stat-label" data-t="aStatBiz">Negocios Registrados</div></div>
+      <div class="about-stat"><div class="about-stat-num" id="aStatReq">—</div><div class="about-stat-label" data-t="aStatReq">Solicitudes Activas</div></div>
+      <div class="about-stat"><div class="about-stat-num" id="aStatOff">—</div><div class="about-stat-label" data-t="aStatOff">Ofertas Publicadas</div></div>
+      <div class="about-stat"><div class="about-stat-num">16</div><div class="about-stat-label" data-t="aStatCats">Categorías</div></div>
     </div>
   </div>
 </div>
@@ -113,40 +113,40 @@
 <div class="about-section">
   <div class="about-inner">
     <div style="text-align:center;max-width:640px;margin:0 auto 48px">
-      <div class="about-label">Nuestros Valores</div>
-      <h2 class="about-title" style="margin:0 auto 12px">Lo que nos guía cada día</h2>
-      <p class="about-body" style="margin:0">Construimos esta plataforma con principios claros que van más allá de la tecnología.</p>
+      <div class="about-label" data-t="aValuesLabel">Nuestros Valores</div>
+      <h2 class="about-title" style="margin:0 auto 12px" data-t="aValuesTitle">Lo que nos guía cada día</h2>
+      <p class="about-body" style="margin:0" data-t="aValuesSub">Construimos esta plataforma con principios claros que van más allá de la tecnología.</p>
     </div>
     <div class="about-grid-3">
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-users"/></svg></div>
-        <div class="about-value-title">Comunidad Primero</div>
-        <p class="about-value-desc">Somos de Santa Fe Tijuana. Cada decisión que tomamos está pensada para beneficiar a los vecinos y negocios locales — no a inversionistas externos.</p>
+        <div class="about-value-title" data-t="aVal1Title">Comunidad Primero</div>
+        <p class="about-value-desc" data-t="aVal1Desc">Somos de Santa Fe Tijuana. Cada decisión que tomamos está pensada para beneficiar a los vecinos y negocios locales — no a inversionistas externos.</p>
       </div>
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-shield"/></svg></div>
-        <div class="about-value-title">Acceso Gratuito</div>
-        <p class="about-value-desc">Registrar tu negocio, publicar solicitudes y crear ofertas es completamente gratis. Siempre lo será. Nuestro modelo es sostenible a través de banners opcionales.</p>
+        <div class="about-value-title" data-t="aVal2Title">Acceso Gratuito</div>
+        <p class="about-value-desc" data-t="aVal2Desc">Registrar tu negocio, publicar solicitudes y crear ofertas es completamente gratis. Siempre lo será. Nuestro modelo es sostenible a través de banners opcionales.</p>
       </div>
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-award"/></svg></div>
-        <div class="about-value-title">Calidad y Confianza</div>
-        <p class="about-value-desc">Revisamos cada registro para mantener la calidad del directorio. Los negocios verificados generan más confianza y más clientes para toda la comunidad.</p>
+        <div class="about-value-title" data-t="aVal3Title">Calidad y Confianza</div>
+        <p class="about-value-desc" data-t="aVal3Desc">Revisamos cada registro para mantener la calidad del directorio. Los negocios verificados generan más confianza y más clientes para toda la comunidad.</p>
       </div>
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-trending"/></svg></div>
-        <div class="about-value-title">Crecimiento Local</div>
-        <p class="about-value-desc">Cada negocio que se registra ayuda a toda la economía local. Más visibilidad significa más clientes, más empleos y una comunidad más próspera.</p>
+        <div class="about-value-title" data-t="aVal4Title">Crecimiento Local</div>
+        <p class="about-value-desc" data-t="aVal4Desc">Cada negocio que se registra ayuda a toda la economía local. Más visibilidad significa más clientes, más empleos y una comunidad más próspera.</p>
       </div>
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-globe"/></svg></div>
-        <div class="about-value-title">Bilingüe</div>
-        <p class="about-value-desc">Santa Fe Tijuana es una comunidad diversa. Por eso nuestra plataforma funciona igual de bien en español que en inglés — sin barreras de idioma.</p>
+        <div class="about-value-title" data-t="aVal5Title">Bilingüe</div>
+        <p class="about-value-desc" data-t="aVal5Desc">Santa Fe Tijuana es una comunidad diversa. Por eso nuestra plataforma funciona igual de bien en español que en inglés — sin barreras de idioma.</p>
       </div>
       <div class="about-value">
         <div class="about-value-icon"><svg width="22" height="22"><use href="#ic-share"/></svg></div>
-        <div class="about-value-title">Fácil de Compartir</div>
-        <p class="about-value-desc">Cada negocio, solicitud y oferta tiene su propio enlace directo. Comparte por WhatsApp, Instagram o donde quieras con un solo clic.</p>
+        <div class="about-value-title" data-t="aVal6Title">Fácil de Compartir</div>
+        <p class="about-value-desc" data-t="aVal6Desc">Cada negocio, solicitud y oferta tiene su propio enlace directo. Comparte por WhatsApp, Instagram o donde quieras con un solo clic.</p>
       </div>
     </div>
   </div>
@@ -160,11 +160,11 @@
         <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80&auto=format&fit=crop" alt="Servicios a domicilio" loading="lazy">
       </div>
       <div>
-        <div class="about-label">El Origen</div>
-        <h2 class="about-title">Nació de una necesidad real</h2>
-        <p class="about-body">Todo empezó cuando un vecino de Santa Fe necesitaba un plomero y no sabía a quién llamar. No había ningún directorio local, ningún grupo organizado, ninguna forma fácil de encontrar servicios en la colonia.</p>
-        <p class="about-body">Al mismo tiempo, había plomeros, electricistas, costureras y cocineras en Santa Fe sin manera de anunciarse más allá de pegar carteles en postes.</p>
-        <p class="about-body">La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.</p>
+        <div class="about-label" data-t="aOriginLabel">El Origen</div>
+        <h2 class="about-title" data-t="aOriginTitle">Nació de una necesidad real</h2>
+        <p class="about-body" data-t="aOriginBody1">Todo empezó cuando un vecino de Santa Fe necesitaba un plomero y no sabía a quién llamar. No había ningún directorio local, ningún grupo organizado, ninguna forma fácil de encontrar servicios en la colonia.</p>
+        <p class="about-body" data-t="aOriginBody2">Al mismo tiempo, había plomeros, electricistas, costureras y cocineras en Santa Fe sin manera de anunciarse más allá de pegar carteles en postes.</p>
+        <p class="about-body" data-t="aOriginBody3">La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.</p>
         <div style="background:var(--card);border-radius:var(--r);border:1px solid var(--border);border-left:3px solid var(--crimson);padding:16px 20px;margin-top:24px">
           <p style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.75;margin:0">"El mejor directorio de Santa Fe Tijuana no es el más grande, sino el más útil para la comunidad."</p>
           <p style="font-size:11px;font-weight:700;color:var(--crimson);font-family:var(--fd);margin-top:10px;margin-bottom:0;letter-spacing:0.5px">— EQUIPO YATELASA</p>
@@ -206,9 +206,9 @@
 <div class="about-section" style="background:var(--card)">
   <div class="about-inner">
     <div style="text-align:center;max-width:600px;margin:0 auto 48px">
-      <div class="about-label">El Equipo</div>
-      <h2 class="about-title" style="margin:0 auto 12px">Hecho por vecinos, para vecinos</h2>
-      <p class="about-body" style="margin:0">Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.</p>
+      <div class="about-label" data-t="aTeamLabel">El Equipo</div>
+      <h2 class="about-title" style="margin:0 auto 12px" data-t="aTeamTitle">Hecho por vecinos, para vecinos</h2>
+      <p class="about-body" style="margin:0" data-t="aTeamSub">Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.</p>
     </div>
     <div class="about-team">
       <div class="about-team-card">
@@ -222,8 +222,8 @@
         <div class="about-team-photo">
           <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop&face" alt="Comunidad" loading="lazy">
         </div>
-        <div class="about-team-name">Comunidad SFT</div>
-        <div class="about-team-role">Negocios y Vecinos</div>
+        <div class="about-team-name" data-t="aTeam2Name">Comunidad SFT</div>
+        <div class="about-team-role" data-t="aTeam2Role">Negocios y Vecinos</div>
       </div>
       <div class="about-team-card about-team-card--collab">
         <div class="about-team-photo" style="background:linear-gradient(135deg,var(--crimson3),rgba(90,15,15,0.08));display:flex;align-items:center;justify-content:center;border:2px dashed rgba(90,15,15,0.25);">
@@ -233,8 +233,8 @@
             <div style="font-size:11px;color:var(--gray);line-height:1.5">Escríbenos y hagamos<br>algo grande juntos.</div>
           </div>
         </div>
-        <div class="about-team-name">Tu lugar aquí</div>
-        <div class="about-team-role">Únete al equipo</div>
+        <div class="about-team-name" data-t="aTeam3Name">Tu lugar aquí</div>
+        <div class="about-team-role" data-t="aTeam3Role">Únete al equipo</div>
         <a class="about-collab-btn" href="mailto:settlinks@aol.com?subject=Quiero%20colaborar%20con%20Santa%20Fe%20Tijuana&body=Hola%2C%20me%20interesa%20colaborar%20con%20el%20directorio%20Santa%20Fe%20Tijuana.%20Mi%20nombre%20es%3A%0A%0A%C3%81rea%20de%20inter%C3%A9s%3A%0A%0AMensaje%3A">
           <svg width="13" height="13"><use href="#ic-mail"/></svg>
           Contáctanos
@@ -247,8 +247,8 @@
 <!-- FAQ -->
 <div class="about-section" style="background:var(--surface)">
   <div class="about-inner" style="max-width:800px">
-    <div class="about-label">Preguntas Frecuentes</div>
-    <h2 class="about-title">Todo lo que necesitas saber</h2>
+    <div class="about-label" data-t="aFaqLabel">Preguntas Frecuentes</div>
+    <h2 class="about-title" data-t="aFaqTitle">Todo lo que necesitas saber</h2>
     <div id="faqList" style="margin-top:32px;display:flex;flex-direction:column;gap:12px"></div>
   </div>
 </div>
@@ -256,8 +256,8 @@
 <!-- CTA -->
 <div class="about-cta">
   <div class="about-cta-inner">
-    <h2 class="about-cta-title">¿Tienes un negocio en Santa Fe?</h2>
-    <p class="about-cta-sub">Regístralo gratis hoy y empieza a conectar con tu comunidad.</p>
+    <h2 class="about-cta-title" data-t="aCtaTitle">¿Tienes un negocio en Santa Fe?</h2>
+    <p class="about-cta-sub" data-t="aCtaSub">Regístralo gratis hoy y empieza a conectar con tu comunidad.</p>
     <div class="lp-cta-actions">
       <button class="btn btn-light btn-xl" onclick="openModal('modalBusiness')"><svg width="17" height="17"><use href="#ic-store"/></svg><span data-t="ctaRegister">Registrar Negocio Gratis</span></button>
       <a class="btn btn-ghost-dark btn-xl" href="directory.html"><svg width="17" height="17"><use href="#ic-search"/></svg><span data-t="ctaDir">Ver Directorio</span></a>
@@ -390,7 +390,12 @@ function toggleFaq(btn) {
   ico.style.transform = open ? '' : 'rotate(180deg)';
   ico.style.color = open ? 'var(--gray)' : 'var(--crimson)';
 }
-function onLangChange() { renderFAQs(); }
+function onLangChange() {
+  renderFAQs();
+  // Hero title has HTML (span.accent) so update manually
+  var ht = document.getElementById('aHeroTitle');
+  if (ht) ht.innerHTML = T('aHeroTitle');
+}
 
 window.addEventListener('load', () => {
   applyBranding(); setLang('es'); renderFAQs();

@@ -521,6 +521,15 @@ a{text-decoration:none;color:inherit}
 .pagination{display:flex;gap:5px;justify-content:center;margin-top:28px;flex-wrap:wrap}
 .page-btn{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;transition:var(--t);border:1.5px solid var(--border-med);background:#fff;font-family:var(--fd);color:var(--gray)}
 .page-btn:hover,.page-btn.active{background:var(--black);color:#fff;border-color:var(--black)}
+/* Load more button */
+.load-more-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:340px;margin:28px auto 0;padding:13px 24px;background:#fff;border:1.5px solid var(--border-med);border-radius:8px;font-family:var(--fd);font-size:13px;font-weight:700;color:var(--black);cursor:pointer;transition:var(--t)}
+.load-more-btn svg{color:var(--gray);transition:var(--t)}
+.load-more-btn:hover{background:var(--black);color:#fff;border-color:var(--black)}
+.load-more-btn:hover svg{color:#fff}
+/* Business count label */
+.biz-count-label{text-align:center;margin-top:24px;font-size:11px;color:var(--gray);font-family:var(--fd);letter-spacing:0.3px}
+/* Section header count badge */
+.section-header-count{font-family:var(--fd);font-size:11px;font-weight:600;color:var(--gray);background:var(--light);border:1px solid var(--border);border-radius:4px;padding:3px 8px;margin-left:8px}
 
 /* DETAIL OVERLAY */
 #detailOverlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.78);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px;overflow-y:auto}

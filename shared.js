@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://tinyurl.com/26af2o8a';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbznrvFAGaXYZ-T_O35ZtJ4GYE192U2b0IxzYs8pQs1vxTaAPgFVfsvthePRchXilD6tJQ/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';

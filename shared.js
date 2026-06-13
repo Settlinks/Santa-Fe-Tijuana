@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbxDqX_PC8XjI5WoJ31mOfXPwnvzONp9X45GZrKoasH-7nInmcA4sgaCy6Lnf67VFRbDTw/exec';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbz35ADmoo9PBSHki_hDiF0KXN3ax6YpGDNxVAU9vKIUv_3Mbrfel25WrzFJBwm0U_aCug/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -567,6 +567,34 @@ function openDetail(type, item, allItems) {
   if (type==='biz' && item.website) actions.push(`<a class="btn btn-dark" href="${safeUrl(item.website)}" target="_blank" rel="noopener">${svgIcon('ic-globe',14,'#fff')} ${T('btnWeb')}</a>`);
   actions.push(`<button class="btn btn-light" onclick="shareItem('${typeKey}','${esc(slug)}','${esc(nameStr)}')">${svgIcon('ic-share',14,'var(--black)')} ${T('btnShareDet')}</button>`);
   document.getElementById('dtActions').innerHTML = actions.join('');
+
+  /* ── QR Code: only shown for businesses ───────────────────────
+     Computed client-side using Google Chart API — no backend call.
+     QR encodes the business page URL so scanning redirects to
+     santafetijuana.com, driving all traffic through the website.
+     Hidden for requests/offers since they are temporary listings.
+  ─────────────────────────────────────────────────────────────── */
+  var qrWrap = document.getElementById('dtQr');
+  if (qrWrap) {
+    if (type === 'biz' && slug) {
+      var bizPageUrl = window.location.origin + '/directory.html?business=' + encodeURIComponent(slug);
+      var qrSrc = 'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' +
+                  encodeURIComponent(bizPageUrl) + '&choe=UTF-8&chld=M|2';
+      qrWrap.innerHTML =
+        '<div class="dt-qr-inner">' +
+          '<img class="dt-qr-img" src="' + qrSrc + '" alt="QR ' + esc(nameStr) + '" loading="lazy">' +
+          '<div class="dt-qr-label">' +
+            '<div class="dt-qr-title">Comparte este negocio</div>' +
+            '<div class="dt-qr-sub">Escanea para abrir en ' + SFT.SITE_NAME + '</div>' +
+          '</div>' +
+        '</div>';
+      qrWrap.style.display = 'block';
+    } else {
+      qrWrap.style.display = 'none';
+      qrWrap.innerHTML = '';
+    }
+  }
+
   ov.classList.add('open'); document.body.style.overflow = 'hidden';
 }
 function closeDetail() {

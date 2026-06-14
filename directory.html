@@ -352,12 +352,19 @@ async function loadCats(){
 function buildChips(prefix){
   const c=document.getElementById(prefix+'Chips');
   if(!c) return;
+  /* Determine which category is CURRENTLY selected for this list, so that
+     rebuilding the chips (e.g. on language switch) preserves the active
+     filter instead of silently resetting the highlight to "Todos" while
+     the underlying filter stays on a previous category. */
+  const filterObj = prefix==='biz' ? bizFilter : prefix==='req' ? reqFilter : offFilter;
+  const activeCat = filterObj ? filterObj.cat : 'all';
+
   /* Remove all existing chips */
   c.innerHTML='';
   /* Build Todos chip via createElement — same method as category chips,
      no HTML-attribute string parsing, guaranteed correct onclick binding */
   const allChip=document.createElement('span');
-  allChip.className='chip active';
+  allChip.className='chip'+(activeCat==='all'?' active':'');
   allChip.dataset.cat='all';
   allChip.setAttribute('data-t','all');
   allChip.textContent=T('all');
@@ -366,7 +373,7 @@ function buildChips(prefix){
   /* Build one chip per category */
   categories.forEach(cat=>{
     const chip=document.createElement('span');
-    chip.className='chip';
+    chip.className='chip'+(activeCat===cat?' active':'');
     chip.dataset.cat=cat;
     chip.textContent=T_CAT(cat);
     chip.addEventListener('click',()=>setCat(chip,prefix));

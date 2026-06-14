@@ -352,19 +352,12 @@ async function loadCats(){
 function buildChips(prefix){
   const c=document.getElementById(prefix+'Chips');
   if(!c) return;
-  /* Determine which category is CURRENTLY selected for this list, so that
-     rebuilding the chips (e.g. on language switch) preserves the active
-     filter instead of silently resetting the highlight to "Todos" while
-     the underlying filter stays on a previous category. */
-  const filterObj = prefix==='biz' ? bizFilter : prefix==='req' ? reqFilter : offFilter;
-  const activeCat = filterObj ? filterObj.cat : 'all';
-
   /* Remove all existing chips */
   c.innerHTML='';
   /* Build Todos chip via createElement — same method as category chips,
      no HTML-attribute string parsing, guaranteed correct onclick binding */
   const allChip=document.createElement('span');
-  allChip.className='chip'+(activeCat==='all'?' active':'');
+  allChip.className='chip active';
   allChip.dataset.cat='all';
   allChip.setAttribute('data-t','all');
   allChip.textContent=T('all');
@@ -373,9 +366,9 @@ function buildChips(prefix){
   /* Build one chip per category */
   categories.forEach(cat=>{
     const chip=document.createElement('span');
-    chip.className='chip'+(activeCat===cat?' active':'');
+    chip.className='chip';
     chip.dataset.cat=cat;
-    chip.textContent=T_CAT(cat);
+    chip.textContent=cat;
     chip.addEventListener('click',()=>setCat(chip,prefix));
     c.appendChild(chip);
   });
@@ -461,18 +454,20 @@ function bizCardHtml(b){
   const isNew=(Date.now()-new Date(b.registeredDate||0).getTime())<7*86400000;
   const isFeat=b.isBannerSubscriber===true||String(b.isBannerSubscriber).toUpperCase()==='TRUE';
   const idx=allBiz.indexOf(b);
-  const avatarInner=b.imageUrl?`<img src="${esc(b.imageUrl)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg width=\\'20\\' height=\\'20\\' style=\\'color:rgba(30,30,30,0.35)\\'><use href=\\'#${catIcon(b.category)}\\'/></svg>'">`:`<svg width="20" height="20" style="color:rgba(30,30,30,0.35)"><use href="#${catIcon(b.category)}"/></svg>`;
+  const phone=String(b.phone||'');
+  const imgUrl=driveImgUrl(b.imageUrl);
+  const avatarInner=imgUrl?`<img src="${esc(imgUrl)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<svg width=\\'20\\' height=\\'20\\' style=\\'color:rgba(30,30,30,0.35)\\'><use href=\\'#${catIcon(b.category)}\\'/></svg>'">`:`<svg width="20" height="20" style="color:rgba(30,30,30,0.35)"><use href="#${catIcon(b.category)}"/></svg>`;
   return `<div class="biz-card${isFeat?' featured':''}" onclick="openDetail('biz',allBiz[${idx}],allBiz)">
-    <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;${T('featuredBadge')}</div>
+    <div class="biz-featured-badge"><svg width="9" height="9"><use href="#ic-star"/></svg>&nbsp;Destacado</div>
     <div class="biz-avatar">${avatarInner}</div>
     <div class="biz-info"><div class="biz-name">${esc(b.businessName)}</div><div class="biz-type">${esc(b.serviceType||b.category)}</div>
-      <div class="biz-tags"><span class="tag tag-cat">${esc(T_CAT(b.category))}</span>${isNew?`<span class="tag tag-new">NUEVO</span>`:''}</div></div>
+      <div class="biz-tags"><span class="tag tag-cat">${esc(b.category)}</span>${isNew?`<span class="tag tag-new">NUEVO</span>`:''}</div></div>
     <div class="biz-right">
-      ${b.phone?`<a class="biz-phone" href="tel:${esc(b.phone)}" onclick="event.stopPropagation()">${esc(b.phone)}</a>`:''}
+      ${phone?`<a class="biz-phone" href="tel:${esc(phone)}" onclick="event.stopPropagation()">${esc(phone)}</a>`:''}
       <div class="biz-time">${timeAgo(b.registeredDate)}</div>
       <div class="biz-actions">
         <button class="icon-btn" onclick="event.stopPropagation();shareItem('business','${esc(b.slug||b.id)}','${esc(b.businessName)}')"><svg width="12" height="12"><use href="#ic-share"/></svg></button>
-        ${b.phone?`<a class="icon-btn" href="https://wa.me/${(b.phone||'').replace(/\D/g,'')}" target="_blank" onclick="event.stopPropagation()" style="text-decoration:none"><svg width="12" height="12"><use href="#ic-whatsapp"/></svg></a>`:''}
+        ${phone?`<a class="icon-btn" href="https://wa.me/${phone.replace(/\D/g,'')}" target="_blank" onclick="event.stopPropagation()" style="text-decoration:none"><svg width="12" height="12"><use href="#ic-whatsapp"/></svg></a>`:''}
       </div>
     </div>
   </div>`;
@@ -488,9 +483,9 @@ function renderBanner(ads){
   const ICONS=['ic-food','ic-scissors','ic-wrench','ic-car','ic-heart','ic-book','ic-monitor','ic-briefcase'];
   const real=ads.map(ad=>{
     const biz=ad.business||{};
-    const imgSrc=ad.imageUrl||biz.imageUrl||'';
+    const imgSrc=driveImgUrl(ad.imageUrl||biz.imageUrl||'');
     const imgH=imgSrc?`<div class="banner-card-img"><img src="${esc(imgSrc)}" alt="" loading="lazy"></div>`:`<div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${catIcon(biz.category||'')}"/></svg></div>`;
-    return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(T_CAT(biz.category||''))}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
+    return`<a class="banner-card" href="${esc(biz.website?safeUrl(biz.website):'#')}" target="_blank" rel="noopener">${imgH}<div style="flex:1;min-width:0"><div class="banner-card-name">${esc(ad.businessName)}</div><div class="banner-card-cat">${esc(biz.category||'')}</div></div><svg width="10" height="10" class="banner-star"><use href="#ic-star"/></svg></a>`;
   });
   const dc=ads.length===0?ICONS.length:2;
   const dummy=ICONS.slice(0,dc).map(ic=>`<div class="banner-card dummy" onclick="openModal('modalBusiness')"><div class="banner-card-img"><svg width="14" height="14" style="color:#fff"><use href="#${ic}"/></svg></div><div style="flex:1;min-width:0"><div class="banner-card-name">${T('dtYourBiz')}</div><div class="banner-card-cat">${T('dtYourBizCat')}</div></div><svg width="10" height="10" class="banner-star" style="color:#c59a1a"><use href="#ic-star"/></svg></div>`);
@@ -518,7 +513,7 @@ function reqCardHtml(r,idx){
   return`<div class="market-card req-card" onclick="openDetail('req',allReq[${idx}],allReq)">
     <div class="mc-header"><span class="mc-type req-type"><svg width="9" height="9"><use href="#ic-clipboard"/></svg> ${T('REQUEST')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
     <div class="mc-title">${esc(r.title)}</div><div class="mc-desc">${esc(r.description)}</div>
-    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(T_CAT(r.category))}</span>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(r.category)}</span>
     <div class="mc-contact"><svg width="10" height="10"><use href="#ic-user"/></svg> ${esc(r.contactName)} · <svg width="10" height="10"><use href="#ic-phone"/></svg> ${esc(r.contactPhone)}</div>
     <div class="mc-footer"><div><div class="price-label">${T('budget')}</div><div class="price-badge req">${budget}</div></div>
     <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('request','${esc(r.slug||r.id)}','${esc(r.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
@@ -542,11 +537,12 @@ function renderOff(){
 function offCardHtml(o,idx){
   const days=Math.ceil((new Date(o.expiryDate)-Date.now())/86400000);
   const price=o.price?`$${Number(o.price).toLocaleString()} MXN`:T('priceOnRequest');
+  const imgUrl=driveImgUrl(o.imageUrl);
   return`<div class="market-card off-card" onclick="openDetail('off',allOff[${idx}],allOff)">
-    ${o.imageUrl?`<div class="offer-img"><img src="${esc(o.imageUrl)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`:''}
+    ${imgUrl?`<div class="offer-img"><img src="${esc(imgUrl)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`:''}
     <div class="mc-header"><span class="mc-type off-type"><svg width="9" height="9"><use href="#ic-tag"/></svg> ${T('OFFER')}</span><span class="expiry${days<10?' urgent':''}"><svg width="9" height="9"><use href="#ic-clock"/></svg> ${days}${T('dLeft')}</span></div>
     <div class="mc-title">${esc(o.title)}</div><div class="mc-desc">${esc(o.description)}</div>
-    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(T_CAT(o.category))}</span>
+    <span class="tag tag-cat" style="margin-top:8px;display:inline-block">${esc(o.category)}</span>
     <div class="mc-contact"><svg width="10" height="10"><use href="#ic-building"/></svg> ${esc(o.businessName||'—')} · <a href="tel:${esc(o.contactPhone)}" style="color:var(--crimson)" onclick="event.stopPropagation()">${esc(o.contactPhone)}</a></div>
     <div class="mc-footer"><div><div class="price-label">${T('price')}</div><div class="price-badge off">${price}</div></div>
     <button class="btn btn-light btn-sm" onclick="event.stopPropagation();shareItem('offer','${esc(o.slug||o.id)}','${esc(o.title)}')"><svg width="11" height="11"><use href="#ic-share"/></svg> ${T('share')}</button></div>
@@ -634,7 +630,7 @@ async function loadAdminData() {
       <div class="admin-banner-card-top">
         <div>
           <div style="font-family:var(--fd);font-size:14px;font-weight:700;color:var(--black)">${esc(ad.businessName||biz.businessName||'—')}</div>
-          <div style="font-size:11px;color:var(--gray);margin-top:2px">${esc(T_CAT(biz.category||''))} · Solicitado: ${postedDate}</div>
+          <div style="font-size:11px;color:var(--gray);margin-top:2px">${esc(biz.category||'')} · Solicitado: ${postedDate}</div>
           <div style="font-size:11px;color:var(--gray);margin-top:2px">📧 ${esc(biz.email||'—')} · 📞 ${esc(biz.phone||'—')}</div>
           <div style="font-family:var(--fd);font-size:10px;color:var(--gray);margin-top:6px;background:var(--surface);padding:4px 8px;border-radius:4px;display:inline-block">
             ID: <strong>${esc(ad.id||'—')}</strong>

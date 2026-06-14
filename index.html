@@ -171,10 +171,10 @@
       <div class="lp-featured-left">
         <div class="lp-featured-eyebrow">
           <svg width="11" height="11" style="color:#c59a1a"><use href="#ic-star"/></svg>
-          <span data-t="featuredBiz">Negocios Destacados</span>
+          <span>Negocios Destacados</span>
         </div>
-        <h2 class="lp-featured-title" data-t="featuredTitle">Apoyados por la comunidad</h2>
-        <p class="lp-featured-sub" data-t="featuredSub">Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.</p>
+        <h2 class="lp-featured-title">Apoyados por la comunidad</h2>
+        <p class="lp-featured-sub">Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.</p>
       </div>
       <div class="lp-feat-header-right">
         <!-- Prev / Next arrows -->
@@ -209,7 +209,7 @@
     <div class="lp-feat-upsell">
       <div class="lp-feat-upsell-text">
         <svg width="15" height="15" style="color:#c59a1a;flex-shrink:0"><use href="#ic-star"/></svg>
-        <span data-t="featuredUpsell">¿Quieres aparecer aquí? Destaca tu negocio por solo <strong>$29.99 USD / 30 días</strong></span>
+        <span>¿Quieres aparecer aquí? Destaca tu negocio por solo <strong>$29.99 USD / 30 días</strong></span>
       </div>
       <button class="btn btn-crimson btn-sm" onclick="openModal('modalBusiness')">
         <svg width="12" height="12"><use href="#ic-plus"/></svg>
@@ -428,7 +428,6 @@
    - Dots + prev/next arrows + touch swipe
 ══════════════════════════════════════════════ */
 let featCards   = [];
-let featCacheBusinesses = null, featCacheIds = null, featCacheCategories = null;
 let featIdx     = 0;
 let featTimer   = null;
 let featVisible = 4;
@@ -453,18 +452,18 @@ function featEsc(s){
 }
 
 function buildFeatCard(biz, isFeatured) {
-  const phone  = biz.phone || '';
+  const phone  = String(biz.phone || '');
   const wa     = phone.replace(/\D/g,'');
-  const imgSrc = biz.imageUrl || '';
+  const imgSrc = driveImgUrl(biz.imageUrl || '');
   const cat    = biz.category || '';
   const slug   = biz.slug || biz.id || '';
-  const raw    = biz.description || '';
+  const raw    = String(biz.description || '');
   const desc   = raw.slice(0,88) + (raw.length>88?'…':'');
-  const site   = biz.website || '';
+  const site   = String(biz.website || '');
   const siteHref = site ? (site.startsWith('http') ? site : 'https://'+site) : '';
 
   const badge = isFeatured
-    ? `<div class="lp-feat-card-badge"><svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> ${T('featuredBadge')}</div>`
+    ? `<div class="lp-feat-card-badge"><svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> Destacado</div>`
     : '';
 
   const imgBlock = imgSrc
@@ -485,7 +484,7 @@ function buildFeatCard(biz, isFeatured) {
     </div>
     <div class="lp-feat-card-body">
       <div class="lp-feat-card-name">${featEsc(biz.businessName||'—')}</div>
-      <div class="lp-feat-card-type">${featEsc(biz.serviceType||T_CAT(cat))}</div>
+      <div class="lp-feat-card-type">${featEsc(biz.serviceType||cat)}</div>
       <div class="lp-feat-card-desc">${featEsc(desc)}</div>
       <div class="lp-feat-card-footer">
         ${phone?`<a class="lp-feat-card-phone" href="tel:${featEsc(phone)}" onclick="event.stopPropagation()">${featEsc(phone)}</a>`:'<span></span>'}
@@ -508,12 +507,12 @@ function buildPlaceholderCards(count) {
       </div>
       <div class="lp-feat-card-body">
         <div class="lp-feat-card-badge" style="position:static;display:inline-flex;margin-bottom:8px">
-          <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> ${T('featuredBadge')}
+          <svg width="9" height="9" style="color:#c59a1a"><use href="#ic-star"/></svg> Destacado
         </div>
-        <div class="lp-feat-card-name">${T('dtYourBiz')}</div>
-        <div class="lp-feat-card-type">${T('featPlaceholderType')}</div>
-        <div class="lp-feat-card-desc">${T('featPlaceholderDesc')}</div>
-        <div class="lp-feat-card-footer"><span class="lp-feat-card-cta">${T('featPlaceholderCta')}</span></div>
+        <div class="lp-feat-card-name">Tu Negocio Aquí</div>
+        <div class="lp-feat-card-type">$29.99 USD · 30 días · PayPal</div>
+        <div class="lp-feat-card-desc">Sé el primero en destacarse y llega a todos los visitantes de Santa Fe Tijuana.</div>
+        <div class="lp-feat-card-footer"><span class="lp-feat-card-cta">Destacar ahora →</span></div>
       </div>
     </div>`).join('');
 }
@@ -717,7 +716,7 @@ window.addEventListener('load', ()=>{
       if(r.success){ const el=document.getElementById('heroStatOff'); if(el) el.textContent=(r.data||[]).length; }
     }),
     api('getCategories').then(r=>{
-      if(r.success&&r.data){ featCacheCategories = r.data; populateCategorySelects(r.data); }
+      if(r.success&&r.data) populateCategorySelects(r.data);
     }),
     api('getActiveBannerAds').then(r=> r.success?(r.data||[]):[])
   ]).then(([businesses,,,, bannerAds])=>{
@@ -763,19 +762,11 @@ window.addEventListener('load', ()=>{
       return true;
     });
 
-    featCacheBusinesses = unique;
-    featCacheIds = featuredIds;
     featRender(unique, featuredIds);
   });
 });
 
-function onLangChange(){
-  setActiveNav();
-  // Re-render the featured slider so badge/category labels switch language
-  if (featCacheBusinesses) featRender(featCacheBusinesses, featCacheIds);
-  // Re-populate category select with translated option labels
-  if (featCacheCategories) populateCategorySelects(featCacheCategories);
-}
+function onLangChange(){ setActiveNav(); }
 </script>
 </body>
 </html>

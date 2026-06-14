@@ -6,7 +6,7 @@
 
 /* ════ CONFIG — update GAS_URL after each new GAS deployment ════ */
 window.SFT = window.SFT || {};
-SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbx79tcPbl4d1hP8YCYAfzBiSHm1ukn2ihKCzh8H-wzz6Zw6XubpP6hIn7YZqvLZyOauQA/exec';
+SFT.GAS_URL    = 'https://script.google.com/macros/s/AKfycbywahiftUC0BN5XMKy6v0aWxsYVpmcTA9IMDAaf56oGCeiBXf2g3RT5-9xmZk5jxQCeDA/exec';
 SFT.SITE_NAME  = 'Santafetijuana.com';
 SFT.SITE_URL   = 'https://santafetijuana.com';
 SFT.FAVICON_URL = 'https://static.wixstatic.com/shapes/49ea47_c66ce2c314d141f6b444d9c1616d1524.svg';
@@ -41,25 +41,24 @@ async function api(action, payload) {
     }
   }
 
-  /* Write actions: POST via XMLHttpRequest
-     GAS web apps redirect POST → GET when using fetch(redirect:'follow').
-     XHR follows the 302 and re-sends the body, making it the reliable
-     method for large payloads (image base64, registration data, etc.).
-  */
+  /* Write actions: POST via XMLHttpRequest.
+     GAS web apps redirect POST → GET when using fetch(redirect:'follow'),
+     which drops the request body. XHR follows the 302 chain and re-sends
+     the body, making it reliable for registration + image uploads. */
   return new Promise(resolve => {
     try {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', SFT.GAS_URL, true);
       xhr.setRequestHeader('Content-Type', 'text/plain');
-      xhr.timeout = 60000; // 60s for image uploads
+      xhr.timeout = 60000; // 60s — allows time for image upload to Drive
       xhr.onload = () => {
         try { resolve(JSON.parse(xhr.responseText)); }
-        catch(e) { resolve({ success: false, error: 'Invalid response from server.' }); }
+        catch (e) { resolve({ success: false, error: 'Invalid response from server.' }); }
       };
       xhr.onerror   = () => resolve({ success: false, error: T('errNetwork') + ' (POST)' });
       xhr.ontimeout = () => resolve({ success: false, error: 'Request timed out. Try again.' });
       xhr.send(JSON.stringify({ action, payload }));
-    } catch(e) {
+    } catch (e) {
       resolve({ success: false, error: T('errNetwork') + ' (POST)' });
     }
   });
@@ -90,7 +89,7 @@ const STRINGS = {
     trustBiz1:'Tamales La Esperanza', trustBiz2:'Santa Fe Resident', trustBiz3:'Studio Belleza AR',
     ctaBannerTitle:'Ready to grow?',
     ctaBannerSub:'Join hundreds of businesses already part of the most complete directory in Santa Fe Tijuana.',
-    featuredBiz:'Featured Businesses', featuredTitle:'Supported by the community', featuredSub:'Businesses that invest in visibility to better serve Santa Fe Tijuana.', featuredUpsell:'Want to appear here? Feature your business for just', featuredUpsellBtn:'Feature my business', tabDir:'Directory', tabReq:'Requests', tabOff:'Offers & Products',
+    featuredBiz:'Featured Businesses', tabDir:'Directory', tabReq:'Requests', tabOff:'Offers & Products',
     navDir:'Directory', navReq:'Requests', navOff:'Offers', navAbout:'About', navRegister:'Register Business',
     onboardTitle:'Do you have a business in Santa Fe Tijuana?',
     onboardSub:'Register it for free and reach the whole community. Takes just 2 minutes.', onboardCta:'Register free',
@@ -142,8 +141,12 @@ const STRINGS = {
     btnCall:'Call', btnWA:'WhatsApp', btnWeb:'Website', btnShareDet:'Share',
     dtYourBiz:'Your Business Here', dtYourBizCat:'$29.99/mo · Click to feature',
     errLoadBiz:'Could not load businesses.', retryBtn:'Try again',
+    dtBusiness:'Business', featuredBadge:'Featured',
     aboutHero:'About Santa Fe Tijuana', aboutSub:'The story behind the community',
-    aHeroTitle:'Connecting our <span class=\"accent\">community</span>',
+    featuredTitle:'Supported by the community', featuredSub:'Businesses that invest in visibility to better serve Santa Fe Tijuana.',
+    featuredUpsell:'Want to appear here? Feature your business for just', featuredUpsellBtn:'Feature my business',
+    featPlaceholderType:'$29.99 USD · 30 days · PayPal', featPlaceholderDesc:'Be the first to get featured and reach every visitor of Santa Fe Tijuana.', featPlaceholderCta:'Feature now →',
+    aHeroTitle:'Connecting our <span class="accent">community</span>',
     aHeroSub:'We are the community directory that connects local businesses with Santa Fe Tijuana residents — free, easy, and built to grow with you.',
     aMissionLabel:'Our Mission', aMissionTitle:'Making visible what already exists in Santa Fe',
     aMissionBody1:'Santa Fe Tijuana has incredible businesses, real talent, and a community that wants to support each other. The problem was always visibility: residents did not know what was available, and businesses had no place to advertise without spending on social media or flyers.',
@@ -161,14 +164,13 @@ const STRINGS = {
     aOriginBody1:'It all started when a Santa Fe resident needed a plumber and did not know who to call. There was no local directory, no organized group, no easy way to find services in the neighborhood.',
     aOriginBody2:'At the same time, there were plumbers, electricians, seamstresses, and cooks in Santa Fe with no way to advertise beyond posting flyers on poles.',
     aOriginBody3:'The solution was simple: create the space Santa Fe Tijuana deserved. A place where both sides — the seeker and the provider — could easily find each other.',
-    aOriginQuote:'"The best directory of Santa Fe Tijuana is not the largest, but the most useful for the community."',
     aTeamLabel:'The Team', aTeamTitle:'Made by neighbors, for neighbors',
     aTeamSub:'We are a small team committed to making Santa Fe Tijuana a more connected and prosperous community.',
-    aTeam1Name:'Yusef Eedr', aTeam1Role:'Founder & Development',
-    aTeam2Name:'SFT Community', aTeam2Role:'Businesses & Residents',
+    aTeam1Role:'Founder & Development', aTeam2Name:'SFT Community', aTeam2Role:'Businesses & Residents',
     aTeam3Name:'Your spot here', aTeam3Role:'Join the team',
     aFaqLabel:'Frequently Asked Questions', aFaqTitle:'Everything you need to know',
     aCtaTitle:'Do you have a business in Santa Fe?', aCtaSub:'Register it for free today and start connecting with your community.',
+    aCollabTitle:'Want to collaborate?', aCollabDesc:'Write to us and let\'s build something great together.', aCollabBtn:'Contact us',
   },
   es: {
     portalSub:'Directorio Comunitario', heroBadge:'SANTA FE TIJUANA · DIRECTORIO OFICIAL',
@@ -192,7 +194,7 @@ const STRINGS = {
     trustBiz1:'Tamales La Esperanza', trustBiz2:'Residente Santa Fe', trustBiz3:'Studio Belleza AR',
     ctaBannerTitle:'¿Listo para crecer?',
     ctaBannerSub:'Únete a cientos de negocios que ya forman parte del directorio más completo de Santa Fe Tijuana.',
-    featuredBiz:'Negocios Destacados', featuredTitle:'Apoyados por la comunidad', featuredSub:'Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.', featuredUpsell:'¿Quieres aparecer aquí? Destaca tu negocio por solo', featuredUpsellBtn:'Destacar mi negocio', tabDir:'Directorio', tabReq:'Solicitudes', tabOff:'Ofertas y Productos',
+    featuredBiz:'Negocios Destacados', tabDir:'Directorio', tabReq:'Solicitudes', tabOff:'Ofertas y Productos',
     navDir:'Directorio', navReq:'Solicitudes', navOff:'Ofertas', navAbout:'Nosotros', navRegister:'Registrar Negocio',
     onboardTitle:'¿Tienes un negocio en Santa Fe Tijuana?',
     onboardSub:'Regístralo gratis y llega a toda la comunidad. Solo toma 2 minutos.', onboardCta:'Registrar gratis',
@@ -244,8 +246,12 @@ const STRINGS = {
     btnCall:'Llamar', btnWA:'WhatsApp', btnWeb:'Sitio Web', btnShareDet:'Compartir',
     dtYourBiz:'Tu Negocio Aquí', dtYourBizCat:'$29.99/mes · Clic para destacar',
     errLoadBiz:'No se pudieron cargar los negocios.', retryBtn:'Reintentar',
+    dtBusiness:'Negocio', featuredBadge:'Destacado',
     aboutHero:'Acerca de Santa Fe Tijuana', aboutSub:'La historia detrás de la comunidad',
-    aHeroTitle:'Conectando a <span class=\"accent\">nuestra comunidad</span>',
+    featuredTitle:'Apoyados por la comunidad', featuredSub:'Los negocios que invierten en visibilidad para servir mejor a Santa Fe Tijuana.',
+    featuredUpsell:'¿Quieres aparecer aquí? Destaca tu negocio por solo', featuredUpsellBtn:'Destacar mi negocio',
+    featPlaceholderType:'$29.99 USD · 30 días · PayPal', featPlaceholderDesc:'Sé el primero en destacarse y llega a todos los visitantes de Santa Fe Tijuana.', featPlaceholderCta:'Destacar ahora →',
+    aHeroTitle:'Conectando a <span class="accent">nuestra comunidad</span>',
     aHeroSub:'Somos el directorio comunitario que une a los negocios locales con los vecinos de Santa Fe Tijuana — gratis, fácil y construido para crecer contigo.',
     aMissionLabel:'Nuestra Misión', aMissionTitle:'Hacer visible lo que ya existe en Santa Fe',
     aMissionBody1:'Santa Fe Tijuana tiene negocios increíbles, talento real y una comunidad que quiere apoyarse. El problema siempre fue la visibilidad: los vecinos no sabían qué había disponible, y los negocios no tenían dónde anunciarse sin gastar en redes sociales o volantes.',
@@ -263,14 +269,13 @@ const STRINGS = {
     aOriginBody1:'Todo empezó cuando un vecino de Santa Fe necesitaba un plomero y no sabía a quién llamar. No había ningún directorio local, ningún grupo organizado, ninguna forma fácil de encontrar servicios en la colonia.',
     aOriginBody2:'Al mismo tiempo, había plomeros, electricistas, costureras y cocineras en Santa Fe sin manera de anunciarse más allá de pegar carteles en postes.',
     aOriginBody3:'La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.',
-    aOriginQuote:'"El mejor directorio de Santa Fe Tijuana no es el más grande, sino el más útil para la comunidad."',
     aTeamLabel:'El Equipo', aTeamTitle:'Hecho por vecinos, para vecinos',
     aTeamSub:'Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.',
-    aTeam1Name:'Yusef Eedr', aTeam1Role:'Fundador y Desarrollo',
-    aTeam2Name:'Comunidad SFT', aTeam2Role:'Negocios y Vecinos',
+    aTeam1Role:'Fundador y Desarrollo', aTeam2Name:'Comunidad SFT', aTeam2Role:'Negocios y Vecinos',
     aTeam3Name:'Tu lugar aquí', aTeam3Role:'Únete al equipo',
     aFaqLabel:'Preguntas Frecuentes', aFaqTitle:'Todo lo que necesitas saber',
     aCtaTitle:'¿Tienes un negocio en Santa Fe?', aCtaSub:'Regístralo gratis hoy y empieza a conectar con tu comunidad.',
+    aCollabTitle:'¿Quieres colaborar?', aCollabDesc:'Escríbenos y hagamos algo grande juntos.', aCollabBtn:'Contáctanos',
   }
 };
 
@@ -320,6 +325,43 @@ const CAT_ICONS = {
   'Pet Services':'ic-heart','Other':'ic-building'
 };
 function catIcon(cat) { return CAT_ICONS[cat] || 'ic-building'; }
+
+/* ════ CATEGORY TRANSLATIONS ════
+   Category values stored in the sheet / sent to the API are always the
+   English canonical names below (must match CATEGORIES in Code.gs and
+   the keys of CAT_ICONS). CAT_LABELS provides the DISPLAY label only —
+   filter chips, select options, and category tags show the translated
+   label while filtering/storage still use the English key. */
+const CAT_LABELS = {
+  en: {
+    'Food & Beverages':'Food & Beverages','Beauty & Personal Care':'Beauty & Personal Care',
+    'Home Services':'Home Services','Auto Services':'Auto Services',
+    'Health & Wellness':'Health & Wellness','Education & Tutoring':'Education & Tutoring',
+    'Technology & IT':'Technology & IT','Arts & Crafts':'Arts & Crafts',
+    'Fashion & Clothing':'Fashion & Clothing','Professional Services':'Professional Services',
+    'Entertainment':'Entertainment','Retail & Shopping':'Retail & Shopping',
+    'Construction & Repairs':'Construction & Repairs','Transportation':'Transportation',
+    'Pet Services':'Pet Services','Other':'Other'
+  },
+  es: {
+    'Food & Beverages':'Comida y Bebidas','Beauty & Personal Care':'Belleza y Cuidado Personal',
+    'Home Services':'Servicios para el Hogar','Auto Services':'Servicios Automotrices',
+    'Health & Wellness':'Salud y Bienestar','Education & Tutoring':'Educación y Tutorías',
+    'Technology & IT':'Tecnología e Informática','Arts & Crafts':'Arte y Manualidades',
+    'Fashion & Clothing':'Moda y Ropa','Professional Services':'Servicios Profesionales',
+    'Entertainment':'Entretenimiento','Retail & Shopping':'Tiendas y Comercio',
+    'Construction & Repairs':'Construcción y Reparaciones','Transportation':'Transporte',
+    'Pet Services':'Servicios para Mascotas','Other':'Otro'
+  }
+};
+// Translate a category's canonical (English) name into the current language's
+// display label. Falls back to the raw value if the category is unrecognized
+// (e.g. a legacy/custom category not in the map).
+function T_CAT(cat) {
+  if (!cat) return '';
+  const map = CAT_LABELS[LANG] || CAT_LABELS.es;
+  return map[cat] || cat;
+}
 function svgIcon(id, size, cls) {
   /* cls can be a CSS class name OR a hex/rgba color string for direct styling */
   const isColor = cls && (cls.startsWith('#') || cls.startsWith('rgba') || cls.startsWith('rgb') || cls.startsWith('var('));
@@ -433,14 +475,18 @@ async function getBase64(inputId) {
   if (!input?.files?.length) return null;
   return new Promise(resolve => {
     const r = new FileReader();
+    r.onerror = () => resolve(null); // FileReader failed — never hang
     r.onload = e => {
       const img = new Image();
+      img.onerror = () => resolve(null); // bad/unsupported image format
       img.onload = () => {
-        const MAX = 1400; let { width: w, height: h } = img;
-        if (w > MAX || h > MAX) { const ratio = MAX / Math.max(w, h); w = Math.round(w * ratio); h = Math.round(h * ratio); }
-        const c = document.createElement('canvas'); c.width = w; c.height = h;
-        c.getContext('2d').drawImage(img, 0, 0, w, h);
-        resolve(c.toDataURL('image/jpeg', 0.82));
+        try {
+          const MAX = 1400; let { width: w, height: h } = img;
+          if (w > MAX || h > MAX) { const ratio = MAX / Math.max(w, h); w = Math.round(w * ratio); h = Math.round(h * ratio); }
+          const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.82));
+        } catch (err) { resolve(null); }
       };
       img.src = e.target.result;
     };
@@ -480,7 +526,10 @@ function populateCategorySelects(categories) {
     const prev = el.value;
     el.innerHTML = '<option value="">' + T('catOptSel') + '</option>';
     categories.forEach(c => {
-      const o = document.createElement('option'); o.value = c; o.textContent = c; el.appendChild(o);
+      const o = document.createElement('option');
+      o.value = c;            // canonical English value — used for storage/filtering
+      o.textContent = T_CAT(c); // translated display label
+      el.appendChild(o);
     });
     if (prev) el.value = prev;
   });
@@ -493,7 +542,7 @@ async function submitBusiness(btn) {
   setBtnState(btn,true,T('submitting'));
   showProgress('biz', 20);
 
-  /* Read image as base64 (resized to max 1400px, JPEG 82% quality by getBase64) */
+  /* Read + resize image to max 1400px, JPEG 82% quality (returns null if no file) */
   const img64 = await getBase64('biz_img');
   showProgress('biz', 50);
 
@@ -610,7 +659,7 @@ function openDetail(type, item, allItems) {
   badge.className = 'detail-type-badge ' + (type==='biz'?'dtb-biz':type==='req'?'dtb-req':'dtb-off');
   badge.textContent = type==='biz'?'Negocio':type==='req'?T('REQUEST'):T('OFFER');
   document.getElementById('dtName').textContent = item.businessName || item.title || '';
-  document.getElementById('dtSub').textContent = type==='biz'?(item.serviceType||item.category||''):(item.category||'');
+  document.getElementById('dtSub').textContent = type==='biz'?(item.serviceType||T_CAT(item.category)||''):(T_CAT(item.category)||'');
   document.getElementById('dtDesc').textContent = item.description || '';
   const metaItems = [];
   if (type === 'biz') {
@@ -618,20 +667,20 @@ function openDetail(type, item, allItems) {
     if (item.email) metaItems.push([T('dtEmail'), `<a href="mailto:${esc(item.email)}">${esc(item.email)}</a>`]);
     if (item.address) metaItems.push([T('dtAddress'), esc(item.address)]);
     if (item.website) metaItems.push([T('dtWebsite'), `<a href="${safeUrl(item.website)}" target="_blank" rel="noopener">${esc(item.website)}</a>`]);
-    if (item.category) metaItems.push([T('dtCategory'), esc(item.category)]);
+    if (item.category) metaItems.push([T('dtCategory'), esc(T_CAT(item.category))]);
     if (item.registeredDate) metaItems.push([T('dtPosted'), new Date(item.registeredDate).toLocaleDateString()]);
   } else if (type === 'req') {
     const budget = (item.budgetMin||item.budgetMax) ? `$${item.budgetMin||0}${item.budgetMax&&item.budgetMax!=item.budgetMin?' – $'+item.budgetMax:''} MXN` : T('negotiable');
     metaItems.push([T('dtBudget'), budget]);
-    if (item.category) metaItems.push([T('dtCategory'), esc(item.category)]);
+    if (item.category) metaItems.push([T('dtCategory'), esc(T_CAT(item.category))]);
     metaItems.push([T('dtContact'), esc(item.contactName)]);
     if (item.contactPhone) metaItems.push([T('dtPhone'), `<a href="tel:${esc(item.contactPhone)}">${esc(item.contactPhone)}</a>`]);
     if (item.expiryDate) metaItems.push([T('dtExpires'), new Date(item.expiryDate).toLocaleDateString()]);
   } else {
     const price = item.price ? `$${Number(item.price).toLocaleString()} MXN` : T('priceOnRequest');
     metaItems.push([T('dtPrice'), price]);
-    if (item.category) metaItems.push([T('dtCategory'), esc(item.category)]);
-    if (item.businessName) metaItems.push(['Negocio', esc(item.businessName)]);
+    if (item.category) metaItems.push([T('dtCategory'), esc(T_CAT(item.category))]);
+    if (item.businessName) metaItems.push([T('dtBusiness'), esc(item.businessName)]);
     if (item.contactPhone) metaItems.push([T('dtPhone'), `<a href="tel:${esc(item.contactPhone)}">${esc(item.contactPhone)}</a>`]);
     if (item.expiryDate) metaItems.push([T('dtExpires'), new Date(item.expiryDate).toLocaleDateString()]);
   }

@@ -271,7 +271,7 @@ const STRINGS = {
     aOriginBody3:'La solución fue simple: crear el espacio que Santa Fe Tijuana merecía. Un lugar donde los dos lados — el que busca y el que ofrece — pudieran encontrarse fácilmente.',
     aTeamLabel:'El Equipo', aTeamTitle:'Hecho por vecinos, para vecinos',
     aTeamSub:'Somos un equipo pequeño pero comprometido con hacer de Santa Fe Tijuana una comunidad más conectada y próspera.',
-    aTeam1Role:'Fundador y Desarrollo', aTeam2Name:'Comunidad SFT', aTeam2Role:'Negocios y Vecinos',
+    aTeam1Role:'Fundador y Desarrollo', aTeam2Name:'Mónica Sandoval', aTeam2Role:'Marketing',
     aTeam3Name:'Tu lugar aquí', aTeam3Role:'Únete al equipo',
     aFaqLabel:'Preguntas Frecuentes', aFaqTitle:'Todo lo que necesitas saber',
     aCtaTitle:'¿Tienes un negocio en Santa Fe?', aCtaSub:'Regístralo gratis hoy y empieza a conectar con tu comunidad.',
